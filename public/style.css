@@ -1,0 +1,39 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #e2e2e2;
+}
+
+.container {
+  display: flex;
+  margin: 0 auto;
+}
+
+.supplies,
+.drop-zone {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.supplies {
+  flex-basis: 30%;
+  background-color: #fff;
+}
+
+.supplies li {
+  background-color: green;
+  text-align: center;
+  width: 80%;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 1rem auto;
+  color: #fff;
+}
+
+.drop-zone {
+  flex-basis: 30%;
+  height: 200px;
+  background-color: #222;
+}
