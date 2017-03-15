@@ -18,7 +18,7 @@ export const addCommand = (text) => ({
 })
 
 // reducer
-export default (state=initialState, action) {
+export default (state=initialState, action) => {
   const newState = Object.assign({}, state);
 
   switch (action.type) {
