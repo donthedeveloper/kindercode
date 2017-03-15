@@ -29,6 +29,9 @@ export default (state=initialState, action) => {
       command.text = action.text;
       newState.commands.push(command);
       break;
+      
+    default:
+      return state;
   }
 
   return newState;
