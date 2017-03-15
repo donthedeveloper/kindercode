@@ -4,8 +4,12 @@ Teaching kids to code.
 
 ## Technologies
 
-..*JavaScript
-..*React
-..*Redux
-..*Express
-..*Sequelize
+JavaScript
+
+React
+
+Redux
+
+Express
+
+Sequelize
