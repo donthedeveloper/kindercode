@@ -6,9 +6,9 @@ import HTML5Backend from 'react-dnd-html5-backend';
 
 // import components
 import Block from '../components/Block';
+import DropZone from '../components/DropZone';
 
 const DragAndDrop = (props) => {
-  console.log('props of thing', props);
   return (
     <DragDropContextProvider backend={HTML5Backend}>
       <div className="container">
@@ -19,9 +19,10 @@ const DragAndDrop = (props) => {
             )
           }
         </ul>
-        <ul className="drop-zone">
+        <DropZone />
+        {/*<ul className="drop-zone">
 
-        </ul>
+        </ul>*/}
       </div>
     </DragDropContextProvider>
   );
@@ -33,4 +34,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, null)(DragAndDrop);
+export default connect(mapStateToProps)(DragAndDrop);

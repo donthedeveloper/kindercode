@@ -13,6 +13,17 @@ const blockSource = {
     return {
       text: props.text
     };
+  },
+
+  endDrag(props, monitor) {
+    const item = monitor.getItem();
+    const dropResult = monitor.getDropResult();
+
+    if (dropResult) {
+      window.alert( // eslint-disable-line no-alert
+        `You dropped ${item.text} into ${dropResult.name}!`,
+      );
+    }
   }
 };
 
@@ -27,7 +38,7 @@ function collect(connect, monitor) {
 }
 
 const propTypes = {
-  // text: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
 
   // Injected by React DnD:
   isDragging: PropTypes.bool.isRequired,
