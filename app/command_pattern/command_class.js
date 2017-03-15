@@ -5,7 +5,6 @@ class CommandObject {
 
   storeCommand(command){
     if (!this.list) this.list = [command];
-    else if (command.type === 'event' || command.type === 'function') this.list.unshift(command);
     else this.list.push(command);
   }
 
@@ -18,6 +17,7 @@ class CommandObject {
 }
 
 //might not need a command List for every command, could instead build a code block with functions inside of it representing different statments, loops, conditionals etc.
+//Decision TBD
 class Command extends CommandObject{
   constructor(toExecute, type, list = null){
     super(list);
