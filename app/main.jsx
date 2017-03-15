@@ -9,7 +9,6 @@ import Jokes from './components/Jokes'
 import Login from './components/Login'
 import WhoAmI from './components/WhoAmI'
 
-// containers
 import DragAndDrop from './containers/DragAndDrop.jsx';
 
 // const ExampleApp = connect(
