@@ -1,11 +1,5 @@
 const initialState = {
-  commands: [
-    { id: 0, text: 'Move' },
-    { id: 1, text: 'Jump'},
-    { id: 3, text: 'Speak' },
-    { id: 4, text: 'Wave'},
-    { id: 5, text: 'Sit' }
-  ]
+  commands: []
 }
 
 // constants
@@ -29,7 +23,7 @@ export default (state=initialState, action) => {
       command.text = action.text;
       newState.commands.push(command);
       break;
-      
+
     default:
       return state;
   }

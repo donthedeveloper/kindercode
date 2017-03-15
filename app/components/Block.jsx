@@ -1,5 +1,8 @@
+// import modules
 import React, { PropTypes } from 'React';
 import { DragSource } from 'react-dnd';
+
+// import utilities
 import itemTypes from '../utilities/itemTypes.jsx';
 
 /**
@@ -24,7 +27,7 @@ function collect(connect, monitor) {
 }
 
 const propTypes = {
-  text: PropTypes.string.isRequired,
+  // text: PropTypes.string.isRequired,
 
   // Injected by React DnD:
   isDragging: PropTypes.bool.isRequired,

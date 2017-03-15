@@ -1,7 +1,9 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux';
+import commands from './commands';
 
 const rootReducer = combineReducers({
-  auth: require('./auth').default,  
+  auth: require('./auth').default,
+  commands
 })
 
-export default rootReducer
+export default rootReducer;
