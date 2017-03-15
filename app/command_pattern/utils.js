@@ -12,7 +12,7 @@ export const equalTo = function(left, right) {
   return left === right;
 }
 
-export function operator (type, left, right) {
+export function operator (left, right, type) {
   if (type === 'greaterThan') {
     return greaterThan(left, right);
   }
