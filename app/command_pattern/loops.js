@@ -1,4 +1,6 @@
 import Command from 'command_class.js';
+import {operator} from 'utils.js';
+import {Condition} from 'conditionals.js';
 
 export class For extends Command {
   constructor(type, start, end, operator){

@@ -1,22 +1,21 @@
-import Command, {Program} from 'command_class.js';
-import {operator, Statement} from 'utils.js';
+import Command, {FunctionInstance} from 'command_class.js';
+import {operator, Assignment} from 'utils.js';
 
 export class If extends Command {
-  constructor(condition, callbackCommand) {
-    super('conditional', callbackCommand)
+  constructor(condition) {
+    super('conditional')
+    this.condition = condition;
   }
 
-  toExecute() {
+  executeCommand() {
     if (this.condition.executeCommand()) {
-      this.callbackCommand.executeCommand()
+      this.executeCallbacks()
     }
   }
-
 }
 
-export class Condition extends Command {
+export class Condition {
   constructor(left, right, comparison) {
-    super();
     this.left = left
     this.right = right
     this.comparison = comparison
@@ -27,14 +26,18 @@ export class Condition extends Command {
   }
 }
 
-//EXAMPLE OF A CREATING A NEST
-var statement = new Statement();
-var condition = new Condition( 2, 0, 'greaterThan');
-var if_instance = new If(condition, statement)
 
-var finalCommand = if_instance.then((condition)).then(statement)
+//Example function creation/execution steps as of 3-15-17
+let func = new FunctionInstance();
 
-var commandList = new Program();
-commandList.storeCommand(finalCommand);
+func.storeCommand(new Assignment('x', 5));
+func.storeCommand(new Assignment('y', 10));
 
-commandList.executeProgram();
+let if_instance = new If(new Condition('x', 5, '>'));
+if_instance.then(new Assignment('x', 11));
+if_instance.then(new Assignment('y', 2));
+
+func.storeCommand(if_instance);
+func.storeCommand(new Assignment('z', 15));
+
+func.executeFunction();

@@ -1,6 +1,7 @@
-export class Program {
+export class FunctionInstance {
   constructor(list = null){
     this.list = list;
+    this.variables = {};
   }
 
   storeCommand(command){
@@ -8,27 +9,32 @@ export class Program {
     else this.list.push(command);
   }
 
-  executeProgram(){
+  executeFunction(){
     this.list.forEach(element => {
-      element.executeCommand();
+      if (element.callbackCommands) element.executeCallbacks();
+      else element.executeCommand();
     });
   }
 
 }
 
 class Command {
-  constructor(type, callbackCommand){
+  constructor(type){
     this.type = type;
-    this.callbackCommand = callbackCommand
+    this.callbackCommands = [];
   }
 
-  executeCommand(){
-
+  executeCallbacks(){
+    this.callbackCommands.forEach(command => {
+      command();
+    });
   }
 
   then(callbackCommand) {
-    this.callbackCommand = callbackCommand
-    return callbackCommand
+    this.callbackCommands.push(callbackCommand);
+    //Do we need this??
+    return callbackCommand;
+    // maybe we do "return this;" (allows us to .then off of .then)
   }
 
 }

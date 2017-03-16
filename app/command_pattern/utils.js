@@ -13,25 +13,30 @@ export const equalTo = function(left, right) {
 }
 
 export function operator (left, right, type) {
-  if (type === 'greaterThan') {
+  if (type === '>') {
     return greaterThan(left, right);
   }
-  else if (type === 'lessThan') {
+  else if (type === '<') {
     return lessThan(left, right);
   }
-  else if (type === 'equalTo'){
+  else if (type === '='){
     return equalTo(left, right);
   }
 }
 
-export class Statement extends Command {
-  constructor(statement) {
+export class Assignment extends Command {
+  constructor(left, right) {
     super();
-    this.statement = statement;
+    this.left = right;
   }
 
   toExecute() {
-    this.statement();
-    //console.log('this works!');
+    return this.left;
+  }
+}
+
+export class Statement extends Command {
+  constructor(){
+    super();
   }
 }
