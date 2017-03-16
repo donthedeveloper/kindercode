@@ -1,4 +1,4 @@
-import Command from 'command.js';
+import Command from './command.js';
 
 export const greaterThan = function(left, right) {
   return left > right;
@@ -27,10 +27,16 @@ export function operator (left, right, type) {
 export class Assignment extends Command {
   constructor(left, right) {
     super();
-    this.left = right;
+    this.left = left;
+    this.right = right;
   }
 
-  toExecute() {
+  executeCommand() {
+    let left = this.left
+    global.functionVariables[left] = this.right;
+    this.left = global.functionVariables[left];
+    console.log('variable values: ', left, ' = ', this.left);
+    console.log('global obj function variables are: ', global.functionVariables);
     return this.left;
   }
 }

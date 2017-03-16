@@ -1,21 +1,27 @@
 export class FunctionInstance {
   constructor(list = null){
     this.list = list;
-    this.variables = {};
   }
 
+  //instead of storing variables on window property, create class "variable", an instance of which contains all the variables for the relevant program. The instance of this class could be instantiated in the FunctionInstance constructor and a reference to it would be held there
   storeCommand(command){
+    if (!global.functionVariables) global.functionVariables = {};
     if (!this.list) this.list = [command];
     else this.list.push(command);
   }
 
   executeFunction(){
     this.list.forEach(element => {
-      if (element.callbackCommands) element.executeCallbacks();
-      else element.executeCommand();
+      element.executeCommand();
     });
+    return global.functionVariables;
   }
 
+  clearVariables(){
+    global.functionVariables = {};
+    this.variables = global.functionVariables;
+    return this.variables;
+  }
 }
 
 class Command {
@@ -25,8 +31,8 @@ class Command {
   }
 
   executeCallbacks(){
-    this.callbackCommands.forEach(command => {
-      command();
+    this.callbackCommands.forEach(callbackCommand => {
+      callbackCommand.executeCommand();
     });
   }
 
@@ -36,7 +42,6 @@ class Command {
     return callbackCommand;
     // maybe we do "return this;" (allows us to .then off of .then)
   }
-
 }
 
 export default Command;
