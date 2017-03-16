@@ -34,6 +34,18 @@ body {
 
 .drop-zone {
   flex-basis: 30%;
-  height: 200px;
   background-color: #222;
+
+  min-height: 200px;
+  margin-left: 100px;
+}
+
+.drop-zone li {
+  background-color: green;
+  text-align: center;
+  width: 80%;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 1rem auto;
+  color: #fff;
 }

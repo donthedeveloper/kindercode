@@ -2,20 +2,23 @@
 import React, { PropTypes, Component } from 'react';
 import { DropTarget } from 'react-dnd';
 
+// import components
+import DropItem from './DropItem';
+
 // import utilities
 import itemTypes from '../utilities/itemTypes.jsx';
 
 const style = {
-  height: '12rem',
-  width: '12rem',
-  marginRight: '1.5rem',
-  marginBottom: '1.5rem',
-  color: 'white',
-  padding: '1rem',
-  textAlign: 'center',
-  fontSize: '1rem',
-  lineHeight: 'normal',
-  float: 'left',
+  // height: '12rem',
+  // width: '12rem',
+  // marginRight: '1.5rem',
+  // marginBottom: '1.5rem',
+  // color: 'white',
+  // padding: '1rem',
+  // textAlign: 'center',
+  // fontSize: '1rem',
+  // lineHeight: 'normal',
+  // float: 'left',
 };
 
 const blockTarget = {
@@ -52,7 +55,9 @@ class DropZone extends Component {
     const { canDrop, isOver, connectDropTarget } = this.props;
     const isActive = canDrop && isOver;
 
-    let backgroundColor = '#222';
+    console.log('DropZone props:', this.props);
+
+    let backgroundColor = '#fff';
     if (isActive) {
       backgroundColor = 'darkgreen';
     } else if (canDrop) {
@@ -60,12 +65,15 @@ class DropZone extends Component {
     }
 
     return connectDropTarget(
-      <div className="drop-zone" style={{ ...style, backgroundColor }}>
-        {isActive ?
+      <ul className="drop-zone" style={{ ...style, backgroundColor }}>
+        {/*isActive ?
           'Release to drop' :
           'Drag a box here'
-        }
-      </div>
+        */}
+        { this.props.procedure.map((node) =>
+            <DropItem key={node.id} text={this.props.commands[node.commandId].text} />
+        ) }
+      </ul>
     );
   }
 }

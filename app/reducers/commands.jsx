@@ -1,13 +1,13 @@
 const initialState = {
   commands: [],
   procedure: [],
-  procedureIdCount = 0;
+  procedureIdCount: 0
 }
 
 class Node {
-  constructor(id, layerId, commandId, children=[]) {
+  constructor(id, commandId, children=[]) {
     this.id = id;
-    this.layerId = layerId;
+    this.commandId = commandId;
     this.subProcedures = children;
   }
 }
@@ -23,12 +23,10 @@ export const addCommand = (text) => ({
   text
 });
 
-export const insertIntoProcedure = (layerId, orderInArr commandId) => ({
+export const insertIntoProcedure = (commandId) => ({
   type: INSERT_INTO_PROCEDURE,
-  layerId,
-  orderInArr,
   commandId
-})
+});
 
 // [procedure, procedure, procedure]
 // procedure ->
@@ -50,12 +48,14 @@ export default (state=initialState, action) => {
       newState.commands.push(command);
       break;
     case INSERT_INTO_PROCEDURE:
-      const node = new Node(state.procedureIdCount, action.layerId, action.orderInArr, action.commandId, []);
-      state.procedureIdCount++;
+      const node = new Node(newState.procedureIdCount, action.commandId, []);
+      newState.procedureIdCount++;
 
-      state.procedure.forEach((procedure) => {
-        if (procedure.layerId ===)
-      });
+      newState.procedure.push(node);
+
+      // state.procedure.forEach((procedure) => {
+      //
+      // });
 
       break;
     default:

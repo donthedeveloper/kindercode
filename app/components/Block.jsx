@@ -11,7 +11,8 @@ import itemTypes from '../utilities/itemTypes.jsx';
 const blockSource = {
   beginDrag(props) {
     return {
-      text: props.text
+      commandId: props.commandId,
+      // text: props.text
     };
   },
 
@@ -20,6 +21,11 @@ const blockSource = {
     const dropResult = monitor.getDropResult();
 
     if (dropResult) {
+      console.log('item:', item);
+      console.log('drop result:', dropResult);
+
+      props.insertIntoProcedure(item.commandId);
+
       window.alert( // eslint-disable-line no-alert
         `You dropped ${item.text} into ${dropResult.name}!`,
       );
