@@ -3,9 +3,15 @@ export class FunctionInstance {
     this.list = list;
   }
 
-  //instead of storing variables on window property, create class "variable", an instance of which contains all the variables for the relevant program. The instance of this class could be instantiated in the FunctionInstance constructor and a reference to it would be held there
+  //instead of storing variables on window property, create class "variable", an instance of which contains all the variables for the relevant program. The instance of this class could be instantiated in the FunctionInstance constructor and a reference to it would be held there. Possible solution?
   storeCommand(command){
-    if (!global.functionVariables) global.functionVariables = {};
+    if (typeof global !== 'undefined' && !global.functionVariables) {
+      global.functionVariables = {}
+    }
+    else if (typeof window !== 'undefined' && !window.functionVariables) {
+      window.functionVariables = {}
+    }
+
     if (!this.list) this.list = [command];
     else this.list.push(command);
   }
@@ -14,12 +20,19 @@ export class FunctionInstance {
     this.list.forEach(element => {
       element.executeCommand();
     });
-    return global.functionVariables;
+    if (typeof global !== 'undefined') return global.functionVariables;
+    else if (typeof window !== 'undefined') return window.functionVariables;
   }
 
   clearVariables(){
-    global.functionVariables = {};
-    this.variables = global.functionVariables;
+    if (typeof global !== 'undefined') {
+      global.functionVariables = {};
+      this.variables = global.functionVariables;
+    }
+    else if (typeof window !== 'undefined') {
+      window.functionVariables = {};
+      this.variables = window.functionVariables;
+    }
     return this.variables;
   }
 }
@@ -38,9 +51,6 @@ class Command {
 
   then(callbackCommand) {
     this.callbackCommands.push(callbackCommand);
-    //Do we need this??
-    return callbackCommand;
-    // maybe we do "return this;" (allows us to .then off of .then)
   }
 }
 

@@ -1,5 +1,5 @@
-import Command, {FunctionInstance} from './command.js';
-import {operator, Assignment} from './utils.js';
+import Command from './command.js';
+import {operator} from './utils.js';
 
 export class If extends Command {
   constructor(condition) {
@@ -8,7 +8,7 @@ export class If extends Command {
   }
 
   executeCommand() {
-    console.log("if statement boolean ", this.condition.executeCommand());
+    console.log('if statement boolean ', this.condition.executeCommand());
     if (this.condition.executeCommand()) {
       this.executeCallbacks()
     }
@@ -23,8 +23,9 @@ export class Condition {
   }
 
   executeCommand() {
-    console.log("var name: ", this.left, ' var value: ', this.right, ' comparison type: ', this.comparison);
-    // return operator(this.left, this.right, this.comparison)
-    return operator(global.functionVariables[this.left], this.right, this.comparison)
+    console.log('var name: ', this.left, ' var value: ', this.right, ' comparison type: ', this.comparison);
+
+    if (typeof global !== 'undefined') return operator(global.functionVariables[this.left], this.right, this.comparison);
+    else if (typeof window !== 'undefined') return operator(window.functionVariables[this.left], this.right, this.comparison);
   }
 }
