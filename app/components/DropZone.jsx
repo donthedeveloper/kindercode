@@ -1,9 +1,10 @@
 // import modules
 import React, { PropTypes, Component } from 'react';
+import { connect } from 'react-redux';
 import { DropTarget } from 'react-dnd';
 
 // import components
-import DropItem from './DropItem';
+import ProgramItem from './ProgramItem';
 
 // import utilities
 import itemTypes from '../utilities/itemTypes.jsx';
@@ -52,6 +53,7 @@ class DropZone extends Component {
   };
 
   render() {
+    // i think its the line below replacing props, screwing things up
     const { canDrop, isOver, connectDropTarget } = this.props;
     const isActive = canDrop && isOver;
 
@@ -71,7 +73,7 @@ class DropZone extends Component {
           'Drag a box here'
         */}
         { this.props.procedure.map((node) =>
-            <DropItem key={node.id} text={this.props.commands[node.commandId].text} />
+            <ProgramItem key={node.id} text={this.props.commands[node.commandId].text} />
         ) }
       </ul>
     );
@@ -79,4 +81,22 @@ class DropZone extends Component {
 }
 
 // Export the wrapped component:
-export default DropTarget(itemTypes.BLOCK, blockTarget, collect)(DropZone);
+const TargetDropZone = DropTarget(itemTypes.BLOCK, blockTarget, collect)(DropZone);
+export default TargetDropZone;
+
+// const mapStateToProps = (state) => {
+//   return {
+//     commands: state.commands.commands,
+//     procedure: state.commands.procedure
+//   }
+// }
+//
+// // const mapDispatchToProps = (dispatch) => {
+// //   return {
+// //     insertIntoProcedure: (commandId) => {
+// //       dispatch( insertIntoProcedure(commandId) )
+// //     }
+// //   }
+// // }
+//
+// export default connect(mapStateToProps)(TargetDropZone);

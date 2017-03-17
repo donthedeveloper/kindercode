@@ -26,9 +26,9 @@ const blockSource = {
 
       props.insertIntoProcedure(item.commandId);
 
-      window.alert( // eslint-disable-line no-alert
-        `You dropped ${item.text} into ${dropResult.name}!`,
-      );
+      // window.alert( // eslint-disable-line no-alert
+      //   `You dropped ${item.text} into ${dropResult.name}!`,
+      // );
     }
   }
 };

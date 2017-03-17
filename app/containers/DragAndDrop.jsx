@@ -7,6 +7,7 @@ import HTML5Backend from 'react-dnd-html5-backend';
 // import components
 import Block from '../components/Block';
 import DropZone from '../components/DropZone';
+import DropZoneContainer from './DropZoneContainer';
 
 // redux action creaters
 import { insertIntoProcedure } from '../reducers/commands';
@@ -34,7 +35,7 @@ class DragAndDrop extends React.Component {
               )
             }
           </ul>
-          <DropZone procedure={ this.props.procedure } commands={this.props.commands} />
+          <DropZoneContainer />
           {/*<ul className="drop-zone">
 
           </ul>*/}

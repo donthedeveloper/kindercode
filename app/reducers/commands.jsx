@@ -50,8 +50,7 @@ export default (state=initialState, action) => {
     case INSERT_INTO_PROCEDURE:
       const node = new Node(newState.procedureIdCount, action.commandId, []);
       newState.procedureIdCount++;
-
-      newState.procedure.push(node);
+      newState.procedure = [...state.procedure, node];
 
       // state.procedure.forEach((procedure) => {
       //

@@ -49,3 +49,21 @@ body {
   margin: 1rem auto;
   color: #fff;
 }
+
+.drop-zone-list {
+  flex-basis: 30%;
+  background-color: #fff;
+  list-style-type: none;
+  padding-left: 0;
+
+  min-height: 200px;
+  margin-left: 100px;
+}
+
+.drop-zone-item {
+  width: 80%;
+  border-radius: 10px;
+  padding: 2rem;
+  margin: 1rem auto;
+  /*background-color: rgba(38, 12, 12, .10);*/
+}
