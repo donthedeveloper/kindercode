@@ -1,26 +1,14 @@
 import Command from './command.js';
 
-export const greaterThan = function(left, right) {
-  return left > right;
-}
-
-export const lessThan = function(left, right) {
-  return left < right;
-}
-
-export const equalTo = function(left, right) {
-  return left === right;
-}
-
 export function operator (left, right, type) {
   if (type === '>') {
-    return greaterThan(left, right);
+    return left > right;
   }
   else if (type === '<') {
-    return lessThan(left, right);
+    return left < right;
   }
   else if (type === '='){
-    return equalTo(left, right);
+    return left === right;
   }
 }
 
@@ -32,12 +20,9 @@ export class Assignment extends Command {
   }
 
   executeCommand() {
-    let left = this.left
-    global.functionVariables[left] = this.right;
-    this.left = global.functionVariables[left];
-    console.log('variable values: ', left, ' = ', this.left);
-    console.log('global obj function variables are: ', global.functionVariables);
-    return this.left;
+    if (typeof global !== 'undefined') global.functionVariables[this.left] = this.right;
+    else if (typeof window !== 'undefined') window.functionVariables[this.left] = this.right;
+    console.log('variable values: ', this.left, ' = ', this.left);
   }
 }
 
