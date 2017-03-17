@@ -22,7 +22,7 @@ class DragAndDrop extends React.Component {
     console.log('DragAndDrop Props:', this.props);
     return (
       <DragDropContextProvider backend={HTML5Backend}>
-        <div className="container">
+        <div className="drag-container">
           <ul className="supplies">
             {
               this.props.commands.map((command) =>
@@ -35,7 +35,7 @@ class DragAndDrop extends React.Component {
               )
             }
           </ul>
-          <DropZoneContainer />
+          <DropZoneContainer commands={this.props.commands} procedure={this.props.procedure} />
           {/*<ul className="drop-zone">
 
           </ul>*/}

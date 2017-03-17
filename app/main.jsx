@@ -12,7 +12,7 @@ import Login from './components/Login';
 import WhoAmI from './components/WhoAmI';
 
 // containers
-import DragAndDrop from './containers/DragAndDrop.jsx';
+import AppContainer from './containers/AppContainer.jsx';
 
 // utilities
 import onEnterData from './utilities/onEnterData';
@@ -32,7 +32,7 @@ import { addCommand } from './reducers/commands';
 //     </div>
 // )
 
-const dragAndDropEnter = () => {
+const onAppContainerEnter = () => {
   onEnterData.commands.forEach((command) => {
     store.dispatch(addCommand(command.text));
   });
@@ -41,7 +41,7 @@ const dragAndDropEnter = () => {
 render (
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route path="/" component={DragAndDrop} onEnter={dragAndDropEnter}>
+      <Route path="/" component={AppContainer} onEnter={onAppContainerEnter}>
         {/*<IndexRedirect to="/jokes" />*/}
       </Route>
     </Router>
