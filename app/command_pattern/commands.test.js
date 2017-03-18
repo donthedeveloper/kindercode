@@ -3,8 +3,9 @@
 const {expect} = require('chai')
 
 import {FunctionInstance} from './command.js';
-import {Assignment} from './utils.js';
+import {Assignment, Add} from './utils.js';
 import {If, Condition} from './conditionals.js';
+import {Loop} from './loops.js';
 
 describe('Command Pattern Object storage and execution', () => {
 
@@ -22,10 +23,17 @@ describe('Command Pattern Object storage and execution', () => {
         ifInstanceTwo.then(new Assignment('b', 100));
       ifInstance.then(ifInstanceTwo);
     func.storeCommand(ifInstance);
+    func.storeCommand(new Assignment('s', 0));
+    var loopInstance = new Loop(5);
+      var ifInstanceThree = new If(new Condition('x', 10, '>'));
+      ifInstanceThree.then(new Add('s', 10));
+      loopInstance.then(ifInstanceThree);
+    func.storeCommand(loopInstance);
     func.storeCommand(new Assignment('z', 15));
   });
 
   describe('function execution', () => {
+
     it('modifies variables in accordance with the function instance being executed', function () {
       let funcResults = func.executeFunction();
       console.log('function results WITHOUT nested IF are: ', funcResults);
@@ -39,6 +47,19 @@ describe('Command Pattern Object storage and execution', () => {
       console.log("function results WITH nested If are: ", funcResults);
       expect(funcResults.a).to.equal(99);
       expect(funcResults.b).to.equal(100);
+    });
+
+    it('works with If statements nested inside Loops', function () {
+      let funcResults = func.executeFunction();
+      console.log("function results WITH Loops CONTAINING nested If's in them are: ", funcResults);
+      expect(funcResults.s).to.equal(50);
+    });
+
+    it('command instances shold initalize with a nested property of value true or false', function () {
+      let newIfInstance = new If(null)
+      let newAssignment = new Assignment(null, null);
+      expect(newIfInstance.nested).to.equal(true);
+      expect(newAssignment.nested).to.equal(false);
     });
 
     it('clears variables once the function is executed', function () {
