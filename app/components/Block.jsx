@@ -1,5 +1,8 @@
+// import modules
 import React, { PropTypes } from 'React';
 import { DragSource } from 'react-dnd';
+
+// import utilities
 import itemTypes from '../utilities/itemTypes.jsx';
 
 /**
@@ -8,8 +11,25 @@ import itemTypes from '../utilities/itemTypes.jsx';
 const blockSource = {
   beginDrag(props) {
     return {
-      text: props.text
+      commandId: props.commandId,
+      // text: props.text
     };
+  },
+
+  endDrag(props, monitor) {
+    const item = monitor.getItem();
+    const dropResult = monitor.getDropResult();
+
+    if (dropResult) {
+      console.log('item:', item);
+      console.log('drop result:', dropResult);
+
+      props.insertIntoProcedure(item.commandId);
+
+      // window.alert( // eslint-disable-line no-alert
+      //   `You dropped ${item.text} into ${dropResult.name}!`,
+      // );
+    }
   }
 };
 

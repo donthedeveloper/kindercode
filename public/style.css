@@ -6,19 +6,28 @@ body {
   background-color: #e2e2e2;
 }
 
-.container {
+.app-container {
   display: flex;
-  margin: 0 auto;
+  justify-content: flex-start;
+}
+
+.drag-container {
+  display: flex;
+  flex-basis: 20%;
+  flex-direction: column;
+  margin: 0;
 }
 
 .supplies,
-.drop-zone {
+.drop-zone,
+.drop-zone-list {
   list-style-type: none;
   padding-left: 0;
+  margin: 0;
 }
 
 .supplies {
-  flex-basis: 30%;
+  flex-basis: 50%;
   background-color: #fff;
 }
 
@@ -33,7 +42,46 @@ body {
 }
 
 .drop-zone {
-  flex-basis: 30%;
-  height: 200px;
+  flex-basis: 50%;
   background-color: #222;
+
+  min-height: 200px;
+  margin-left: 100px;
+}
+
+.drop-zone li {
+  background-color: green;
+  text-align: center;
+  width: 80%;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 1rem auto;
+  color: #fff;
+}
+
+.drop-zone-list {
+  flex-basis: 50%;
+  background-color: #fff;
+  list-style-type: none;
+  padding-left: 0;
+
+  min-height: 200px;
+}
+
+.drop-zone-item {
+  width: 80%;
+  border-radius: 10px;
+  padding: 2rem;
+  margin: 1rem auto;
+  /*background-color: rgba(38, 12, 12, .10);*/
+}
+
+.drop-zone-program {
+  background-color: green;
+  text-align: center;
+  width: 80%;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 1rem auto;
+  color: #fff;
 }
