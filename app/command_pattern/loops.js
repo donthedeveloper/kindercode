@@ -1,27 +1,16 @@
 import Command from './command.js';
 import {operator} from './utils.js';
-import {Condition} from './conditionals.js';
 
-export class For extends Command {
-  constructor(type, start, end, operator){
-    super(type);
+export class Loop extends Command {
+  constructor(num){
+    super('LOOP', true);
+    this.num = num;
   }
-  //let i;
-  // if (operator === 'less') {
-  //   for (i = start; i < end; i++) {
 
-  //   }
-  // }
-  // else if (operator === 'greater') {
-  //   for (i = start; i > end; i--) {
+  executeCommand() {
+    for (let i = 0; i < this.num; i++) {
+      this.executeCallbacks();
+    }
+  }
 
-  //   }
-  // }
-}
-
-export class While extends Command (condition) {
-
-  // while (condition) {
-
-  // }
 }

@@ -3,7 +3,7 @@ import {operator} from './utils.js';
 
 export class If extends Command {
   constructor(condition) {
-    super('conditional')
+    super('IF', true)
     this.condition = condition;
   }
 

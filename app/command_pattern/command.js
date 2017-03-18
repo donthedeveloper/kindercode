@@ -38,9 +38,10 @@ export class FunctionInstance {
 }
 
 class Command {
-  constructor(type){
+  constructor(type, nested = false){
     this.type = type;
     this.callbackCommands = [];
+    this.nested = nested;
   }
 
   executeCallbacks(){
