@@ -85,3 +85,7 @@ body {
   margin: 1rem auto;
   color: #fff;
 }
+
+#konva-container {
+  flex-basis: 80%;
+}
