@@ -3,6 +3,7 @@ import {Layer, Rect, Stage} from 'react-konva';
 // import {moveSpriteX, moveSpriteY, rotateSprite} from '../action-creators/transition';
 // import store from '../store';
 import {canvasWidth, canvasHeight, spriteWidth, spriteHeight} from '../constants/constants';
+import {mapStateToCmdObj} from '../command_pattern/mapStateToCmdObj.js';
 
 let sprite = new Image();
 sprite.src = './img/spinner.png'
@@ -18,7 +19,7 @@ class KonvaCanvas extends React.Component {
       rect.to({
               x: nextX,
               y: nextY,
-              duration: 0.2
+              duration: 0.75
           });
   }
 
@@ -70,7 +71,7 @@ class KonvaCanvas extends React.Component {
             />
           </Layer>
         </Stage>
-        <button onClick={() => this.changeX(60)}>
+        <button onClick={() => mapStateToCmdObj().executeFunction()}>
           Click me?
         </button>
       </div>

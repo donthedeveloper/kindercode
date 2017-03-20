@@ -29,8 +29,8 @@ let changeRotation = (degrees) => {
 }
 
 let queueSound = (name) => {
-    store.dispatch(setSound(name))
-  }
+  store.dispatch(setSound(name))
+}
 
 export class MoveX extends Command {
   constructor(newX){

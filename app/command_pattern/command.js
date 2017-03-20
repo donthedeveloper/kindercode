@@ -4,6 +4,7 @@ export class FunctionInstance {
   }
 
   //instead of storing variables on window property, create class "variable", an instance of which contains all the variables for the relevant program. The instance of this class could be instantiated in the FunctionInstance constructor and a reference to it would be held there. Possible solution?
+
   storeCommand(command){
     if (typeof global !== 'undefined' && !global.functionVariables) {
       global.functionVariables = {}
@@ -17,8 +18,12 @@ export class FunctionInstance {
   }
 
   executeFunction(){
+    var time = 500;
     this.list.forEach(element => {
-      element.executeCommand();
+      setTimeout( () => {
+        element.executeCommand();
+      }, time)
+      time += 1000;
     });
     if (typeof global !== 'undefined') return global.functionVariables;
     else if (typeof window !== 'undefined') return window.functionVariables;
@@ -45,8 +50,12 @@ class Command {
   }
 
   executeCallbacks(){
+    var time = 500;
     this.callbackCommands.forEach(callbackCommand => {
-      callbackCommand.executeCommand();
+      setTimeout( () => {
+        callbackCommand.executeCommand();
+      }, time)
+      time += 1000;
     });
   }
 
