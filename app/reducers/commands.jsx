@@ -23,8 +23,9 @@ export const addCommand = (text) => ({
   text
 });
 
-export const insertIntoProcedure = (commandId) => ({
+export const insertIntoProcedure = (index, commandId) => ({
   type: INSERT_INTO_PROCEDURE,
+  index,
   commandId
 });
 
@@ -51,6 +52,10 @@ export default (state=initialState, action) => {
       const node = new Node(newState.procedureIdCount, action.commandId, []);
       newState.procedureIdCount++;
       newState.procedure = [...state.procedure, node];
+
+      // if current node is an array
+        // loop through
+
 
       // state.procedure.forEach((procedure) => {
       //

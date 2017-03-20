@@ -24,7 +24,7 @@ const blockSource = {
       console.log('item:', item);
       console.log('drop result:', dropResult);
 
-      props.insertIntoProcedure(item.commandId);
+      props.insertIntoProcedure(dropResult.id, item.commandId);
 
       // window.alert( // eslint-disable-line no-alert
       //   `You dropped ${item.text} into ${dropResult.name}!`,

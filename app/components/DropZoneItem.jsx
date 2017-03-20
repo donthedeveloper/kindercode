@@ -8,8 +8,11 @@ import itemTypes from '../utilities/itemTypes.jsx';
 
 
 const blockTarget = {
-  drop() {
-    return { name: 'Dustbin' };
+  drop(props) {
+    return {
+      name: 'DropZoneItem',
+      index: props.index
+    };
   },
 };
 
@@ -23,6 +26,18 @@ function collect(connect, monitor) {
 }
 
 class DropZoneItem extends React.Component {
+  constructor(props) {
+    super(props);
+    // this.blockTarget = {
+    //   drop() {
+    //     return {
+    //       name: 'Dustbin',
+    //       index: props.index
+    //     };
+    //   },
+    // };
+  }
+
 
   static propTypes = {
     connectDropTarget: PropTypes.func.isRequired,
@@ -33,18 +48,41 @@ class DropZoneItem extends React.Component {
   render() {
     const { canDrop, isOver, connectDropTarget } = this.props;
     const isActive = canDrop && isOver;
+    const procedureIsNotEmpty = this.props.procedure.length;
 
-    console.log('DropZone props:', this.props);
+    // console.log('procedureIsEmpty', procedureIsEmpty);
+    // console.dir(procedureIsEmpty);
+    // console.log(this.props.procedure.length);
 
-    let backgroundColor = 'rgba(38, 12, 12, .10)';
-    if (isActive) {
-      backgroundColor = 'darkgreen';
-    } else if (canDrop) {
-      backgroundColor = 'darkkhaki';
+    // console.log('DropZoneItem index:', this.props.index);
+
+    const styles = {
+      // display: 'none',
+      backgroundColor: 'rgba(38, 12, 12, .10)'
+    };
+
+    if (procedureIsNotEmpty) {
+      styles.display = 'none';
+    } else {
+      styles.display = 'block';
     }
 
+    if (isActive || canDrop) {
+      styles.display = 'block';
+    }
+
+    if (isActive) {
+      styles.backgroundColor = 'darkgreen';
+    } else if (canDrop) {
+      styles.backgroundColor = 'darkkhaki';
+    }
+
+    // if (isActive || canDrop) {
+    //   display: show;
+    // }
+
     return connectDropTarget(
-      <li className="drop-zone-item" style={{ backgroundColor }} />
+      <li className="drop-zone-item" style={ styles } />
     );
   }
 
