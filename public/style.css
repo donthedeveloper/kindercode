@@ -117,3 +117,12 @@ button {
 #konva-container {
   flex-basis: 80%;
 }
+
+#play-button {
+  padding: 10px 15px;
+  margin-right: 10px;
+}
+
+#restart-button {
+  padding: 10px 15px;
+}

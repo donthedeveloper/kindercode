@@ -16,10 +16,6 @@ class Notifier extends React.Component {
     }
   }
 
-  // queueSound(name) {
-  //   store.dispatch(setSound(name))
-  // }
-
   render () {
     return null;
   }
