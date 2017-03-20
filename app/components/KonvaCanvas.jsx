@@ -1,8 +1,9 @@
 import React from 'react';
 import {Layer, Rect, Stage} from 'react-konva';
-import {moveSpriteX, moveSpriteY, rotateSprite} from '../action-creators/transition';
-import store from '../store';
+// import {moveSpriteX, moveSpriteY, rotateSprite} from '../action-creators/transition';
+// import store from '../store';
 import {canvasWidth, canvasHeight, spriteWidth, spriteHeight} from '../constants/constants';
+import {mapStateToCmdObj} from '../command_pattern/mapStateToCmdObj.js';
 
 let sprite = new Image();
 sprite.src = './img/spinner.png'
@@ -18,33 +19,33 @@ class KonvaCanvas extends React.Component {
       rect.to({
               x: nextX,
               y: nextY,
-              duration: 0.2
+              duration: 0.75
           });
   }
 
-  changeX(newX) {
-    let prevX = this.props.transition.xCoord,
-        combinedX = prevX + newX;
+  // changeX(newX) {
+  //   let prevX = this.props.transition.xCoord,
+  //       combinedX = prevX + newX;
 
-    if (combinedX + spriteWidth/2 <= canvasWidth && combinedX >= 0) {
-      store.dispatch(moveSpriteX(combinedX));
-    }
-  }
+  //   if (combinedX + spriteWidth/2 <= canvasWidth && combinedX >= 0) {
+  //     store.dispatch(moveSpriteX(combinedX));
+  //   }
+  // }
 
-  changeY(newY) {
-    let prevY = this.props.transition.yCoord,
-        combinedY = prevY + newY;
+  // changeY(newY) {
+  //   let prevY = this.props.transition.yCoord,
+  //       combinedY = prevY + newY;
 
-    if (combinedY + spriteHeight/2 <= canvasHeight && combinedY >= 0) {
-      store.dispatch(moveSpriteY(combinedY));
-    }
-  }
+  //   if (combinedY + spriteHeight/2 <= canvasHeight && combinedY >= 0) {
+  //     store.dispatch(moveSpriteY(combinedY));
+  //   }
+  // }
 
-  rotate(degrees) {
-    let prevRotation = this.props.transition.rotation;
-    let newRotation = degrees * Math.PI / 180;
-    store.dispatch(rotateSprite(prevRotation + newRotation));
-  }
+  // rotate(degrees) {
+  //   let prevRotation = this.props.transition.rotation;
+  //   let newRotation = degrees * Math.PI / 180;
+  //   store.dispatch(rotateSprite(prevRotation + newRotation));
+  // }
 
   render() {
     let {xCoord, yCoord, width, height, rotation} = this.props.transition;
@@ -64,13 +65,13 @@ class KonvaCanvas extends React.Component {
               height={height}
               rotation = {rotation}
               offset = {{
-                x: spriteWidth/2,
-                y: spriteHeight/2
+                x: spriteWidth / 2,
+                y: spriteHeight / 2,
               }}
             />
           </Layer>
         </Stage>
-        <button onClick={() => this.changeX(60)}>
+        <button onClick={() => mapStateToCmdObj().executeFunction()}>
           Click me?
         </button>
       </div>

@@ -3,21 +3,37 @@ import {Assignment, Add} from './utils.js';
 import {If, Condition} from './conditionals.js';
 import {Loop} from './loops.js';
 import store from '../store.jsx';
+import {MoveX, MoveY, Speak} from './konvaUtils.js';
 
 
-//program equals {.children}
-export function mapStateToCmdObj(program) {
-  let func = new FunctionInstance();
+//program equals [command1, command2, command3]
+//command2.children equals [nestedCommand1, nestedCommand2]
+
+// export function mapStateToCmdObj(func = new FunctionInstance(), program = store.getState().commands.procedure) {
+//   if (!program.length) {
+//     return func;
+//   }
+//   else {
+//     let nested = program.children;
+//     mapStateToCmdObj(func, program.slice(1));
+//   }
+// }
+
+// function storeCommand (command) {
+
+// }
 
 
-
+//non recursive version for test on 3/20/17
+export function mapStateToCmdObj(func = new FunctionInstance(), program = store.getState().commands.procedure) {
+  program.forEach(command => {
+    func.storeCommand(new MoveX(300));
+    // func.storeCommand(new Speak('panda'));
+    func.storeCommand(new MoveY(300));
+  })
   return func;
-}
-
-export default function executeProgram () {
-
 }
 
 
 //example of how it would/could looks when executed
-// mapStateToCmdObj(store.getState().commands.procedure).executeProgram()
+// mapStateToCmdObj().executeFunction()
