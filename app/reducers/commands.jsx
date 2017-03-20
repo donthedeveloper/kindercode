@@ -49,9 +49,11 @@ export default (state=initialState, action) => {
       newState.commands.push(command);
       break;
     case INSERT_INTO_PROCEDURE:
+      console.log('new index:', action.index);
       const node = new Node(newState.procedureIdCount, action.commandId, []);
       newState.procedureIdCount++;
-      newState.procedure = [...state.procedure, node];
+      newState.procedure = [...state.procedure];
+      newState.procedure.splice(action.index, 0, node);
 
       // if current node is an array
         // loop through

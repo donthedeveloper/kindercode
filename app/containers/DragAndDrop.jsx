@@ -53,9 +53,11 @@ class DragAndDrop extends React.Component {
                   <div key={index}>
                     <ProgramItem
                       text={this.props.commands[node.commandId].text}
-                      index={index*2+1}
+                      index={index+1}
                     />
-                  <DropZoneItem commands={this.props.commands} procedure={this.props.procedure} index={index*2+2} />
+                  {/* was index*2+1 */}
+                  <DropZoneItem commands={this.props.commands} procedure={this.props.procedure} index={index+1} />
+                  {/* was index*2+2 */}
                   </div>
                 )
               )}
