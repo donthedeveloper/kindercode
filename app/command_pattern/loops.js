@@ -1,5 +1,4 @@
 import Command from './command.js';
-import {operator} from './utils.js';
 
 export class Loop extends Command {
   constructor(num){
