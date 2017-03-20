@@ -1,11 +1,12 @@
 import Command from './command.js';
 
 export class moveX extends Command {
-  constructor(distance){
+  constructor(newX){
     super();
+    this.newX = newX;
   }
 
   executeCommand() {
-    changeX(5);
+    // changeX(this.newX);
   }
 }
