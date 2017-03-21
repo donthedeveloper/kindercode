@@ -21,15 +21,6 @@ const traverse = (singleNode, parentId, node) => {
   }
 };
 
-//
-// const moveoutside = new Node(0, 0, )
-//
-// const procedures = [];
-// procedures.push(new Node(0, 0, []));
-// procedures.push(new Node(1, 6, []));
-// procedures[1].push(new Node(2, 3, []));
-// procedures.push(new Node(0, 4, []));
-
 // constants
 const ADD_COMMAND = 'ADD_COMMAND';
 

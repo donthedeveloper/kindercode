@@ -3,8 +3,6 @@ export class FunctionInstance {
     this.list = [];
   }
 
-  //instead of storing variables on window property, create class "variable", an instance of which contains all the variables for the relevant program. The instance of this class could be instantiated in the FunctionInstance constructor and a reference to it would be held there. Possible solution?
-
   storeCommand(command){
     if (typeof global !== 'undefined' && !global.functionVariables) {
       global.functionVariables = {}
