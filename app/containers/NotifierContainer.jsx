@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import store from '../store';
-import {setSound} from '../action-creators/audioNotifier';
+// import store from '../store';
+// import {setSound} from '../action-creators/audioNotifier';
 
 function playSound (url) {
   const audio = new Audio(url)
@@ -16,14 +16,8 @@ class Notifier extends React.Component {
     }
   }
 
-  queueSound(name) {
-    store.dispatch(setSound(name))
-  }
-
   render () {
-    return (
-      <button onClick={() => this.queueSound('penguin')}>Temporary Play Button</button>
-    )
+    return null;
   }
 }
 
