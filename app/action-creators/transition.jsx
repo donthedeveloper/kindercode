@@ -1,17 +1,33 @@
-export const MOVE_SPRITE_X = 'MOVE_SPRITE_X';
-export const MOVE_SPRITE_Y = 'MOVE_SPRITE_Y';
+export const MOVE_X_LEFT = 'MOVE_X_LEFT';
+export const MOVE_X_RIGHT = 'MOVE_X_RIGHT';
+export const MOVE_Y_UP = 'MOVE_Y_UP';
+export const MOVE_Y_DOWN = 'MOVE_Y_DOWN';
 export const ROTATE_SPRITE = 'ROTATE_SPRITE';
 
-export const moveSpriteX = (xCoord) => {
+export const moveXLeft = (xCoord) => {
   return {
-    type: MOVE_SPRITE_X,
+    type: MOVE_X_LEFT,
     xCoord
   }
 }
 
-export const moveSpriteY = (yCoord) => {
+export const moveXRight = (xCoord) => {
   return {
-    type: MOVE_SPRITE_Y,
+    type: MOVE_X_RIGHT,
+    xCoord
+  }
+}
+
+export const moveYUp = (yCoord) => {
+  return {
+    type: MOVE_Y_UP,
+    yCoord
+  }
+}
+
+export const moveYDown = (yCoord) => {
+  return {
+    type: MOVE_Y_UP,
     yCoord
   }
 }

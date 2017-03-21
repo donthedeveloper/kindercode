@@ -3,7 +3,7 @@ import {Assignment, Add} from './utils.js';
 import {If, Condition} from './conditionals.js';
 import {Loop} from './loops.js';
 import store from '../store.jsx';
-import {MoveX, MoveY, Speak} from './konvaUtils.js';
+import {MoveXLeft, MoveXRight, MoveYUp, MoveYDown, Speak} from './konvaUtils.js';
 
 
 //program equals [command1, command2, command3]
@@ -27,9 +27,11 @@ import {MoveX, MoveY, Speak} from './konvaUtils.js';
 //non recursive version for test on 3/20/17
 export function mapStateToCmdObj(func = new FunctionInstance(), program = store.getState().commands.procedure) {
   program.forEach(command => {
-    func.storeCommand(new MoveX(300));
+    func.storeCommand(new MoveXLeft());
+    func.storeCommand(new MoveXRight());
     // func.storeCommand(new Speak('panda'));
-    func.storeCommand(new MoveY(300));
+    func.storeCommand(new MoveYUp());
+    func.storeCommand(new MoveYDown());
   })
   return func;
 }

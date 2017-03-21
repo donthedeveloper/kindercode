@@ -1,24 +1,46 @@
 import Command from './command.js';
 import store from '../store';
-import {moveSpriteX, moveSpriteY, rotateSprite} from '../action-creators/transition';
+import {moveXLeft, moveXRight, moveYUp, moveYDown, rotateSprite} from '../action-creators/transition';
 import {setSound} from '../action-creators/audioNotifier';
 import {canvasWidth, canvasHeight, spriteWidth, spriteHeight} from '../constants/constants';
 
-let changeX = (newX) => {
+let changeXLeft = () => {
   let prevX = store.getState().transition.xCoord,
-      combinedX = prevX + newX;
+      difference = canvasWidth / 10,
+      combinedX = prevX - difference;
 
   if (combinedX + spriteWidth / 2 <= canvasWidth && combinedX >= 0) {
-    store.dispatch(moveSpriteX(combinedX));
+    store.dispatch(moveXLeft(combinedX));
   }
 }
 
-let changeY = (newY) => {
+let changeXRight = () => {
+  let prevX = store.getState().transition.xCoord,
+      difference = canvasWidth / 10,
+      combinedX = prevX + difference;
+
+  if (combinedX + spriteWidth / 2 <= canvasWidth && combinedX >= 0) {
+    store.dispatch(moveXRight(combinedX));
+  }
+}
+
+let changeYUp = () => {
   let prevY = store.getState().transition.yCoord,
-      combinedY = prevY + newY;
+      difference = canvasHeight / 5,
+      combinedY = prevY - difference;
 
   if (combinedY + spriteHeight / 2 <= canvasHeight && combinedY >= 0) {
-    store.dispatch(moveSpriteY(combinedY));
+    store.dispatch(moveYUp(combinedY));
+  }
+}
+
+let changeYDown = () => {
+  let prevY = store.getState().transition.yCoord,
+      difference = canvasHeight / 5,
+      combinedY = prevY + difference;
+
+  if (combinedY + spriteHeight / 2 <= canvasHeight && combinedY >= 0) {
+    store.dispatch(moveYDown(combinedY));
   }
 }
 
@@ -32,25 +54,43 @@ let queueSound = (name) => {
   store.dispatch(setSound(name))
 }
 
-export class MoveX extends Command {
-  constructor(newX){
+export class MoveXLeft extends Command {
+  constructor(){
     super();
-    this.newX = newX;
   }
 
   executeCommand() {
-    changeX(this.newX);
+  changeXLeft();
   }
 }
 
-export class MoveY extends Command {
-  constructor(newY){
+export class MoveXRight extends Command {
+  constructor(){
     super();
-    this.newY = newY;
   }
 
   executeCommand() {
-    changeY(this.newY);
+    changeXRight();
+  }
+}
+
+export class MoveYUp extends Command {
+  constructor(){
+    super();
+  }
+
+  executeCommand() {
+    changeYUp();
+  }
+}
+
+export class MoveYDown extends Command {
+  constructor(){
+    super();
+  }
+
+  executeCommand() {
+    changeYDown();
   }
 }
 
