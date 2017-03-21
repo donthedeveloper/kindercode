@@ -57,8 +57,6 @@ class DropZone extends Component {
     const { canDrop, isOver, connectDropTarget } = this.props;
     const isActive = canDrop && isOver;
 
-    console.log('DropZone props:', this.props);
-
     let backgroundColor = '#fff';
     if (isActive) {
       backgroundColor = 'darkgreen';

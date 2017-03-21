@@ -1,14 +1,18 @@
 import Command from './command.js';
 
 export class Loop extends Command {
-  constructor(num){
+  constructor(num = 3){
     super('LOOP', true);
     this.num = num;
   }
 
   executeCommand() {
+    var time = 500;
     for (let i = 0; i < this.num; i++) {
-      this.executeCallbacks();
+      setTimeout( () => {
+        this.executeCallbacks();
+      }, time)
+      time += 1000;
     }
   }
 

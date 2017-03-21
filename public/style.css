@@ -88,13 +88,12 @@ body {
 
 .navbar {
   display: flex;
-  flex-direction: row;
   align-items: center;
   background-color: #283593;
 }
 
 .navbar .nav-name {
-  width: 30%;
+  flex-basis: 30%;
   margin: 1em;
 }
 

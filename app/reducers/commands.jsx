@@ -8,14 +8,24 @@ class Node {
   constructor(id, commandId, children=[]) {
     this.id = id;
     this.commandId = commandId;
-    this.subProcedures = children;
+    this.children = children;
   }
 }
+
+const traverse = (singleNode, parentId, node) => {
+  console.log('singleNode.id', singleNode.id);
+  console.log('parent.id', parentId);
+  if (parentId === singleNode.id) {
+    singleNode.children.push(node);
+    console.log('single node:', singleNode);
+  }
+};
 
 // constants
 const ADD_COMMAND = 'ADD_COMMAND';
 
 const INSERT_INTO_PROCEDURE = 'INSERT_INTO_PROCEDURE';
+const INSERT_INTO_PARENT_PROCEDURE = 'INSERT_INTO_PARENT_PROCEDURE';
 
 // action creaters
 export const addCommand = (text) => ({
@@ -23,21 +33,25 @@ export const addCommand = (text) => ({
   text
 });
 
-export const insertIntoProcedure = (commandId) => ({
+export const insertIntoProcedure = (index, commandId) => ({
   type: INSERT_INTO_PROCEDURE,
+  index,
   commandId
 });
 
-// [procedure, procedure, procedure]
-// procedure ->
-//   id: 2
-//   commandId: 5
-//   subProcedures: [procedure, procedure, procedure]
+export const insertIntoParentProcedure = (parentId, commandId) => ({
+  type: INSERT_INTO_PARENT_PROCEDURE,
+  parentId,
+  commandId
+});
+
+// export const editProcedure = (nodeId)
 
 
 // reducer
 export default (state=initialState, action) => {
   const newState = Object.assign({}, state);
+  const node = new Node(newState.procedureIdCount, action.commandId, []);
 
   switch (action.type) {
     case ADD_COMMAND:
@@ -48,14 +62,21 @@ export default (state=initialState, action) => {
       newState.commands.push(command);
       break;
     case INSERT_INTO_PROCEDURE:
-      const node = new Node(newState.procedureIdCount, action.commandId, []);
+      console.log('new index:', action.index);
+      // const node = new Node(newState.procedureIdCount, action.commandId, []);
       newState.procedureIdCount++;
-      newState.procedure = [...state.procedure, node];
+      newState.procedure = [...state.procedure];
+      newState.procedure.splice(action.index, 0, node);
+      break;
+    case INSERT_INTO_PARENT_PROCEDURE:
+      // const node = new Node(newState.procedureIdCount, action.commandId, []);
+      newState.procedureIdCount++;
 
-      // state.procedure.forEach((procedure) => {
-      //
-      // });
 
+      newState.procedure.forEach((singleNode) => {
+        traverse(singleNode, action.parentId, node);
+        console.log(singleNode);
+      });
       break;
     default:
       return state;
