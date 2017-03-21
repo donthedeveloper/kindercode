@@ -1,5 +1,4 @@
-import Command, {FunctionInstance} from './command.js';
-import {Assignment, Add} from './utils.js';
+import {FunctionInstance} from './command.js';
 import {If, Condition} from './conditionals.js';
 import {Loop} from './loops.js';
 import store from '../store.jsx';
@@ -7,47 +6,33 @@ import {MoveX, MoveY, Speak} from './konvaUtils.js';
 
 
 export function storeCmd (func, command, parent = null) {
-  if (command.type === 'if') {
-    let ifInstance = new If(new Condition(command.condition));
-    if (parent) parent.then(ifInstance);
-    else func.storeCommand(ifInstance);
-    return ifInstance;
-  }
-  else if (command.type === 'loop') {
-    let loop = new Loop(command.input);
-    if (parent) parent.then(loop);
-    else func.storeCommand(loop)
-    return loop;
-  }
+  let commandInstance;
+  if (command.id === 0) commandInstance = new MoveUp(); //MoveUp
+  else if (command.id === 1) commandInstance = new MoveDown(); //Move Down
+  else if (command.id === 2) commandInstance = new MoveLeft(); //MoveLeft
+  else if (command.id === 3) commandInstance = new MoveRight(); //MoveRight
+  else if (command.id === 4) commandInstance = new Speak(); //Speak
+  else if (command.id === 5) commandInstance = new If(new Condition(command.condition)); //If
+  else if (command.id === 6) commandInstance = new Loop(command.input); //Loop
   else {
     func.storeCommand(new MoveX(300));
     func.storeCommand(new Speak('panda'));
     func.storeCommand(new MoveY(300));
   }
+  if (parent) parent.then(commandInstance);
+  // else func.storeCommand(commandInstance)
+  return commandInstance;
 }
 
 export function mapStateToCmdObj(func = new FunctionInstance(), program = store.getState().commands.procedure, parent = null) {
-  if (!parent && !program.length){
-    console.log("hit base case and func is: ", func);
-    return func;
-  }
-  else {
+  if (parent || program.length){
     program.forEach(command => {
       storeCmd(func, command, parent)
       let nested = command.children;
-      if (nested) mapStateToCmdObj(func, nested, command);
-      else mapStateToCmdObj(func, program.slice(1));
+      if (nested) return mapStateToCmdObj(func, nested, command);
+      else return mapStateToCmdObj(func, program.slice(1));
     });
   }
+  console.log("func is: ", func);
+  return func;
 }
-
-//non recursive version for test on 3/20/17
-// export function mapStateToCmdObj(func = new FunctionInstance(), program = store.getState().commands.procedure) {
-//   program.forEach(command => {
-//     func.storeCommand(new MoveX(300));
-//     func.storeCommand(new Speak('panda'));
-//     func.storeCommand(new MoveY(300));
-//   })
-//   console.log("func before returning it is: ", func);
-//   return func;
-// }

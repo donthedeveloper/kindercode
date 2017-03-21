@@ -71,7 +71,7 @@ class KonvaCanvas extends React.Component {
             />
           </Layer>
         </Stage>
-        <button onClick={() => console.log("func instance return value on konva canvas is: ", mapStateToCmdObj())}>
+        <button onClick={() => mapStateToCmdObj().executeFunction()}>
           Click me?
         </button>
       </div>
