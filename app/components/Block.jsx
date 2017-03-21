@@ -24,7 +24,18 @@ const blockSource = {
       console.log('item:', item);
       console.log('drop result:', dropResult);
 
-      props.insertIntoProcedure(dropResult.index, item.commandId);
+      if (dropResult.parentId === null) {
+        // insert at end of parents children
+        props.insertIntoProcedure(dropResult.index, item.commandId);
+
+
+      } else {
+        // insert into correct place in children
+        // console.log('recent parentid', dropResult.parentId);
+        props.insertIntoParentProcedure(dropResult.parentId, item.commandId);
+      }
+
+      // props.insertIntoProcedure(dropResult.index, item.commandId);
 
       // window.alert( // eslint-disable-line no-alert
       //   `You dropped ${item.text} into ${dropResult.name}!`,

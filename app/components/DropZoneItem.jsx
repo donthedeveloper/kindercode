@@ -6,12 +6,12 @@ import { DropTarget } from 'react-dnd';
 // import utilities
 import itemTypes from '../utilities/itemTypes.jsx';
 
-
 const blockTarget = {
   drop(props) {
     return {
       name: 'DropZoneItem',
-      index: props.index
+      index: props.index,
+      parentId: null
     };
   },
 };
@@ -28,14 +28,6 @@ function collect(connect, monitor) {
 class DropZoneItem extends React.Component {
   constructor(props) {
     super(props);
-    // this.blockTarget = {
-    //   drop() {
-    //     return {
-    //       name: 'Dustbin',
-    //       index: props.index
-    //     };
-    //   },
-    // };
   }
 
 
