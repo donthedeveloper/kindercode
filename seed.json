@@ -1,0 +1,19 @@
+
+{
+  "users":
+  [
+    {
+      "name": "Jennybenny",
+      "email": "jenny@iamakid.com",
+      "password": "1234"
+    },{
+      "name": "Timmy",
+      "email": "timmy@iamakid.com",
+      "password": "1234"
+    }, {
+      "name": "LilSpeckles",
+      "email": "speckles@iamakid.com",
+      "password": "1234"
+    }
+  ]
+}

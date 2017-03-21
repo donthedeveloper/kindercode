@@ -1,3 +1,4 @@
+
 import React from 'react'
 
 export const Login = ({ login }) => (
@@ -5,13 +6,15 @@ export const Login = ({ login }) => (
     evt.preventDefault()
     login(evt.target.username.value, evt.target.password.value)
   } }>
+    <label>Email</label>
     <input name="username" />
+    <label>Password</label>
     <input name="password" type="password" />
-    <input type="submit" value="Login" />
+    <button type="submit" value="Login">Login</button>
   </form>
 )
-
-import {login} from 'APP/app/reducers/auth'
+//import {login} from 'APP/app/reducers/auth'
+import {login} from '../reducers/auth'
 import {connect} from 'react-redux'
 
 export default connect (

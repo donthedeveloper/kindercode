@@ -13,6 +13,7 @@ import WhoAmI from './components/WhoAmI';
 
 // containers
 import AppContainer from './containers/AppContainer.jsx';
+import UserProfileContainer from './containers/UserProfileContainer';
 
 // utilities
 import onEnterData from './utilities/onEnterData';
@@ -44,6 +45,7 @@ render (
       <Route path="/" component={AppContainer} onEnter={onAppContainerEnter}>
         {/*<IndexRedirect to="/jokes" />*/}
       </Route>
+      <Route path="/profile/:id" component={UserProfileContainer} />
     </Router>
   </Provider>,
   document.getElementById('main')
