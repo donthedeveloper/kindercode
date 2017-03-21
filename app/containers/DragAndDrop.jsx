@@ -13,12 +13,13 @@ import DropZoneItem from '../components/DropZoneItem';
 import ProgramItem from '../components/ProgramItem';
 
 // redux action creaters
-import { insertIntoProcedure } from '../reducers/commands';
+import { insertIntoProcedure, insertIntoParentProcedure } from '../reducers/commands';
 
 class DragAndDrop extends React.Component {
   constructor(props) {
     super(props);
     this.insertIntoProcedure = props.insertIntoProcedure.bind(this);
+    this.insertIntoParentProcedure = props.insertIntoParentProcedure.bind(this);
   }
 
   render() {
@@ -34,6 +35,7 @@ class DragAndDrop extends React.Component {
                   commandId={command.id}
                   text={command.text}
                   insertIntoProcedure={this.insertIntoProcedure}
+                  insertIntoParentProcedure={this.insertIntoParentProcedure}
                 />
               )
             }
@@ -54,6 +56,7 @@ class DragAndDrop extends React.Component {
                     <ProgramItem
                       text={this.props.commands[node.commandId].text}
                       index={index+1}
+                      parentId={node.id}
                     />
                   {/* was index*2+1 */}
                   <DropZoneItem commands={this.props.commands} procedure={this.props.procedure} index={index+1} />
@@ -74,16 +77,19 @@ const mapStateToProps = (state) => {
     commands: state.commands.commands,
     procedure: state.commands.procedure
   }
-}
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
     insertIntoProcedure: (index, commandId) => {
-      console.log(index);
-      dispatch( insertIntoProcedure(index, commandId) )
+      dispatch( insertIntoProcedure(index, commandId) );
+    },
+    insertIntoParentProcedure: (parentId, commandId) => {
+      console.log('recent parent id:', parentId);
+      dispatch( insertIntoParentProcedure(parentId, commandId) );
     }
   }
-}
+};
 
 const connectedDragAndDrop = connect(mapStateToProps, mapDispatchToProps)(DragAndDrop);
 export default DragDropContext(HTML5Backend)(connectedDragAndDrop);
