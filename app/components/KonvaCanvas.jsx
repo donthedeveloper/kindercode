@@ -3,7 +3,7 @@ import {Layer, Rect, Stage} from 'react-konva';
 // import {moveSpriteX, moveSpriteY, rotateSprite} from '../action-creators/transition';
 // import store from '../store';
 import {canvasWidth, canvasHeight, spriteWidth, spriteHeight} from '../constants/constants';
-import {mapStateToCmdObj} from '../command_pattern/mapStateToCmdObj.js';
+import {mapStateToCmdObj, storeCmd} from '../command_pattern/mapStateToCmdObj.js';
 
 let sprite = new Image();
 sprite.src = './img/spinner.png'

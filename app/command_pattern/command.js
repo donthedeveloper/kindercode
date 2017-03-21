@@ -1,6 +1,6 @@
 export class FunctionInstance {
-  constructor(list = null){
-    this.list = list;
+  constructor(){
+    this.list = [];
   }
 
   //instead of storing variables on window property, create class "variable", an instance of which contains all the variables for the relevant program. The instance of this class could be instantiated in the FunctionInstance constructor and a reference to it would be held there. Possible solution?
@@ -12,9 +12,7 @@ export class FunctionInstance {
     else if (typeof window !== 'undefined' && !window.functionVariables) {
       window.functionVariables = {}
     }
-
-    if (!this.list) this.list = [command];
-    else this.list.push(command);
+     this.list.push(command);
   }
 
   executeFunction(){

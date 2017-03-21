@@ -27,10 +27,10 @@ describe('Command Pattern Object storage and execution', () => {
     func.storeCommand(ifInstance);
     func.storeCommand(new Assignment('s', 0));
     var loopInstance = new Loop(5);
+    func.storeCommand(loopInstance);
       var ifInstanceThree = new If(new Condition('x', 10, '>'));
       ifInstanceThree.then(new Add('s', 10));
       loopInstance.then(ifInstanceThree);
-    func.storeCommand(loopInstance);
     func.storeCommand(new Assignment('z', 15));
   });
 
