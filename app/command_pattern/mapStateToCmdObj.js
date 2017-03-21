@@ -2,7 +2,7 @@ import {FunctionInstance} from './command.js';
 import {If, Condition} from './conditionals.js';
 import {Loop} from './loops.js';
 import store from '../store.jsx';
-import {MoveX, MoveY, Speak} from './konvaUtils.js';
+import {MoveXLeft, MoveXRight, MoveYUp, MoveYDown, Speak} from './konvaUtils.js';
 
 
 export function storeCmd (func, command, parent = null) {
@@ -16,10 +16,12 @@ export function storeCmd (func, command, parent = null) {
   else if (command.id === 6) commandInstance = new Loop(command.input); //Loop
   else {
     func.storeCommand(new MoveXLeft());
-    func.storeCommand(new Speak('panda'));
+    func.storeCommand(new MoveXRight());
+    // func.storeCommand(new Speak('panda'));
     func.storeCommand(new MoveYUp());
+    func.storeCommand(new MoveYDown());
   }
-  if (parent) parent.then(commandInstance);
+  // if (parent) parent.then(commandInstance);
   // else func.storeCommand(commandInstance)
   return commandInstance;
 }

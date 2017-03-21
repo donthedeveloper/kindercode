@@ -1,7 +1,5 @@
 import React from 'react';
 import {Layer, Rect, Stage} from 'react-konva';
-// import {moveSpriteX, moveSpriteY, rotateSprite} from '../action-creators/transition';
-// import store from '../store';
 import {canvasWidth, canvasHeight, spriteWidth, spriteHeight} from '../constants/constants';
 import {mapStateToCmdObj, storeCmd} from '../command_pattern/mapStateToCmdObj.js';
 
