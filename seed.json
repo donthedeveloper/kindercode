@@ -7,13 +7,15 @@
       "email": "jenny@iamakid.com",
       "password": "1234"
     },{
-      "name": "Timmy",
+      "name": "LilTimmy",
       "email": "timmy@iamakid.com",
-      "password": "1234"
+      "password": "1234",
+      "current_program": [{"id":0,"commandId":0,"subProcedure":[]}]
     }, {
-      "name": "LilSpeckles",
+      "name": "Speckles",
       "email": "speckles@iamakid.com",
       "password": "1234"
     }
   ]
 }
+
