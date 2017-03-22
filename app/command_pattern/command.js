@@ -1,15 +1,11 @@
+import {functionVariables} from './cmdVariables.js';
+
 export class FunctionInstance {
   constructor(){
     this.list = [];
   }
 
   storeCommand(command){
-    if (typeof global !== 'undefined' && !global.functionVariables) {
-      global.functionVariables = {}
-    }
-    else if (typeof window !== 'undefined' && !window.functionVariables) {
-      window.functionVariables = {}
-    }
      this.list.push(command);
   }
 
@@ -21,19 +17,11 @@ export class FunctionInstance {
       }, time)
       time += 1000;
     });
-    if (typeof global !== 'undefined') return global.functionVariables;
-    else if (typeof window !== 'undefined') return window.functionVariables;
+    return functionVariables;
   }
 
   clearVariables(){
-    if (typeof global !== 'undefined') {
-      global.functionVariables = {};
-      this.variables = global.functionVariables;
-    }
-    else if (typeof window !== 'undefined') {
-      window.functionVariables = {};
-      this.variables = window.functionVariables;
-    }
+    functionVariables = {};
     return this.variables;
   }
 }
