@@ -42,12 +42,6 @@ class DropZoneItem extends React.Component {
     const isActive = canDrop && isOver;
     const procedureIsNotEmpty = this.props.procedure.length;
 
-    // console.log('procedureIsEmpty', procedureIsEmpty);
-    // console.dir(procedureIsEmpty);
-    // console.log(this.props.procedure.length);
-
-    // console.log('DropZoneItem index:', this.props.index);
-
     const styles = {
       // display: 'none',
       backgroundColor: 'rgba(38, 12, 12, .10)'
@@ -68,10 +62,6 @@ class DropZoneItem extends React.Component {
     } else if (canDrop) {
       styles.backgroundColor = 'darkkhaki';
     }
-
-    // if (isActive || canDrop) {
-    //   display: show;
-    // }
 
     return connectDropTarget(
       <li className="drop-zone-item" style={ styles } />

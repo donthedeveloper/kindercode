@@ -12,7 +12,6 @@ const blockSource = {
   beginDrag(props) {
     return {
       commandId: props.commandId,
-      // text: props.text
     };
   },
 
@@ -31,15 +30,8 @@ const blockSource = {
 
       } else {
         // insert into correct place in children
-        // console.log('recent parentid', dropResult.parentId);
         props.insertIntoParentProcedure(dropResult.parentId, item.commandId);
       }
-
-      // props.insertIntoProcedure(dropResult.index, item.commandId);
-
-      // window.alert( // eslint-disable-line no-alert
-      //   `You dropped ${item.text} into ${dropResult.name}!`,
-      // );
     }
   }
 };
