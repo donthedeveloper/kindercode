@@ -4,6 +4,7 @@ const initialState = {
   procedureIdCount: 0
 }
 
+// utility functions
 class Node {
   constructor(id, commandId, children=[]) {
     this.id = id;
@@ -45,9 +46,6 @@ export const insertIntoParentProcedure = (parentId, commandId) => ({
   commandId
 });
 
-// export const editProcedure = (nodeId)
-
-
 // reducer
 export default (state=initialState, action) => {
   const newState = Object.assign({}, state);
@@ -62,17 +60,12 @@ export default (state=initialState, action) => {
       newState.commands.push(command);
       break;
     case INSERT_INTO_PROCEDURE:
-      console.log('new index:', action.index);
-      // const node = new Node(newState.procedureIdCount, action.commandId, []);
       newState.procedureIdCount++;
       newState.procedure = [...state.procedure];
       newState.procedure.splice(action.index, 0, node);
       break;
     case INSERT_INTO_PARENT_PROCEDURE:
-      // const node = new Node(newState.procedureIdCount, action.commandId, []);
       newState.procedureIdCount++;
-
-
       newState.procedure.forEach((singleNode) => {
         traverse(singleNode, action.parentId, node);
         console.log(singleNode);
