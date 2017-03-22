@@ -4,6 +4,7 @@ export class FunctionInstance {
   }
 
   storeCommand(command){
+    //Woah Messy. Gotta be a better way
     if (typeof global !== 'undefined' && !global.functionVariables) {
       global.functionVariables = {}
     }
@@ -19,13 +20,14 @@ export class FunctionInstance {
       setTimeout( () => {
         element.executeCommand();
       }, time)
-      time += 1000;
+      time += 1000; // Is this just calibrated so we have time to complete any prior command?
     });
     if (typeof global !== 'undefined') return global.functionVariables;
     else if (typeof window !== 'undefined') return window.functionVariables;
   }
 
   clearVariables(){
+    //DRY
     if (typeof global !== 'undefined') {
       global.functionVariables = {};
       this.variables = global.functionVariables;

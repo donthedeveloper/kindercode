@@ -1,7 +1,7 @@
 const initialState = {
   commands: [],
   procedure: [],
-  procedureIdCount: 0
+  procedureIdCount: 0  // How's this different from procedure.length?
 }
 
 // utility functions
@@ -14,7 +14,7 @@ class Node {
 }
 
 const traverse = (singleNode, parentId, node) => {
-  console.log('singleNode.id', singleNode.id);
+  console.log('singleNode.id', singleNode.id);  //don't commit meeeeee
   console.log('parent.id', parentId);
   if (parentId === singleNode.id) {
     singleNode.children.push(node);
@@ -23,8 +23,8 @@ const traverse = (singleNode, parentId, node) => {
 };
 
 // constants
+// In audioNotifier, we separate action creators and constants, here we don't. Consistency.
 const ADD_COMMAND = 'ADD_COMMAND';
-
 const INSERT_INTO_PROCEDURE = 'INSERT_INTO_PROCEDURE';
 const INSERT_INTO_PARENT_PROCEDURE = 'INSERT_INTO_PARENT_PROCEDURE';
 
@@ -55,17 +55,19 @@ export default (state=initialState, action) => {
     case ADD_COMMAND:
       const command = {};
       // this id builder is faulty for when commands are deleted, but useful for testing front-end
-      command.id = newState.commands.length;
+      command.id = newState.commands.length;  //The id the the # of commands????
       command.text = action.text;
-      newState.commands.push(command);
+      newState.commands.push(command);  // Not immutable
       break;
     case INSERT_INTO_PROCEDURE:
       newState.procedureIdCount++;
+      // Maybe make a function called insertAtIndex?
       newState.procedure = [...state.procedure];
       newState.procedure.splice(action.index, 0, node);
       break;
     case INSERT_INTO_PARENT_PROCEDURE:
       newState.procedureIdCount++;
+      //Seems really weird
       newState.procedure.forEach((singleNode) => {
         traverse(singleNode, action.parentId, node);
         console.log(singleNode);

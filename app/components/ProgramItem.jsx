@@ -31,7 +31,7 @@ class DropItem extends React.Component {
     const isActive = canDrop && isOver;
 
     const styles = {};
-
+    //extract out to function
     if (isActive) {
       styles.backgroundColor = 'darkgreen';
     } else if (canDrop) {

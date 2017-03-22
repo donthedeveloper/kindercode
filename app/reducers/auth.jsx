@@ -33,6 +33,7 @@ export const whoami = () =>
         const user = response.data
         dispatch(authenticated(user))
       })
+      // We aren't doing anything with our error
       .catch(failed => dispatch(authenticated(null)))
 
 export default reducer

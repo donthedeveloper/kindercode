@@ -47,6 +47,7 @@ class DropZoneItem extends React.Component {
       backgroundColor: 'rgba(38, 12, 12, .10)'
     };
 
+    // Extract into some define styles function?
     if (procedureIsNotEmpty) {
       styles.display = 'none';
     } else {

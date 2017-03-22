@@ -9,9 +9,11 @@ sprite.src = './img/spinner.png'
 class KonvaCanvas extends React.Component {
 
   componentWillUpdate(nextProps) {
-    let prevX = this.props.transition.xCoord,
+    // let has semantic meaning. it tells other programmers variables will be reassigned.
+    // Use const if this is not true
+    let prevX = this.props.transition.xCoord, // never used
         nextX = nextProps.transition.xCoord,
-        prevY = this.props.transition.yCoord,
+        prevY = this.props.transition.yCoord,  // never used
         nextY = nextProps.transition.yCoord;
 
       const rect = this.refs.rect;
@@ -29,6 +31,7 @@ class KonvaCanvas extends React.Component {
       <div id="konva-container">
         <Stage width={canvasWidth} height={canvasHeight}>
           <Layer ref="konvaCanvas" id="konvaCanvas">
+            {/* maybe define me as my own component */}
             <Rect
               ref="rect"
               x={xCoord}

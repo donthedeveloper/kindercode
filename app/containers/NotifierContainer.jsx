@@ -8,6 +8,7 @@ function playSound (url) {
   audio.play()
 }
 
+// WHy is this a component if it render's nothing?
 class Notifier extends React.Component {
 
   componentDidUpdate () {

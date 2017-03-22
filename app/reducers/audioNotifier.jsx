@@ -1,8 +1,9 @@
 import {SET_SOUND} from '../action-creators/audioNotifier';
 
 const initialState = {
-  name: null,
-  url: null
+  name: null,  // Isn't this a string. Maybe ""
+  url: null    // same here. Reflect the type of the variable in the initial state so string methods don't fail
+  //Tom's rule!!!
 }
 
 const reducer = (state = initialState, action) => {

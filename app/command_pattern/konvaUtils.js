@@ -3,7 +3,9 @@ import store from '../store';
 import {moveXLeft, moveXRight, moveYUp, moveYDown, rotateSprite} from '../action-creators/transition';
 import {setSound} from '../action-creators/audioNotifier';
 import {canvasWidth, canvasHeight, spriteWidth, spriteHeight} from '../constants/constants';
+// This looks really good
 
+//const!!
 let changeXLeft = () => {
   let prevX = store.getState().transition.xCoord,
       difference = canvasWidth / 10,

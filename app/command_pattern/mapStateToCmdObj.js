@@ -7,6 +7,7 @@ import {MoveXLeft, MoveXRight, MoveYUp, MoveYDown, Speak} from './konvaUtils.js'
 
 export function storeCmd (func, command, parent = null) {
   let commandInstance;
+  //Maybe these commandIDs could be wellnamed strings or better yet symbols?
   if (command.commandId === 0) commandInstance = new MoveYUp(); //MoveUp
   else if (command.commandId === 1) commandInstance = new MoveYDown(); //Move Down
   else if (command.commandId === 2) commandInstance = new MoveXLeft(); //MoveLeft

@@ -24,7 +24,7 @@ export class Condition {
 
   executeCommand() {
     console.log('var name: ', this.left, ' var value: ', this.right, ' comparison type: ', this.comparison);
-
+    //eeek
     if (typeof global !== 'undefined') return operator(global.functionVariables[this.left], this.right, this.comparison);
     else if (typeof window !== 'undefined') return operator(window.functionVariables[this.left], this.right, this.comparison);
   }
