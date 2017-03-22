@@ -1,11 +1,14 @@
 import React from 'react';
+import {Link} from 'react-router'
+import Login from './Login'
+import WhoAmI from './WhoAmI'
 
-let Navbar = (props) => {
+let Navbar = ({user}) => {
   return (
     <nav className="navbar">
       <img id="logo" src="/img/logo.png" />
       <img className="nav-name" src="/img/kinderCode.png" />
-      <button>Login</button>
+      {user ? (<WhoAmI /> ): (<Login />)}
     </nav>
   )
 }

@@ -1,0 +1,21 @@
+
+{
+  "users":
+  [
+    {
+      "name": "Jennybenny",
+      "email": "jenny@iamakid.com",
+      "password": "1234"
+    },{
+      "name": "LilTimmy",
+      "email": "timmy@iamakid.com",
+      "password": "1234",
+      "current_program": [{"id":0,"commandId":0,"subProcedure":[]}]
+    }, {
+      "name": "Speckles",
+      "email": "speckles@iamakid.com",
+      "password": "1234"
+    }
+  ]
+}
+
