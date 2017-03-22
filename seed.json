@@ -25,22 +25,15 @@
       "level": 1,
       "yellow_star": [
         {
-        "xcoord": 7,
+        "xcoord": 1,
         "ycoord": 8,
         "type": "yellow_star",
         "width": 50,
         "height": 50
         },
         {
-          "xcoord": 4,
+          "xcoord": 2,
           "ycoord": 6,
-          "type": "yellow_star",
-          "width": 50,
-          "height": 50
-        },
-        {
-          "xcoord": 1,
-          "ycoord": 8,
           "type": "yellow_star",
           "width": 50,
           "height": 50
@@ -51,15 +44,22 @@
           "type": "yellow_star",
           "width": 50,
           "height": 50
+        },
+        {
+          "xcoord": 4,
+          "ycoord": 8,
+          "type": "yellow_star",
+          "width": 50,
+          "height": 50
         }
       ],
-      "blue_star": {
-        "xcoord": 5,
-        "ycoord": 5,
-        "type": "blue_star",
-        "width": 50,
-        "height": 50
-      },
+      "blue_star": [{
+          "xcoord": 1,
+          "ycoord": 2,
+          "type": "blue_star",
+          "width": 50,
+          "height": 50
+      }],
       "cactus": [
         {
         "xcoord": 6,

@@ -6,6 +6,7 @@ import KonvaCanvas from '../components/KonvaCanvas';
 let mapStateToProps = (state) => {
   return {
     transition: state.transition,
+    challenges: state.challenges
   }
 }
 

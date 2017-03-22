@@ -1,17 +1,17 @@
 import React from 'react';
 import {Layer, Rect, Stage} from 'react-konva';
-import {canvasWidth, canvasHeight, spriteWidth, spriteHeight} from '../constants/constants';
-import {mapStateToCmdObj, storeCmd} from '../command_pattern/mapStateToCmdObj.js';
+import {canvasWidth, canvasHeight, spriteWidth, spriteHeight, VERTICALGRID, HORIZONTALGRID} from '../constants/constants';
+import {mapStateToCmdObj} from '../command_pattern/mapStateToCmdObj.js';
+import Star from '../components/Star';
+import GridLine from '../components/GridLine';
 
-let sprite = new Image();
-sprite.src = './img/spinner.png'
+let image = new Image();
+image.src = './img/spinner.png';
 
 class KonvaCanvas extends React.Component {
 
   componentWillUpdate(nextProps) {
-    let prevX = this.props.transition.xCoord,
-        nextX = nextProps.transition.xCoord,
-        prevY = this.props.transition.yCoord,
+    let nextX = nextProps.transition.xCoord,
         nextY = nextProps.transition.yCoord;
 
       const rect = this.refs.rect;
@@ -23,17 +23,43 @@ class KonvaCanvas extends React.Component {
   }
 
   render() {
-    let {xCoord, yCoord, width, height, rotation} = this.props.transition;
+    const {xCoord, yCoord, width, height, rotation} = this.props.transition;
+    const {sprite, yellowStars, blueStars, cactii} = this.props.challenges;
 
     return (
       <div id="konva-container">
         <Stage width={canvasWidth} height={canvasHeight}>
           <Layer ref="konvaCanvas" id="konvaCanvas">
+
+            {VERTICALGRID.map(points => {
+              return (
+                <GridLine key={points} points={points} />
+              )
+            })}
+
+            {HORIZONTALGRID.map(points => {
+              return (
+                <GridLine key={points} points={points} />
+              )
+            })}
+
+            {yellowStars.map(star => {
+              return (
+                <Star key={[star.xcoord, star.ycoord]} star={star} />
+              )
+            })}
+
+            {blueStars.map(star => {
+              return (
+                <Star key={[star.xcoord, star.ycoord]} star={star} />
+              )
+            })}
+
             <Rect
               ref="rect"
               x={xCoord}
               y={yCoord}
-              fillPatternImage={sprite}
+              fillPatternImage={image}
               width={width}
               height={height}
               rotation = {rotation}
@@ -56,3 +82,4 @@ class KonvaCanvas extends React.Component {
 }
 
 export default KonvaCanvas;
+
