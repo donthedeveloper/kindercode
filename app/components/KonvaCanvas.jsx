@@ -20,12 +20,10 @@ class KonvaCanvas extends React.Component {
           });
       if (this.isCollision(nextProps, 'yellowStars')) {
         let collectedYellowStar = this.getCollidedObject(nextProps, 'yellowStars');
-        console.log(collectedYellowStar);
       }
 
       if (this.isCollision(nextProps, 'blueStars')) {
         let collectedBlueStar = this.getCollidedObject(nextProps, 'blueStars');
-        console.log(collectedBlueStar);
       }
   }
 
