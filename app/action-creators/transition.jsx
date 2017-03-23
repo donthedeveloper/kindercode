@@ -27,7 +27,7 @@ export const moveYUp = (yCoord) => {
 
 export const moveYDown = (yCoord) => {
   return {
-    type: MOVE_Y_UP,
+    type: MOVE_Y_DOWN,
     yCoord
   }
 }
