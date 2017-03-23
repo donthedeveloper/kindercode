@@ -19,6 +19,13 @@ class KonvaCanvas extends React.Component {
               y: nextY,
               duration: 0.75
           });
+      this.checkCollision(rect, nextProps);
+  }
+
+  checkCollision(rect, nextProps) {
+    const blueStars = nextProps.challenges.blueStars;
+    console.log(nextProps.challenges.blueStars);
+    console.log('refs', this.refs)
   }
 
   render() {
@@ -53,7 +60,7 @@ class KonvaCanvas extends React.Component {
 
             {blueStars.map(star => {
               return (
-                <Star key={[star.xcoord, star.ycoord]} star={star} />
+                <Star ref={[star.xcoord, star.ycoord]} key={[star.xcoord, star.ycoord]} star={star} />
               )
             })}
 
