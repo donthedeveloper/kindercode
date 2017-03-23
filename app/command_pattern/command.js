@@ -6,11 +6,13 @@ export class FunctionInstance {
     this.asyncActions = [];
   }
 
+  addAsync(asyncFunc){
+    this.asyncActions.push(asyncFunc)
+  }
+
   storeCommand(command){
      this.list.push(command);
-     command.addAsync = (asyncFunc) => {
-       this.asyncActions.push(asyncFunc)
-     }
+     command.program = this;
   }
 
   executeFunction(){
@@ -44,12 +46,13 @@ class Command {
 
   executeCallbacks(){
     this.callbackCommands.forEach(callbackCommand => {
-      callbackCommand.executeCommand.call(this);
+      callbackCommand.executeCommand()
     });
   }
 
   then(callbackCommand) {
     this.callbackCommands.push(callbackCommand);
+    callbackCommand.program = this.program;
   }
 }
 
