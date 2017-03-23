@@ -60,7 +60,7 @@ export class MoveXLeft extends Command {
   }
 
   executeCommand() {
-  changeXLeft();
+    this.addAsync(changeXLeft);
   }
 }
 
@@ -70,7 +70,7 @@ export class MoveXRight extends Command {
   }
 
   executeCommand() {
-    changeXRight();
+    this.addAsync(changeXRight);
   }
 }
 
@@ -80,7 +80,7 @@ export class MoveYUp extends Command {
   }
 
   executeCommand() {
-    changeYUp();
+    this.addAsync(changeYUp);
   }
 }
 
@@ -90,7 +90,7 @@ export class MoveYDown extends Command {
   }
 
   executeCommand() {
-    changeYDown();
+    this.addAsync(changeYDown);
   }
 }
 
@@ -112,6 +112,7 @@ export class Speak extends Command {
   }
 
   executeCommand() {
-    queueSound(this.animal);
+    const queueSnd = queueSound.bind(this, this.animal);
+    this.addAsync(queueSnd);
   }
 }

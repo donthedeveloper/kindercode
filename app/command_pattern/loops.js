@@ -7,13 +7,12 @@ export class Loop extends Command {
   }
 
   executeCommand() {
-    var time = 500;
-    for (let i = 0; i < this.num; i++) {
-      setTimeout( () => {
+    const execCmd = () => {
+      for (let i = 0; i < this.num; i++) {
         this.executeCallbacks();
-      }, time)
-      time += 1000;
+      }
     }
+    this.addAsync(execCmd);
   }
 
 }

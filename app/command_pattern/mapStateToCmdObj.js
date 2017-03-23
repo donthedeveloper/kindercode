@@ -29,6 +29,5 @@ export function mapStateToCmdObj(func = new FunctionInstance(), program = store.
       else return mapStateToCmdObj(func, program.slice(1));
     });
   }
-  console.log("func is: ", func);
   return func;
 }
