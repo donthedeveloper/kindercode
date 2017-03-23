@@ -30,7 +30,7 @@ const blockSource = {
 
       } else {
         // insert into correct place in children
-        props.insertIntoParentProcedure(dropResult.parentId, item.commandId);
+        props.insertIntoParentProcedure(dropResult.parentId, item.commandId, dropResult.index);
       }
     }
   }

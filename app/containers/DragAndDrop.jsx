@@ -8,6 +8,7 @@ import HTML5Backend from 'react-dnd-html5-backend';
 import Block from '../components/Block';
 import DropZoneItem from '../components/DropZoneItem';
 import ProgramItem from '../components/ProgramItem';
+import DragAndDropList from '../components/DragAndDropList';
 
 // redux action creaters
 import { insertIntoProcedure, insertIntoParentProcedure } from '../reducers/commands';
@@ -36,7 +37,9 @@ class DragAndDrop extends React.Component {
               )
             }
           </ul>
-            <ul className="drop-zone-list">
+          {/* same structure as child */}
+            <DragAndDropList commands={this.props.commands} procedure={this.props.procedure} />
+            {/*<ul className="drop-zone-list">
               <DropZoneItem commands={this.props.commands} procedure={this.props.procedure} index={0} />
               {this.props.procedure.map((node, index) =>
                 (
@@ -45,12 +48,16 @@ class DragAndDrop extends React.Component {
                       text={this.props.commands[node.commandId].text}
                       index={index+1}
                       parentId={node.id}
-                    />
+                      childNodes={node.children}
+                    >
+
+                    </ProgramItem>
                   <DropZoneItem commands={this.props.commands} procedure={this.props.procedure} index={index+1} />
                   </div>
                 )
               )}
-            </ul>
+            </ul>*/}
+          {/* end same structure as child */}
         </div>
 
     );
@@ -70,9 +77,9 @@ const mapDispatchToProps = (dispatch) => {
     insertIntoProcedure: (index, commandId) => {
       dispatch( insertIntoProcedure(index, commandId) );
     },
-    insertIntoParentProcedure: (parentId, commandId) => {
-      console.log('recent parent id:', parentId);
-      dispatch( insertIntoParentProcedure(parentId, commandId) );
+    insertIntoParentProcedure: (parentId, commandId, index) => {
+      // console.log('recent parent id:', parentId);
+      dispatch( insertIntoParentProcedure(parentId, commandId, index) );
     }
   }
 };

@@ -11,8 +11,7 @@ const blockTarget = {
     return {
       name: 'DropZoneItem',
       index: props.index,
-      parentId: props.parentId,
-
+      parentId: props.parentId
     };
   },
 };
@@ -27,7 +26,8 @@ function collect(connect, monitor) {
 
 class DropItem extends React.Component {
   render() {
-    const { canDrop, isOver, connectDropTarget } = this.props;
+    // console.log('drop item props:', this.props);
+    const { greedy, isOverCurrent, canDrop, isOver, connectDropTarget } = this.props;
     const isActive = canDrop && isOver;
 
     const styles = {};
@@ -38,8 +38,29 @@ class DropItem extends React.Component {
       styles.backgroundColor = 'darkkhaki';
     }
 
+    // console.log('props.childNodes:', this.props.childNodes);
+
     return connectDropTarget(
-      <li className="drop-zone-program" style={styles}>{this.props.text}</li>
+      <li className="drop-zone-program" style={styles}>
+        {this.props.text}
+        {/*this.props.childNodes.length > 0 && this.props.children*/}
+        {this.props.childNodes.length ? this.props.children: null}
+        {/*
+          this.props.childNodes &&
+          this.props.childNodes.map((childNode) =>
+            (
+              <ul className="drop-zone-list" key={index}>
+                <ProgramItem
+                  text={this.props.commands[node.commandId].text}
+                  index={index+1}
+                  parentId={node.id}
+                  childNodes={node.children}
+                />
+            </ul>
+            )
+          )
+        */}
+      </li>
     );
   }
 }
