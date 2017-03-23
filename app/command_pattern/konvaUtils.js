@@ -6,7 +6,7 @@ import {canvasWidth, canvasHeight, spriteWidth, spriteHeight} from '../constants
 
 let changeXLeft = () => {
   let prevX = store.getState().transition.xCoord,
-      difference = canvasWidth / 10,
+      difference = canvasWidth / 8,
       combinedX = prevX - difference;
 
   if (combinedX + spriteWidth / 2 <= canvasWidth && combinedX >= 0) {
@@ -16,7 +16,7 @@ let changeXLeft = () => {
 
 let changeXRight = () => {
   let prevX = store.getState().transition.xCoord,
-      difference = canvasWidth / 10,
+      difference = canvasWidth / 8,
       combinedX = prevX + difference;
 
   if (combinedX + spriteWidth / 2 <= canvasWidth && combinedX >= 0) {
@@ -26,7 +26,7 @@ let changeXRight = () => {
 
 let changeYUp = () => {
   let prevY = store.getState().transition.yCoord,
-      difference = canvasHeight / 5,
+      difference = canvasHeight / 8,
       combinedY = prevY - difference;
 
   if (combinedY + spriteHeight / 2 <= canvasHeight && combinedY >= 0) {
@@ -36,7 +36,7 @@ let changeYUp = () => {
 
 let changeYDown = () => {
   let prevY = store.getState().transition.yCoord,
-      difference = canvasHeight / 5,
+      difference = canvasHeight / 8,
       combinedY = prevY + difference;
 
   if (combinedY + spriteHeight / 2 <= canvasHeight && combinedY >= 0) {

@@ -6,6 +6,8 @@ let initialState = {
   yCoord: 150,
   prevX: 150,
   prevY: 150,
+  xGrid: 0,
+  yGrid: 0,
   width: spriteWidth,
   height: spriteHeight,
   prevWidth: 150,
@@ -20,13 +22,25 @@ let reducer = (state = initialState, action) => {
 
   switch (action.type) {
     case MOVE_X_LEFT:
+      newState.xGrid -= 1
+      newState.prevX = state.xCoord;
+      newState.xCoord = action.xCoord;
+      break;
+
     case MOVE_X_RIGHT:
+      newState.xGrid += 1
       newState.prevX = state.xCoord;
       newState.xCoord = action.xCoord;
       break;
 
     case MOVE_Y_UP:
+      newState.yGrid -= 1;
+      newState.prevY = state.yCoord;
+      newState.yCoord = action.yCoord;
+      break;
+
     case MOVE_Y_DOWN:
+      newState.yGrid += 1;
       newState.prevY = state.yCoord;
       newState.yCoord = action.yCoord;
       break;
