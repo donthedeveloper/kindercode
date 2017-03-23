@@ -25,6 +25,7 @@
       "level": 1,
       "yellow_star": [
         {
+        "id": 1,
         "xcoord": 1,
         "xgrid": 0,
         "ycoord": 3,
@@ -35,6 +36,7 @@
         "collected": false
         },
         {
+          "id": 2,
           "xcoord": 3,
           "xgrid": 1,
           "ycoord": 5,
@@ -45,6 +47,7 @@
           "collected": false
         },
         {
+          "id": 3,
           "xcoord": 3,
           "xgrid": 1,
           "ycoord": 7,
@@ -55,6 +58,7 @@
           "collected": false
         },
         {
+          "id": 4,
           "xcoord": 5,
           "xgrid": 2,
           "ycoord": 7,

@@ -25,8 +25,6 @@ class KonvaCanvas extends React.Component {
   checkCollision(nextProps, item) {
     if (this.isCollision(nextProps, item)) {
       let itemBody = this.getCollidedObject(nextProps, item);
-      itemBody.visited = true;
-      console.log(itemBody);
     }
   }
 
