@@ -9,17 +9,6 @@ const initialState = {
 
 let reducer = (state = initialState, action) => {
   const newState = Object.assign({}, state);
-  let starId = action.star.id;
-  let starType = action.star.type;
-  let starArray = newState[starType].map(star => {
-    if (starId === star.id) {
-      star.collected = true;
-      return star;
-    }
-    else {
-      return star;
-    }
-  });
 
   switch (action.type) {
     case SET_CHALLENGE:
@@ -30,6 +19,17 @@ let reducer = (state = initialState, action) => {
       return newState;
 
     case COLLECT_STAR:
+      let starId = action.star.id;
+      let starType = action.star.type;
+      let starArray = newState[starType].map(star => {
+      if (starId === star.id) {
+        star.collected = true;
+        return star;
+      }
+      else {
+          return star;
+        }
+      });
       newState[starType] = starArray;
       return newState;
 
