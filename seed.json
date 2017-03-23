@@ -1,21 +1,151 @@
-
 {
   "users":
   [
     {
       "name": "Jennybenny",
       "email": "jenny@iamakid.com",
-      "password": "1234"
+      "password": "1234",
+      "challenge_id": 1
     },{
       "name": "LilTimmy",
       "email": "timmy@iamakid.com",
       "password": "1234",
-      "current_program": [{"id":0,"commandId":0,"subProcedure":[]}]
+      "current_program": [{"id":0,"commandId":0,"subProcedure":[]}],
+      "challenge_id": 2
     }, {
       "name": "Speckles",
       "email": "speckles@iamakid.com",
-      "password": "1234"
+      "password": "1234",
+      "challenge_id": 1
+    }
+  ],
+  "challenges":
+  [
+    {
+      "level": 1,
+      "yellow_star": [
+        {
+        "xcoord": 7,
+        "ycoord": 8,
+        "type": "yellow_star",
+        "width": 50,
+        "height": 50
+        },
+        {
+          "xcoord": 4,
+          "ycoord": 6,
+          "type": "yellow_star",
+          "width": 50,
+          "height": 50
+        },
+        {
+          "xcoord": 1,
+          "ycoord": 8,
+          "type": "yellow_star",
+          "width": 50,
+          "height": 50
+        },
+        {
+          "xcoord": 3,
+          "ycoord": 8,
+          "type": "yellow_star",
+          "width": 50,
+          "height": 50
+        }
+      ],
+      "blue_star": {
+        "xcoord": 5,
+        "ycoord": 5,
+        "type": "blue_star",
+        "width": 50,
+        "height": 50
+      },
+      "cactus": [
+        {
+        "xcoord": 6,
+        "ycoord": 5,
+        "type": "cactus",
+        "width": 50,
+        "height": 50
+      },
+      {
+        "xcoord": 3,
+        "ycoord": 8,
+        "type": "cactus",
+        "width": 50,
+        "height": 50
+      }
+      ],
+      "sprite": {
+        "xcoord": 2,
+        "ycoord": 2,
+        "type": "sprite",
+        "width": 50,
+        "height": 50
+      }
+    },
+    {
+      "level": 2,
+      "yellow_star": [
+        {
+        "xcoord": 7,
+        "ycoord": 7,
+        "type": "yellow_star",
+        "width": 50,
+        "height": 50
+        },
+        {
+          "xcoord": 1,
+          "ycoord": 3,
+          "type": "yellow_star",
+          "width": 50,
+          "height": 50
+        },
+        {
+          "xcoord": 9,
+          "ycoord": 6,
+          "type": "yellow_star",
+          "width": 50,
+          "height": 50
+        },
+        {
+          "xcoord": 6,
+          "ycoord": 2,
+          "type": "yellow_star",
+          "width": 50,
+          "height": 50
+        }
+      ],
+      "blue_star": {
+        "xcoord": 5,
+        "ycoord": 5,
+        "type": "blue_star",
+        "width": 50,
+        "height": 50
+      },
+      "cactus": [
+        {
+        "xcoord": 3,
+        "ycoord": 5,
+        "type": "cactus",
+        "width": 50,
+        "height": 50
+      },
+      {
+        "xcoord": 5,
+        "ycoord": 7,
+        "type": "cactus",
+        "width": 50,
+        "height": 50
+      }
+      ],
+      "sprite": {
+        "xcoord": 1,
+        "ycoord": 7,
+        "type": "sprite",
+        "width": 50,
+        "height": 50
+      }
     }
   ]
 }
-

@@ -7,13 +7,8 @@ export class Loop extends Command {
   }
 
   executeCommand() {
-    var time = 500;
     for (let i = 0; i < this.num; i++) {
-      setTimeout( () => {
-        this.executeCallbacks();
-      }, time)
-      time += 1000;
+      this.executeCallbacks();
     }
   }
-
 }

@@ -1,7 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-// import store from '../store';
-// import {setSound} from '../action-creators/audioNotifier';
 
 function playSound (url) {
   const audio = new Audio(url)
