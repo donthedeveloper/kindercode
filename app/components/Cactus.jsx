@@ -3,7 +3,7 @@ import {Image} from 'react-konva';
 import {canvasWidth, canvasHeight} from '../constants/constants';
 
 
-class Star extends React.Component {
+class Cactus extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,29 +13,25 @@ class Star extends React.Component {
 
   componentDidMount() {
     const image = new window.Image();
-    if (this.props.star.type === 'yellowStars') {
-      image.src = './img/yellow-star.png';
-    } else {
-      image.src = './img/blue-star.png';
-    }
+    image.src = './img/cactus.png';
     image.onload = () => {
       this.setState({image: image});
     }
   }
 
   render() {
-    const {xcoord, ycoord} = this.props.star;
+    const {xcoord, ycoord} = this.props.cactus;
 
     return (
       <Image
         x = {xcoord * canvasWidth / 16}
         y = {ycoord * canvasHeight / 16}
-        width = {120}
-        height = {120}
+        width = {200}
+        height = {200}
         image = {this.state.image}
         offset = {{
-          x: 60,
-          y: 60,
+          x: 100,
+          y: 100,
         }}
 
       />
@@ -43,4 +39,4 @@ class Star extends React.Component {
   }
 }
 
-export default Star
+export default Cactus

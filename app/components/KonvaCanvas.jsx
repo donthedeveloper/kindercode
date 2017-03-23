@@ -3,6 +3,7 @@ import {Layer, Rect, Stage} from 'react-konva';
 import {canvasWidth, canvasHeight, spriteWidth, spriteHeight, VERTICALGRID, HORIZONTALGRID} from '../constants/constants';
 import {mapStateToCmdObj} from '../command_pattern/mapStateToCmdObj.js';
 import Star from '../components/Star';
+import Cactus from '../components/Cactus';
 import GridLine from '../components/GridLine';
 import CanvasOutline from './CanvasOutline';
 
@@ -20,10 +21,17 @@ class KonvaCanvas extends React.Component {
           });
       if (this.isCollision(nextProps, 'yellowStars')) {
         let collectedYellowStar = this.getCollidedObject(nextProps, 'yellowStars');
+        nextProps.setIntersector(collectedYellowStar);
       }
 
       if (this.isCollision(nextProps, 'blueStars')) {
         let collectedBlueStar = this.getCollidedObject(nextProps, 'blueStars');
+        nextProps.setIntersector(collectedBlueStar);
+      }
+
+      if (this.isCollision(nextProps, 'cactii')) {
+        let ouchCactus = this.getCollidedObject(nextProps, 'cactii');
+        nextProps.setIntersector(ouchCactus);
       }
   }
 
@@ -75,7 +83,13 @@ class KonvaCanvas extends React.Component {
             {blueStars.filter(star => star.collected === false)
               .map(star => {
               return (
-                <Star ref={[star.xcoord, star.ycoord]} key={[star.xcoord, star.ycoord]} star={star} />
+                <Star key={[star.xcoord, star.ycoord]} star={star} />
+              )
+            })}
+
+            {cactii.map(cactus => {
+              return (
+                <Cactus key={cactus.id} cactus={cactus} />
               )
             })}
 

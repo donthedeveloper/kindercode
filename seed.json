@@ -30,7 +30,7 @@
         "xgrid": 0,
         "ycoord": 3,
         "ygrid": 1,
-        "type": "yellow_star",
+        "type": "yellowStars",
         "width": 50,
         "height": 50,
         "collected": false
@@ -41,7 +41,7 @@
           "xgrid": 1,
           "ycoord": 5,
           "ygrid": 2,
-          "type": "yellow_star",
+          "type": "yellowStars",
           "width": 50,
           "height": 50,
           "collected": false
@@ -52,7 +52,7 @@
           "xgrid": 1,
           "ycoord": 7,
           "ygrid": 3,
-          "type": "yellow_star",
+          "type": "yellowStars",
           "width": 50,
           "height": 50,
           "collected": false
@@ -63,7 +63,7 @@
           "xgrid": 2,
           "ycoord": 7,
           "ygrid": 3,
-          "type": "yellow_star",
+          "type": "yellowStars",
           "width": 50,
           "height": 50,
           "collected": false
@@ -74,27 +74,22 @@
           "xgrid": 0,
           "ycoord": 5,
           "ygrid": 2,
-          "type": "blue_star",
+          "type": "blueStars",
           "width": 50,
           "height": 50,
           "collected": false
       }],
-      "blackhole": [
+      "cactus": [
         {
-        "xcoord": 6,
-        "ycoord": 5,
-        "type": "blackhole",
+        "id": 1,
+        "xcoord": 1,
+        "xgrid": 0,
+        "ycoord": 7,
+        "ygrid": 3,
+        "type": "cactus",
         "width": 50,
         "height": 50
-      },
-      {
-        "xcoord": 3,
-        "ycoord": 8,
-        "type": "blackhole",
-        "width": 50,
-        "height": 50
-      }
-      ],
+      }],
       "sprite": {
         "xcoord": 2,
         "ycoord": 2,
@@ -142,18 +137,18 @@
         "width": 50,
         "height": 50
       },
-      "blackhole": [
+      "cactus": [
         {
         "xcoord": 3,
         "ycoord": 5,
-        "type": "blackhole",
+        "type": "cactus",
         "width": 50,
         "height": 50
       },
       {
         "xcoord": 5,
         "ycoord": 7,
-        "type": "blackhole",
+        "type": "cactus",
         "width": 50,
         "height": 50
       }
