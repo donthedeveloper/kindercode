@@ -1,39 +1,38 @@
+import {functionVariables} from './cmdVariables.js';
+
 export class FunctionInstance {
   constructor(){
     this.list = [];
+    this.asyncActions = [];
+  }
+
+  addAsync(asyncFunc){
+    this.asyncActions.push(asyncFunc)
   }
 
   storeCommand(command){
-    if (typeof global !== 'undefined' && !global.functionVariables) {
-      global.functionVariables = {}
-    }
-    else if (typeof window !== 'undefined' && !window.functionVariables) {
-      window.functionVariables = {}
-    }
      this.list.push(command);
+     command.program = this;
   }
 
   executeFunction(){
-    var time = 500;
     this.list.forEach(element => {
-      setTimeout( () => {
-        element.executeCommand();
+      element.executeCommand();
+    })
+    this.executeAsyncActions();
+  }
+
+  executeAsyncActions() {
+    let time = 500;
+    this.asyncActions.forEach( (action) => {
+      setTimeout(function () {
+        action();
       }, time)
       time += 1000;
-    });
-    if (typeof global !== 'undefined') return global.functionVariables;
-    else if (typeof window !== 'undefined') return window.functionVariables;
+    })
   }
 
   clearVariables(){
-    if (typeof global !== 'undefined') {
-      global.functionVariables = {};
-      this.variables = global.functionVariables;
-    }
-    else if (typeof window !== 'undefined') {
-      window.functionVariables = {};
-      this.variables = window.functionVariables;
-    }
     return this.variables;
   }
 }
@@ -46,17 +45,14 @@ class Command {
   }
 
   executeCallbacks(){
-    var time = 500;
     this.callbackCommands.forEach(callbackCommand => {
-      setTimeout( () => {
-        callbackCommand.executeCommand();
-      }, time)
-      time += 1000;
+      callbackCommand.executeCommand()
     });
   }
 
   then(callbackCommand) {
     this.callbackCommands.push(callbackCommand);
+    callbackCommand.program = this.program;
   }
 }
 

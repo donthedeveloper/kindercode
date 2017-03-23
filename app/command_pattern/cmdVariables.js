@@ -1,0 +1,2 @@
+var functionVariables = {};
+export {functionVariables};

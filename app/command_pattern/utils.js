@@ -1,4 +1,5 @@
 import Command from './command.js';
+import {functionVariables} from './cmdVariables.js';
 
 export function operator (left, right, type) {
   if (type === '>') {
@@ -20,10 +21,7 @@ export class Assignment extends Command {
   }
 
   executeCommand() {
-    console.log("assignment instance has nested?: ", this.nested);
-    if (typeof global !== 'undefined') global.functionVariables[this.left] = this.right;
-    else if (typeof window !== 'undefined') window.functionVariables[this.left] = this.right;
-    console.log('variable values: ', this.left, ' = ', this.left);
+    functionVariables[this.left] = this.right;
   }
 }
 
@@ -35,8 +33,6 @@ export class Add extends Command {
   }
 
   executeCommand() {
-    if (typeof global !== 'undefined') global.functionVariables[this.left] += this.right;
-    else if (typeof window !== 'undefined') window.functionVariables[this.left] += this.right;
-    console.log('variable values: ', this.left, ' = ', this.left);
+    functionVariables[this.left] += this.right;
   }
 }
