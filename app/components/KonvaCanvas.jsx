@@ -4,9 +4,8 @@ import {canvasWidth, canvasHeight, spriteWidth, spriteHeight, VERTICALGRID, HORI
 import {mapStateToCmdObj} from '../command_pattern/mapStateToCmdObj.js';
 import Star from '../components/Star';
 import GridLine from '../components/GridLine';
+import CanvasOutline from './CanvasOutline';
 
-let image = new Image();
-image.src = './img/spinner.png';
 
 class KonvaCanvas extends React.Component {
 
@@ -25,11 +24,14 @@ class KonvaCanvas extends React.Component {
   render() {
     const {xCoord, yCoord, width, height, rotation} = this.props.transition;
     const {sprite, yellowStars, blueStars, cactii} = this.props.challenges;
+    const image = new Image();
+    image.src = './img/pig-small.png';
 
     return (
       <div id="konva-container">
         <Stage width={canvasWidth} height={canvasHeight}>
           <Layer ref="konvaCanvas" id="konvaCanvas">
+            <CanvasOutline />
 
             {VERTICALGRID.map(points => {
               return (
