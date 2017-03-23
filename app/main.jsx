@@ -22,14 +22,13 @@ import onEnterData from './utilities/onEnterData';
 
 // actions
 import { addCommand } from './reducers/commands';
+import {loadChallenge} from './action-creators/challenges'
 
 const onAppContainerEnter = () => {
+  store.dispatch(loadChallenge(1))
   onEnterData.commands.forEach((command) => {
     store.dispatch(addCommand(command.text));
   });
-  store.dispatch(whoami()).then(() => {
-    console.log('onEnter crap', store.getState())
-  })
 }
 
 render (

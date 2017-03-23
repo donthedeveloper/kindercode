@@ -1,8 +1,8 @@
 import {SET_SOUND} from '../action-creators/audioNotifier';
 
 const initialState = {
-  name: null,
-  url: null
+  name: '',
+  url: ''
 }
 
 const reducer = (state = initialState, action) => {
