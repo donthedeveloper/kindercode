@@ -6,7 +6,6 @@ import Star from '../components/Star';
 import GridLine from '../components/GridLine';
 import CanvasOutline from './CanvasOutline';
 
-
 class KonvaCanvas extends React.Component {
 
   componentWillUpdate(nextProps) {
@@ -19,13 +18,30 @@ class KonvaCanvas extends React.Component {
               y: nextY,
               duration: 0.75
           });
-      this.checkCollision(rect, nextProps);
+      this.checkCollision(nextProps, 'yellowStars');
+      this.checkCollision(nextProps, 'blueStars');
   }
 
-  checkCollision(rect, nextProps) {
-    const blueStars = nextProps.challenges.blueStars;
-    console.log(nextProps.challenges.blueStars);
-    console.log('refs', this.refs)
+  checkCollision(nextProps, item) {
+    if (this.isCollision(nextProps, item)) {
+      let itemBody = this.getCollidedObject(nextProps, item);
+      itemBody.visited = true;
+      console.log(itemBody);
+    }
+  }
+
+  isCollision(nextProps, item) {
+    return this.getCollidedObject(nextProps, item)
+  }
+
+  getCollidedObject(nextProps, item) {
+    const xGrid = nextProps.transition.xGrid;
+    const yGrid = nextProps.transition.yGrid;
+    const objs = nextProps.challenges[item];
+
+    return objs.filter(star => {
+      return star.xgrid === xGrid && star.ygrid === yGrid
+    })[0]
   }
 
   render() {
@@ -52,13 +68,15 @@ class KonvaCanvas extends React.Component {
               )
             })}
 
-            {yellowStars.map(star => {
+            {yellowStars.filter(star => star.collected === false)
+              .map(star => {
               return (
                 <Star key={[star.xcoord, star.ycoord]} star={star} />
               )
             })}
 
-            {blueStars.map(star => {
+            {blueStars.filter(star => star.collected === false)
+              .map(star => {
               return (
                 <Star ref={[star.xcoord, star.ycoord]} key={[star.xcoord, star.ycoord]} star={star} />
               )

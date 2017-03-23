@@ -26,52 +26,67 @@
       "yellow_star": [
         {
         "xcoord": 1,
-        "ycoord": 8,
+        "xgrid": 0,
+        "ycoord": 3,
+        "ygrid": 1,
         "type": "yellow_star",
         "width": 50,
-        "height": 50
-        },
-        {
-          "xcoord": 2,
-          "ycoord": 6,
-          "type": "yellow_star",
-          "width": 50,
-          "height": 50
+        "height": 50,
+        "collected": false
         },
         {
           "xcoord": 3,
-          "ycoord": 8,
+          "xgrid": 1,
+          "ycoord": 5,
+          "ygrid": 2,
           "type": "yellow_star",
           "width": 50,
-          "height": 50
+          "height": 50,
+          "collected": false
         },
         {
-          "xcoord": 4,
-          "ycoord": 8,
+          "xcoord": 3,
+          "xgrid": 1,
+          "ycoord": 7,
+          "ygrid": 3,
           "type": "yellow_star",
           "width": 50,
-          "height": 50
+          "height": 50,
+          "collected": false
+        },
+        {
+          "xcoord": 5,
+          "xgrid": 2,
+          "ycoord": 7,
+          "ygrid": 3,
+          "type": "yellow_star",
+          "width": 50,
+          "height": 50,
+          "collected": false
         }
       ],
       "blue_star": [{
           "xcoord": 1,
-          "ycoord": 2,
+          "xgrid": 0,
+          "ycoord": 5,
+          "ygrid": 2,
           "type": "blue_star",
           "width": 50,
-          "height": 50
+          "height": 50,
+          "collected": false
       }],
-      "cactus": [
+      "blackhole": [
         {
         "xcoord": 6,
         "ycoord": 5,
-        "type": "cactus",
+        "type": "blackhole",
         "width": 50,
         "height": 50
       },
       {
         "xcoord": 3,
         "ycoord": 8,
-        "type": "cactus",
+        "type": "blackhole",
         "width": 50,
         "height": 50
       }
@@ -123,18 +138,18 @@
         "width": 50,
         "height": 50
       },
-      "cactus": [
+      "blackhole": [
         {
         "xcoord": 3,
         "ycoord": 5,
-        "type": "cactus",
+        "type": "blackhole",
         "width": 50,
         "height": 50
       },
       {
         "xcoord": 5,
         "ycoord": 7,
-        "type": "cactus",
+        "type": "blackhole",
         "width": 50,
         "height": 50
       }
