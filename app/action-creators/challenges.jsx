@@ -1,6 +1,14 @@
 import axios from 'axios';
 
 export const SET_CHALLENGE = 'SET_CHALLENGE';
+export const COLLECT_STAR = 'COLLECT_STAR';
+
+export const collect = (star) => {
+  return {
+    type: COLLECT_STAR,
+    star
+  }
+}
 
 export const setChallenge = (challenge) => {
   return {

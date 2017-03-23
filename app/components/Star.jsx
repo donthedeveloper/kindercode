@@ -13,7 +13,7 @@ class Star extends React.Component {
 
   componentDidMount() {
     const image = new window.Image();
-    if (this.props.star.type === 'yellow_star') {
+    if (this.props.star.type === 'yellowStars') {
       image.src = './img/yellow-star.png';
     } else {
       image.src = './img/blue-star.png';
