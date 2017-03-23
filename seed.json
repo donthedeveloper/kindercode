@@ -82,20 +82,15 @@
       }],
       "cactus": [
         {
-        "xcoord": 6,
-        "ycoord": 5,
+        "id": 1,
+        "xcoord": 1,
+        "xgrid": 0,
+        "ycoord": 7,
+        "ygrid": 3,
         "type": "cactus",
         "width": 50,
         "height": 50
-      },
-      {
-        "xcoord": 3,
-        "ycoord": 8,
-        "type": "cactus",
-        "width": 50,
-        "height": 50
-      }
-      ],
+      }],
       "sprite": {
         "xcoord": 2,
         "ycoord": 2,
