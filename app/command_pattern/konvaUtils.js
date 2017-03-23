@@ -2,6 +2,7 @@ import Command from './command.js';
 import store from '../store';
 import {moveXLeft, moveXRight, moveYUp, moveYDown, rotateSprite} from '../action-creators/transition';
 import {setSound} from '../action-creators/audioNotifier';
+import {collect} from '../action-creators/challenges.jsx';
 import {canvasWidth, canvasHeight, spriteWidth, spriteHeight} from '../constants/constants';
 
 let changeXLeft = () => {
@@ -52,6 +53,11 @@ let changeRotation = (degrees) => {
 
 let queueSound = (name) => {
   store.dispatch(setSound(name))
+}
+
+const collectStar = () => {
+  let intersection = store.getState().itemCollision.item;
+  store.dispatch(collect(intersection));
 }
 
 export class MoveXLeft extends Command {
@@ -114,5 +120,15 @@ export class Speak extends Command {
   executeCommand() {
     const queueSnd = queueSound.bind(this, this.animal);
     this.program.addAsync(queueSnd);
+  }
+}
+
+export class CollectStar extends Command {
+  constructor(){
+    super();
+  }
+
+  executeCommand(){
+    this.program.addAsync(collectStar);
   }
 }
