@@ -11,27 +11,16 @@ export class FunctionInstance {
      command.addAsync = (asyncFunc) => {
        this.asyncActions.push(asyncFunc)
      }
-     console.log("the command its added to is: ", command);
   }
 
   executeFunction(){
     this.list.forEach(element => {
       element.executeCommand();
     })
-    console.log("async actions array is: ", this.asyncActions);
     this.executeAsyncActions();
   }
 
   executeAsyncActions() {
-    console.log("hitting executeAsyncActions func");
-    // while (this.asyncActions.length) {
-    //   console.log("hitting while loop in executeAsyncActions func!");
-    //   setTimeout(function () {
-    //     console.log("async actions in func are: ", this.asyncActions[0]);
-    //     var command = this.asyncActions.shift();
-    //     command();
-    //   }, 1000)
-    // }
     let time = 500;
     this.asyncActions.forEach( (action) => {
       setTimeout(function () {
@@ -55,7 +44,7 @@ class Command {
 
   executeCallbacks(){
     this.callbackCommands.forEach(callbackCommand => {
-      callbackCommand.executeCommand();
+      callbackCommand.executeCommand.call(this);
     });
   }
 

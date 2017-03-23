@@ -7,12 +7,8 @@ export class Loop extends Command {
   }
 
   executeCommand() {
-    const execCmd = () => {
-      for (let i = 0; i < this.num; i++) {
-        this.executeCallbacks();
-      }
+    for (let i = 0; i < this.num; i++) {
+      this.executeCallbacks();
     }
-    this.addAsync(execCmd);
   }
-
 }
