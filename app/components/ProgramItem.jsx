@@ -33,9 +33,9 @@ class DropItem extends React.Component {
     const styles = {};
 
     if (isActive) {
-      styles.backgroundColor = 'darkgreen';
+      styles.backgroundColor = '#3dff46';
     } else if (canDrop) {
-      styles.backgroundColor = 'darkkhaki';
+      styles.backgroundColor = '#a6fcaa';
     }
 
     // console.log('props.childNodes:', this.props.childNodes);

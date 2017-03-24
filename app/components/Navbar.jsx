@@ -6,7 +6,7 @@ import WhoAmI from './WhoAmI'
 let Navbar = ({user}) => {
   return (
     <nav className="navbar">
-      <img id="logo" src="/img/logo.png" />
+      <img className="nav-logo" id="logo" src="/img/logo.png" />
       <img className="nav-name" src="/img/kinderCode.png" />
       {user ? (<WhoAmI /> ): (<Login />)}
     </nav>

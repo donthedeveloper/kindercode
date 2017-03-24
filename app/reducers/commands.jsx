@@ -29,9 +29,10 @@ const INSERT_INTO_PROCEDURE = 'INSERT_INTO_PROCEDURE';
 const INSERT_INTO_PARENT_PROCEDURE = 'INSERT_INTO_PARENT_PROCEDURE';
 
 // action creaters
-export const addCommand = (text) => ({
+export const addCommand = (text, commandType) => ({
   type: ADD_COMMAND,
-  text
+  text,
+  commandType
 });
 
 export const insertIntoProcedure = (index, commandId) => ({
@@ -54,11 +55,13 @@ export default (state=initialState, action) => {
 
   switch (action.type) {
     case ADD_COMMAND:
+      console.log(action);
       const command = {};
       // this id builder is faulty for when commands are deleted, but useful for testing front-end
       command.id = newState.commands.length;
       command.text = action.text;
-      newState.commands.push(command);
+      command.commandType = action.commandType;
+      newState.commands = [...newState.commands, command];
       break;
     case INSERT_INTO_PROCEDURE:
       newState.procedureIdCount++;

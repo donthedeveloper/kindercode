@@ -54,7 +54,7 @@ class KonvaCanvas extends React.Component {
     image.src = './img/pig-small.png';
 
     return (
-      <div id="konva-container">
+      <div className="konva-container" id="konva-container">
         <Stage width={canvasWidth} height={canvasHeight}>
           <Layer ref="konvaCanvas" id="konvaCanvas">
             <CanvasOutline />
@@ -120,4 +120,3 @@ class KonvaCanvas extends React.Component {
 }
 
 export default KonvaCanvas;
-

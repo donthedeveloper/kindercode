@@ -58,9 +58,9 @@ class DropZoneItem extends React.Component {
     }
 
     if (isActive) {
-      styles.backgroundColor = 'darkgreen';
+      styles.backgroundColor = '#3dff46';
     } else if (canDrop) {
-      styles.backgroundColor = 'darkkhaki';
+      styles.backgroundColor = '#a6fcaa';
     }
 
     return connectDropTarget(

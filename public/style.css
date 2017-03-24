@@ -4,35 +4,96 @@
 
 body {
   background-color: #e2e2e2;
+     /*font-family: 'Raleway', sans-serif; */
+  /*font-family: 'Open Sans', sans-serif; */
+  /*   font-family: 'Montserrat', sans-serif; */
+  /*   font-family: 'Merriweather', serif; */
+  /*   font-family: 'Droid Sans', sans-serif; */
+  font-family: 'ABeeZee', sans-serif;
 }
 
 .app-container {
   display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   justify-content: flex-start;
 }
 
-.drag-container {
+.play-container {
+  flex-basis: 100%;
   display: flex;
-  flex-basis: 20%;
-  flex-direction: column;
-  margin: 0;
 }
 
-.supplies,
-.drop-zone,
+
+
+/*---------------- START NAVBAR ----------------*/
+.navbar {
+  display: flex;
+  flex-basis: 100%;
+  align-items: center;
+  background-color: #283593;
+  /*height: 20%;*/
+}
+
+.nav-logo {
+  width: auto;
+  height: 50px;
+  margin-left: 1rem;
+}
+
+.nav-name {
+  width: auto;
+  height: 50px;
+  margin-left: 1rem
+}
+/*---------------- END NAVBAR ----------------*/
+
+
+
+/*---------------- START DRAG AND DROP ----------------*/
+.drag-container-wrapper {
+  display: flex;
+  /*flex-direction: column;*/
+  /*flex-basis: 50%;*/
+}
+
+.drag-container {
+  /*display: none;*/
+  display: flex;
+  flex-basis: 40%;
+  /*flex-direction: column;*/
+  /*margin: 0;*/
+  /*flex-wrap: wrap;*/
+}
+
+.draggable-items {
+  flex-basis: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.action-list,
+.programming-list,
 .drop-zone-list {
   list-style-type: none;
   padding-left: 0;
   margin: 0;
 }
 
-.supplies {
+.action-container {
+  display: flex;
+  flex-direction: column;
   flex-basis: 50%;
-  background-color: #fff;
+  background-color: #feeee7;
 }
 
-.supplies li {
-  background-color: green;
+.action-header {
+  text-align: center;
+  font-weight: 700;
+}
+
+.action-list li {
+  background-color: #f47a42;
   text-align: center;
   width: 80%;
   border-radius: 10px;
@@ -41,12 +102,38 @@ body {
   color: #fff;
 }
 
-.drop-zone {
+.programming-container {
+  display: flex;
+  flex-direction: column;
   flex-basis: 50%;
-  background-color: #222;
+  background-color: #e7f0fe;
+}
 
-  min-height: 200px;
-  margin-left: 100px;
+.programming-header {
+  text-align: center;
+  font-weight: 700;
+}
+
+.programming-list li {
+  background-color: #4286f4;
+  text-align: center;
+  width: 80%;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 1rem auto;
+  color: #fff;
+}
+
+.drop-zone-container {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 50%;
+  background-color: #fff;
+}
+
+.drop-zone-header {
+  text-align: center;
+  background-color: #fff;
 }
 
 .drop-zone li {
@@ -59,19 +146,11 @@ body {
   color: #fff;
 }
 
-.drop-zone-list {
-  flex-basis: 50%;
-  background-color: #fff;
-  list-style-type: none;
-  padding-left: 0;
-
-  min-height: 200px;
-}
-
 .drop-zone-item {
+  /*display: none; */
   width: 80%;
   border-radius: 10px;
-  padding: 2rem;
+  padding: 1rem;
   margin: 1rem auto;
   /*background-color: rgba(38, 12, 12, .10);*/
 }
@@ -81,26 +160,14 @@ body {
   text-align: center;
   width: 80%;
   border-radius: 10px;
-  padding: 1rem;
+  padding: .5rem;
   margin: 1rem auto;
   color: #fff;
 }
+/*---------------- START DRAG AND DROP ----------------*/
 
-.navbar {
-  display: flex;
-  align-items: center;
-  background-color: #283593;
-}
 
-.navbar .nav-name {
-  flex-basis: 30%;
-  margin: 1em;
-}
 
-.navbar #logo {
-  width: 5%;
-  margin-left: 1em;
-}
 
 button {
   text-align: right;
@@ -113,9 +180,9 @@ button {
   font-weight: 400;
 }
 
-#konva-container {
-  flex-basis: 80%;
-  margin: 50px 0 0 100px;
+.konva-container {
+  flex-basis: 60%;
+  /*display: none;*/
 }
 
 #play-button {

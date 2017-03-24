@@ -27,7 +27,7 @@ import {loadChallenge} from './action-creators/challenges'
 const onAppContainerEnter = () => {
   store.dispatch(loadChallenge(1))
   onEnterData.commands.forEach((command) => {
-    store.dispatch(addCommand(command.text));
+    store.dispatch(addCommand(command.text, command.commandType));
   });
 }
 

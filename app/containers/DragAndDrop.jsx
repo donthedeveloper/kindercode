@@ -20,45 +20,65 @@ class DragAndDrop extends React.Component {
     this.insertIntoParentProcedure = props.insertIntoParentProcedure.bind(this);
   }
 
+  filterByTypeAction(arr) {
+    return arr.filter((elem) =>
+      elem.commandType === 'action'
+    );
+  }
+
+  filterByTypeProgramming(arr) {
+    return arr.filter((elem) =>
+      elem.commandType === 'programming'
+    );
+  }
+
   render() {
     return (
 
-        <div className="drag-container">
-          <ul className="supplies">
-            {
-              this.props.commands.map((command) =>
-                <Block
-                  key={command.id}
-                  commandId={command.id}
-                  text={command.text}
-                  insertIntoProcedure={this.insertIntoProcedure}
-                  insertIntoParentProcedure={this.insertIntoParentProcedure}
-                />
-              )
-            }
-          </ul>
-          {/* same structure as child */}
-            <DragAndDropList commands={this.props.commands} procedure={this.props.procedure} />
-            {/*<ul className="drop-zone-list">
-              <DropZoneItem commands={this.props.commands} procedure={this.props.procedure} index={0} />
-              {this.props.procedure.map((node, index) =>
-                (
-                  <div key={index}>
-                    <ProgramItem
-                      text={this.props.commands[node.commandId].text}
-                      index={index+1}
-                      parentId={node.id}
-                      childNodes={node.children}
-                    >
 
-                    </ProgramItem>
-                  <DropZoneItem commands={this.props.commands} procedure={this.props.procedure} index={index+1} />
-                  </div>
+      <div className='drag-container'>
+        <div className='draggable-items'>
+          <div className='action-container'>
+            <h3 className='action-header'>Actions</h3>
+            <ul className='action-list'>
+              {
+                this.filterByTypeAction(this.props.commands)
+                .map((command) =>
+                  <Block
+                    key={command.id}
+                    commandId={command.id}
+                    text={command.text}
+                    insertIntoProcedure={this.insertIntoProcedure}
+                    insertIntoParentProcedure={this.insertIntoParentProcedure}
+                  />
                 )
-              )}
-            </ul>*/}
-          {/* end same structure as child */}
+              }
+            </ul>
+          </div>
+          <div className='programming-container'>
+            <h3 className='programming-header'>Programming</h3>
+            <ul className='programming-list'>
+              {
+                this.filterByTypeProgramming(this.props.commands)
+                .map((command) =>
+                  <Block
+                    key={command.id}
+                    commandId={command.id}
+                    text={command.text}
+                    insertIntoProcedure={this.insertIntoProcedure}
+                    insertIntoParentProcedure={this.insertIntoParentProcedure}
+                  />
+                )
+              }
+            </ul>
+          </div>
         </div>
+          <div className="drop-zone-container">
+            <h3 className='drop-zone-header'>Execute</h3>
+            <DragAndDropList commands={this.props.commands} procedure={this.props.procedure} />
+          </div>
+        </div>
+
 
     );
   }
