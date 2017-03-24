@@ -2,11 +2,10 @@ import {MOVE_X_LEFT, MOVE_X_RIGHT, MOVE_Y_UP, MOVE_Y_DOWN, ROTATE_SPRITE, INCREM
 import {canvasHeight, canvasWidth, spriteWidth, spriteHeight} from '../constants/constants';
 
 let initialState = {
-  starsCollected: 100,
   xCoord: canvasWidth / 16,
   yCoord: canvasHeight / 16,
-  prevX: 150,
-  prevY: 150,
+  prevX: canvasWidth / 16,
+  prevY: canvasWidth / 16,
   xGrid: 0,
   yGrid: 0,
   width: spriteWidth,

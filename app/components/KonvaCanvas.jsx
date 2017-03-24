@@ -27,7 +27,8 @@ class KonvaCanvas extends React.Component {
       nextProps.setIntersector(collectedBlueStar);
     } else if (this.isCollision(nextProps, 'cactii')) {
       let ouchCactus = this.getCollidedObject(nextProps, 'cactii');
-      nextProps.setIntersector(ouchCactus);
+      //nextProps.setIntersector(ouchCactus);
+      setTimeout(() => {this.props.resetCanvas(nextProps.challenges.id)}, 1000)
     } else {
       nextProps.setIntersector();
     }
@@ -113,7 +114,7 @@ class KonvaCanvas extends React.Component {
         <button id="restart-button" onClick={() => this.props.resetCanvas(id)}>
           <i className="fa fa-refresh" aria-hidden="true"></i>
         </button>
-        {this.props.challenges.totalStars === this.props.transition.starsCollected && <button>Next Challenge</button>}
+        {this.props.challenges.totalStars === this.props.transition.collectedStars && <button>Next Challenge</button>}
       </div>
     )
   }
