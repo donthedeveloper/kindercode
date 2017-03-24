@@ -1,6 +1,6 @@
 import Command from './command.js';
-import {operator} from './utils.js';
 import {functionVariables} from './cmdVariables.js';
+import store from '../store.jsx';
 
 export class If extends Command {
   constructor(condition) {
@@ -15,14 +15,33 @@ export class If extends Command {
   }
 }
 
+export class IfNot extends Command {
+  constructor(condition) {
+    super('IFNOT', true)
+    this.condition = condition;
+  }
+
+  executeCommand() {
+    if (this.condition.executeCommand() === false) {
+      this.executeCallbacks()
+    }
+  }
+}
+
+const redTileCheck = () => {
+    const redTile = [store.getState().transition.redTile.xGrid, store.getState().redTile.yGrid];
+    const spriteCoord = [store.getState().transition.xGrid, store.getState().transition.yGrid]
+    if (redTile[0] === spriteCoord[0] && redTile[1] === spriteCoord[1]) return true;
+}
+
 export class Condition {
-  constructor(left, right, comparison) {
+  constructor(left = null, right = null, comparison = null) {
     this.left = left
     this.right = right
     this.comparison = comparison
   }
 
   executeCommand() {
-    return operator(functionVariables[this.left], this.right, this.comparison);
+    return redTileCheck();
   }
 }
