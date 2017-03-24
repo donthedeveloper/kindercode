@@ -4,18 +4,25 @@ import {connect} from 'react-redux';
 import KonvaCanvas from '../components/KonvaCanvas';
 
 import {setCurrentTileItem} from '../action-creators/itemCollision';
+import {resetTransition} from '../action-creators/transition';
+import {loadChallenge} from '../action-creators/challenges';
 
-let mapStateToProps = (state) => {
+const mapStateToProps = (state) => {
   return {
     transition: state.transition,
     challenges: state.challenges
   }
 }
 
-let mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     setIntersector (item = {}) {
       dispatch(setCurrentTileItem(item))
+    },
+
+    resetCanvas (id) {
+      dispatch(loadChallenge(id))
+        .then(() => dispatch(resetTransition()))
     }
   }
 }
