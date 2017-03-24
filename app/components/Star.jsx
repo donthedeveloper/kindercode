@@ -30,12 +30,12 @@ class Star extends React.Component {
       <Image
         x = {xcoord * canvasWidth / 16}
         y = {ycoord * canvasHeight / 16}
-        width = {120}
-        height = {120}
+        width = {canvasWidth / 10}
+        height = {canvasHeight / 10}
         image = {this.state.image}
         offset = {{
-          x: 60,
-          y: 60,
+          x: canvasWidth / 20,
+          y: canvasHeight / 20,
         }}
 
       />

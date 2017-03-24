@@ -49,7 +49,7 @@ class KonvaCanvas extends React.Component {
 
   render() {
     const {xCoord, yCoord, width, height, rotation} = this.props.transition;
-    const {sprite, yellowStars, blueStars, cactii} = this.props.challenges;
+    const {sprite, yellowStars, blueStars, cactii, id} = this.props.challenges;
     const image = new Image();
     image.src = './img/pig-small.png';
 
@@ -96,6 +96,7 @@ class KonvaCanvas extends React.Component {
               x={xCoord}
               y={yCoord}
               fillPatternImage={image}
+              fillPatternRepeat={'no-repeat'}
               width={width}
               height={height}
               rotation = {rotation}
@@ -109,7 +110,7 @@ class KonvaCanvas extends React.Component {
         <button id="play-button" onClick={() => mapStateToCmdObj().executeFunction()}>
           <i className="fa fa-play" aria-hidden="true"></i>
         </button>
-        <button id="restart-button">
+        <button id="restart-button" onClick={() => this.props.resetCanvas(id)}>
           <i className="fa fa-refresh" aria-hidden="true"></i>
         </button>
         {this.props.challenges.totalStars === this.props.transition.starsCollected && <button>Next Challenge</button>}
