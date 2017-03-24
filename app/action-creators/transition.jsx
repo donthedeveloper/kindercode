@@ -42,7 +42,7 @@ export const rotateSprite = (rotation) => {
 
 export const incrementCollectedStars = () => {
   return {
-    type: incrementCollectedStars,
+    type: INCREMENT_STAR_COUNT,
     numStars: 1
   }
 }
