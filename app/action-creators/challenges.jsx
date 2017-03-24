@@ -13,6 +13,8 @@ export const collect = (star) => {
 export const setChallenge = (challenge) => {
   return {
     type: SET_CHALLENGE,
+    id: challenge.id,
+    totalStars: challenge.total_stars,
     sprite: challenge.sprite,
     yellowStars: challenge.yellow_star,
     blueStars: challenge.blue_star,

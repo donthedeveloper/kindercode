@@ -3,6 +3,8 @@ export const MOVE_X_RIGHT = 'MOVE_X_RIGHT';
 export const MOVE_Y_UP = 'MOVE_Y_UP';
 export const MOVE_Y_DOWN = 'MOVE_Y_DOWN';
 export const ROTATE_SPRITE = 'ROTATE_SPRITE';
+export const INCREMENT_STAR_COUNT = 'INCREMENT_STAR_COUNT';
+export const RESET_TRANSITION = 'RESET_TRANSITION';
 
 export const moveXLeft = (xCoord) => {
   return {
@@ -36,5 +38,18 @@ export const rotateSprite = (rotation) => {
   return {
     type: ROTATE_SPRITE,
     rotation
+  }
+}
+
+export const incrementCollectedStars = () => {
+  return {
+    type: INCREMENT_STAR_COUNT,
+    numStars: 1
+  }
+}
+
+export const resetTransition = () => {
+  return {
+    type: RESET_TRANSITION
   }
 }

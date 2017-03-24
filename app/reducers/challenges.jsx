@@ -1,6 +1,8 @@
 import {SET_CHALLENGE, COLLECT_STAR} from '../action-creators/challenges';
 
 const initialState = {
+  id: 0,
+  totalStars: 100,
   sprite: {},
   yellowStars: [],
   blueStars: [],
@@ -12,6 +14,8 @@ let reducer = (state = initialState, action) => {
 
   switch (action.type) {
     case SET_CHALLENGE:
+      newState.id = action.id;
+      newState.totalStars = action.totalStars;
       newState.sprite = action.sprite;
       newState.yellowStars = action.yellowStars;
       newState.blueStars = action.blueStars;
