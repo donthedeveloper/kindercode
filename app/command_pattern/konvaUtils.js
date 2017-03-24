@@ -1,6 +1,6 @@
 import Command from './command.js';
 import store from '../store';
-import {moveXLeft, moveXRight, moveYUp, moveYDown, rotateSprite} from '../action-creators/transition';
+import {moveXLeft, moveXRight, moveYUp, moveYDown, rotateSprite, incrementCollectedStars} from '../action-creators/transition';
 import {setSound} from '../action-creators/audioNotifier';
 import {collect} from '../action-creators/challenges.jsx';
 import {canvasWidth, canvasHeight, spriteWidth, spriteHeight} from '../constants/constants';
@@ -56,8 +56,16 @@ let queueSound = (name) => {
 }
 
 const collectStar = () => {
+  let collectedStars = store.getState().transition.collectedStars;
   let intersection = store.getState().itemCollision.item;
-  store.dispatch(collect(intersection));
+  if (intersection.type === 'yellowStars') {
+    store.dispatch(collect(intersection));
+    store.dispatch(incrementCollectedStars());
+  }
+  else if (intersection.type === 'blueStars' && collectedStars >= 3) {
+    store.dispatch(collect(intersection));
+    store.dispatch(incrementCollectedStars());
+  }
 }
 
 export class MoveXLeft extends Command {

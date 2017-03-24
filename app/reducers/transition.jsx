@@ -1,4 +1,4 @@
-import {MOVE_X_LEFT, MOVE_X_RIGHT, MOVE_Y_UP, MOVE_Y_DOWN, ROTATE_SPRITE} from '../action-creators/transition';
+import {MOVE_X_LEFT, MOVE_X_RIGHT, MOVE_Y_UP, MOVE_Y_DOWN, ROTATE_SPRITE, INCREMENT_STAR_COUNT} from '../action-creators/transition';
 import {spriteWidth, spriteHeight} from '../constants/constants';
 
 let initialState = {
@@ -14,6 +14,7 @@ let initialState = {
   prevHeight: 100,
   rotation: 0,
   prevRotation: 0,
+  collectedStars: 0
 }
 
 let reducer = (state = initialState, action) => {
@@ -48,6 +49,10 @@ let reducer = (state = initialState, action) => {
       case ROTATE_SPRITE:
         newState.prevRotation = state.prevRotation;
         newState.rotation = action.rotation;
+        break;
+
+      case INCREMENT_STAR_COUNT:
+        newState.collectedStars += 1;
         break;
 
     default:
