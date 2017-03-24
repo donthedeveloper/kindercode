@@ -5,7 +5,7 @@ import ProgramItem from '../components/ProgramItem';
 import DragAndDropList from '../components/DragAndDropList';
 
 const DragAndDrop = (props) => {
-  // console.log('props:', props);
+  console.log('Drag and drop list props:', props);
   return (
     <ul className="drop-zone-list">
       <DropZoneItem commands={props.commands} procedure={props.procedure} index={0} />
