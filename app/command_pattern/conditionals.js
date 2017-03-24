@@ -35,13 +35,14 @@ const redTileCheck = () => {
 }
 
 export class Condition {
-  constructor(left = null, right = null, comparison = null) {
+  constructor(condition, left = null, right = null, comparison = null) {
     this.left = left
     this.right = right
     this.comparison = comparison
+    this.condition = condition;
   }
 
   executeCommand() {
-    return redTileCheck();
+    if (this.condition === 'redTile') return redTileCheck();
   }
 }
