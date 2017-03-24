@@ -11,7 +11,7 @@ export function storeCmd (func, command, parent = null) {
   else if (command.commandId === 1) commandInstance = new MoveYDown(); //Move Down
   else if (command.commandId === 2) commandInstance = new MoveXLeft(); //MoveLeft
   else if (command.commandId === 3) commandInstance = new MoveXRight(); //MoveRight
-  else if (command.commandId === 4) commandInstance = new CollectStar(); //Speak
+  else if (command.commandId === 4) commandInstance = new Speak('pig'); //Speak
   else if (command.commandId === 5) commandInstance = new If(new Condition(command.condition)); //If
   else if (command.commandId === 6) commandInstance = new Loop(); //Loop
   else if (command.commandId === 7) commandInstance = new CollectStar(); //CollectStar
