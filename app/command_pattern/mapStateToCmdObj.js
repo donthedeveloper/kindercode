@@ -2,7 +2,7 @@ import {FunctionInstance} from './command.js';
 import {If, Condition} from './conditionals.js';
 import {Loop} from './loops.js';
 import store from '../store.jsx';
-import {MoveXLeft, MoveXRight, MoveYUp, MoveYDown, Speak} from './konvaUtils.js';
+import {MoveXLeft, MoveXRight, MoveYUp, MoveYDown, Speak, CollectStar} from './konvaUtils.js';
 
 
 export function storeCmd (func, command, parent = null) {
@@ -14,6 +14,7 @@ export function storeCmd (func, command, parent = null) {
   else if (command.commandId === 4) commandInstance = new Speak('pig'); //Speak
   else if (command.commandId === 5) commandInstance = new If(new Condition(command.condition)); //If
   else if (command.commandId === 6) commandInstance = new Loop(); //Loop
+  else if (command.commandId === 7) commandInstance = new CollectStar(); //CollectStar
 
   if (parent) parent.then(commandInstance)
   else func.storeCommand(commandInstance)
