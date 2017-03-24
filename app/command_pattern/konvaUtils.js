@@ -68,6 +68,10 @@ const collectStar = () => {
   }
 }
 
+const collectRedTileStar = () => {
+
+}
+
 export class MoveXLeft extends Command {
   constructor(){
     super();
@@ -138,5 +142,15 @@ export class CollectStar extends Command {
 
   executeCommand(){
     this.program.addAsync(collectStar);
+  }
+}
+
+export class CollectStarRedTile extends Command {
+  constructor(){
+    super();
+  }
+
+  executeCommand(){
+    this.program.addAsync(collectRedTileStar);
   }
 }
