@@ -2,6 +2,7 @@ import {MOVE_X_LEFT, MOVE_X_RIGHT, MOVE_Y_UP, MOVE_Y_DOWN, ROTATE_SPRITE} from '
 import {spriteWidth, spriteHeight} from '../constants/constants';
 
 let initialState = {
+  starsCollected: 5,
   xCoord: 150,
   yCoord: 150,
   prevX: 150,

@@ -8,31 +8,29 @@ import GridLine from '../components/GridLine';
 import CanvasOutline from './CanvasOutline';
 
 class KonvaCanvas extends React.Component {
-
   componentWillUpdate(nextProps) {
     let nextX = nextProps.transition.xCoord,
         nextY = nextProps.transition.yCoord;
 
-      const rect = this.refs.rect;
-      rect.to({
-              x: nextX,
-              y: nextY,
-              duration: 0.75
-          });
-      if (this.isCollision(nextProps, 'yellowStars')) {
-        let collectedYellowStar = this.getCollidedObject(nextProps, 'yellowStars');
-        nextProps.setIntersector(collectedYellowStar);
-      }
+    const rect = this.refs.rect;
+    rect.to({
+            x: nextX,
+            y: nextY,
+            duration: 0.75
+        });
 
-      if (this.isCollision(nextProps, 'blueStars')) {
-        let collectedBlueStar = this.getCollidedObject(nextProps, 'blueStars');
-        nextProps.setIntersector(collectedBlueStar);
-      }
-
-      if (this.isCollision(nextProps, 'cactii')) {
-        let ouchCactus = this.getCollidedObject(nextProps, 'cactii');
-        nextProps.setIntersector(ouchCactus);
-      }
+    if (this.isCollision(nextProps, 'yellowStars')) {
+      let collectedYellowStar = this.getCollidedObject(nextProps, 'yellowStars');
+      nextProps.setIntersector(collectedYellowStar);
+    } else if (this.isCollision(nextProps, 'blueStars')) {
+      let collectedBlueStar = this.getCollidedObject(nextProps, 'blueStars');
+      nextProps.setIntersector(collectedBlueStar);
+    } else if (this.isCollision(nextProps, 'cactii')) {
+      let ouchCactus = this.getCollidedObject(nextProps, 'cactii');
+      nextProps.setIntersector(ouchCactus);
+    } else {
+      nextProps.setIntersector();
+    }
   }
 
   isCollision(nextProps, item) {
@@ -114,6 +112,7 @@ class KonvaCanvas extends React.Component {
         <button id="restart-button">
           <i className="fa fa-refresh" aria-hidden="true"></i>
         </button>
+        {this.props.challenges.totalStars === this.props.transition.starsCollected && <button>Next Challenge</button>}
       </div>
     )
   }
