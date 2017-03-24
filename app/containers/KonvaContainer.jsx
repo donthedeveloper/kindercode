@@ -21,8 +21,8 @@ const mapDispatchToProps = (dispatch) => {
     },
 
     resetCanvas (id) {
+      dispatch(resetTransition())
       dispatch(loadChallenge(id))
-        .then(() => dispatch(resetTransition()))
     }
   }
 }

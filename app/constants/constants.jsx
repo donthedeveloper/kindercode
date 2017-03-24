@@ -13,7 +13,7 @@ const range = (len) => {
 
 const GRID_SIZE = canvasHeight / 8;
 export const VERTICALGRID = range(7).map(i => {
- return [GRID_SIZE * (i + 1), i, GRID_SIZE * (i + 1), canvasHeight]
+ return [GRID_SIZE * (i + 1), 0, GRID_SIZE * (i + 1), canvasHeight]
 })
 
 export const HORIZONTALGRID = range(7).map(i => {
