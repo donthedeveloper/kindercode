@@ -7,9 +7,9 @@ import NavbarContainer from './NavbarContainer';
 
 const AppContainer = () => {
   return (
-    <div>
+    <div className="app-container">
       <NavbarContainer />
-      <div className="app-container">
+      <div className="play-container">
         <DragAndDrop />
         <KonvaContainer />
         <NotifierContainer />

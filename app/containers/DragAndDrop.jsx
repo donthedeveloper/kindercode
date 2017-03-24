@@ -35,7 +35,9 @@ class DragAndDrop extends React.Component {
   render() {
     return (
 
-        <div className='drag-container'>
+
+      <div className='drag-container'>
+        <div className='draggable-items'>
           <div className='action-container'>
             <h3 className='action-header'>Actions</h3>
             <ul className='action-list'>
@@ -70,11 +72,13 @@ class DragAndDrop extends React.Component {
               }
             </ul>
           </div>
+        </div>
           <div className="drop-zone-container">
             <h3 className='drop-zone-header'>Execute</h3>
             <DragAndDropList commands={this.props.commands} procedure={this.props.procedure} />
           </div>
         </div>
+
 
     );
   }
