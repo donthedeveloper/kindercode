@@ -17,6 +17,7 @@ const DragAndDrop = (props) => {
               index={index+1}
               parentId={node.id}
               childNodes={node.children}
+              commandType={props.commands[node.commandId].commandType}
             >
 
               {!!node.children.length && <DragAndDropList commands={props.commands} procedure={node.children} />}
