@@ -8,31 +8,29 @@ import GridLine from '../components/GridLine';
 import CanvasOutline from './CanvasOutline';
 
 class KonvaCanvas extends React.Component {
-
   componentWillUpdate(nextProps) {
     let nextX = nextProps.transition.xCoord,
         nextY = nextProps.transition.yCoord;
 
-      const rect = this.refs.rect;
-      rect.to({
-              x: nextX,
-              y: nextY,
-              duration: 0.75
-          });
-      if (this.isCollision(nextProps, 'yellowStars')) {
-        let collectedYellowStar = this.getCollidedObject(nextProps, 'yellowStars');
-        nextProps.setIntersector(collectedYellowStar);
-      }
+    const rect = this.refs.rect;
+    rect.to({
+            x: nextX,
+            y: nextY,
+            duration: 0.75
+        });
 
-      if (this.isCollision(nextProps, 'blueStars')) {
-        let collectedBlueStar = this.getCollidedObject(nextProps, 'blueStars');
-        nextProps.setIntersector(collectedBlueStar);
-      }
-
-      if (this.isCollision(nextProps, 'cactii')) {
-        let ouchCactus = this.getCollidedObject(nextProps, 'cactii');
-        nextProps.setIntersector(ouchCactus);
-      }
+    if (this.isCollision(nextProps, 'yellowStars')) {
+      let collectedYellowStar = this.getCollidedObject(nextProps, 'yellowStars');
+      nextProps.setIntersector(collectedYellowStar);
+    } else if (this.isCollision(nextProps, 'blueStars')) {
+      let collectedBlueStar = this.getCollidedObject(nextProps, 'blueStars');
+      nextProps.setIntersector(collectedBlueStar);
+    } else if (this.isCollision(nextProps, 'cactii')) {
+      let ouchCactus = this.getCollidedObject(nextProps, 'cactii');
+      nextProps.setIntersector(ouchCactus);
+    } else {
+      nextProps.setIntersector();
+    }
   }
 
   isCollision(nextProps, item) {
@@ -51,7 +49,7 @@ class KonvaCanvas extends React.Component {
 
   render() {
     const {xCoord, yCoord, width, height, rotation} = this.props.transition;
-    const {sprite, yellowStars, blueStars, cactii} = this.props.challenges;
+    const {sprite, yellowStars, blueStars, cactii, id} = this.props.challenges;
     const image = new Image();
     image.src = './img/pig-small.png';
 
@@ -111,9 +109,10 @@ class KonvaCanvas extends React.Component {
         <button id="play-button" onClick={() => mapStateToCmdObj().executeFunction()}>
           <i className="fa fa-play" aria-hidden="true"></i>
         </button>
-        <button id="restart-button">
+        <button id="restart-button" onClick={() => this.props.resetCanvas(id)}>
           <i className="fa fa-refresh" aria-hidden="true"></i>
         </button>
+        {this.props.challenges.totalStars === this.props.transition.starsCollected && <button>Next Challenge</button>}
       </div>
     )
   }
