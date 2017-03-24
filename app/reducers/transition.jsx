@@ -1,14 +1,10 @@
-<<<<<<< HEAD
-import {MOVE_X_LEFT, MOVE_X_RIGHT, MOVE_Y_UP, MOVE_Y_DOWN, ROTATE_SPRITE, INCREMENT_STAR_COUNT} from '../action-creators/transition';
-=======
-import {MOVE_X_LEFT, MOVE_X_RIGHT, MOVE_Y_UP, MOVE_Y_DOWN, ROTATE_SPRITE, RESET_TRANSITION} from '../action-creators/transition';
->>>>>>> clear-button
-import {spriteWidth, spriteHeight} from '../constants/constants';
+import {MOVE_X_LEFT, MOVE_X_RIGHT, MOVE_Y_UP, MOVE_Y_DOWN, ROTATE_SPRITE, INCREMENT_STAR_COUNT, RESET_TRANSITION} from '../action-creators/transition';
+import {canvasHeight, canvasWidth, spriteWidth, spriteHeight} from '../constants/constants';
 
 let initialState = {
   starsCollected: 100,
-  xCoord: 150,
-  yCoord: 150,
+  xCoord: canvasWidth / 16,
+  yCoord: canvasHeight / 16,
   prevX: 150,
   prevY: 150,
   xGrid: 0,

@@ -96,6 +96,7 @@ class KonvaCanvas extends React.Component {
               x={xCoord}
               y={yCoord}
               fillPatternImage={image}
+              fillPatternRepeat={'no-repeat'}
               width={width}
               height={height}
               rotation = {rotation}

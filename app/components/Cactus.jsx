@@ -26,12 +26,12 @@ class Cactus extends React.Component {
       <Image
         x = {xcoord * canvasWidth / 16}
         y = {ycoord * canvasHeight / 16}
-        width = {200}
-        height = {200}
+        width = {canvasWidth / 7}
+        height = {canvasWidth / 7}
         image = {this.state.image}
         offset = {{
-          x: 100,
-          y: 100,
+          x: canvasWidth / 14,
+          y: canvasWidth / 14,
         }}
 
       />
