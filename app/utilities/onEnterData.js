@@ -5,7 +5,10 @@ export default {
     { text: 'Move Left', commandType: 'action' },
     { text: 'Move Right', commandType: 'action' },
     { text: 'Speak', commandType: 'action' },
-    { text: 'If', commandType: 'programming' },
+    { text: 'Collect Star', commandType: 'action' },
+    { text: 'Collect Red Tile Star', commandType: 'action' },
+    { text: 'If On Red Tile', commandType: 'programming' },
+    { text: 'If Not On Red Tile', commandType: 'programming' },
     { text: 'Loop', commandType: 'programming' }
   ]
 }

@@ -83,7 +83,7 @@ body {
 .action-container {
   display: flex;
   flex-direction: column;
-  flex-basis: 50%;
+  flex-basis: 60%;
   background-color: #feeee7;
 }
 
@@ -105,7 +105,7 @@ body {
 .programming-container {
   display: flex;
   flex-direction: column;
-  flex-basis: 50%;
+  flex-basis: 40%;
   background-color: #e7f0fe;
 }
 
