@@ -105,57 +105,81 @@
       "total_stars": 5,
       "yellow_star": [
         {
-        "xcoord": 7,
-        "ycoord": 7,
+        "id": 1,
+        "xcoord": 4,
+        "xgrid": 3,
+        "ycoord": 6,
+        "ygrid": 2,
         "type": "yellowStars",
         "width": 50,
-        "height": 50
+        "height": 50,
+        "collected": false
         },
         {
-          "xcoord": 1,
-          "ycoord": 3,
+          "id": 2,
+          "xcoord": 2,
+          "xgrid": 2,
+          "ycoord": 5,
+          "ygrid": 5,
           "type": "yellowStars",
           "width": 50,
-          "height": 50
+          "height": 50,
+          "collected": false
         },
         {
-          "xcoord": 9,
-          "ycoord": 6,
-          "type": "yellowStars",
-          "width": 50,
-          "height": 50
-        },
-        {
+          "id": 3,
           "xcoord": 6,
-          "ycoord": 2,
+          "xgrid": 3,
+          "ycoord": 1,
+          "ygrid": 3,
           "type": "yellowStars",
           "width": 50,
-          "height": 50
+          "height": 50,
+          "collected": false
+        },
+        {
+          "id": 4,
+          "xcoord": 5,
+          "xgrid": 6,
+          "ycoord": 3,
+          "ygrid": 3,
+          "type": "yellowStars",
+          "width": 50,
+          "height": 50,
+          "collected": false
         }
       ],
-      "blue_star": {
-        "xcoord": 5,
-        "ycoord": 5,
-        "type": "blueStars",
-        "width": 50,
-        "height": 50
-      },
+      "blue_star": [{
+          "id": 1,
+          "xcoord": 5,
+          "xgrid": 5,
+          "ycoord": 5,
+          "ygrid": 5,
+          "type": "blueStars",
+          "width": 50,
+          "height": 50,
+          "collected": false
+      }],
       "cactus": [
         {
-        "xcoord": 3,
-        "ycoord": 5,
-        "type": "cactus",
-        "width": 50,
-        "height": 50
-      },
-      {
-        "xcoord": 5,
+        "id": 1,
+        "xcoord": 1,
+        "xgrid": 2,
         "ycoord": 7,
+        "ygrid": 3,
         "type": "cactus",
         "width": 50,
         "height": 50
-      }
-      ],
+      },{
+        "id": 2,
+        "xcoord": 3,
+        "xgrid": 4,
+        "ycoord": 4,
+        "ygrid": 4,
+        "type": "cactus",
+        "width": 50,
+        "height": 50
+      }],
       "sprite": {
         "xcoord": 1,
         "ycoord": 7,
