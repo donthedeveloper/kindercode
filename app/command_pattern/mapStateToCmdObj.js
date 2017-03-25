@@ -15,7 +15,7 @@ export function storeCmd (func, command, parent = null) {
   else if (command.commandId === 5) commandInstance = new CollectStar(); //Collect Star
   else if (command.commandId === 6) commandInstance = new CollectStarRedTile(); //CollectOnRedStarTile
   else if (command.commandId === 7) commandInstance = new If(new Condition('redTile')); //If
-  else if (command.commandId === 8) commandInstance = new IfNot(new Condition('redTile')); //If
+  else if (command.commandId === 8) commandInstance = new IfNot(new Condition('redTile')); //If Not
   else if (command.commandId === 9) commandInstance = new Loop(); //Loop
 
   if (parent) parent.then(commandInstance)
