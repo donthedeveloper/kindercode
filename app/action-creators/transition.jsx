@@ -53,4 +53,3 @@ export const resetTransition = () => {
     type: RESET_TRANSITION
   }
 }
-
