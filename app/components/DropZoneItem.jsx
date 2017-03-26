@@ -7,11 +7,21 @@ import { DropTarget } from 'react-dnd';
 import itemTypes from '../utilities/itemTypes.jsx';
 
 const blockTarget = {
-  drop(props) {
+  drop(props, monitor) {
+    const hasDroppedOnChild = monitor.didDrop();
+    const item = monitor.getItem();
+
+    if (!hasDroppedOnChild && !props.greedy) {
+      if (props.parentId !== null) {
+        props.insertIntoParentProcedure(props.parentId, item.commandId, props.index);
+      }
+    }
+    // console.log('item:', item);
+
     return {
       name: 'DropZoneItem',
       index: props.index,
-      parentId: null
+      parentId: props.parentId
     };
   },
 };
@@ -38,7 +48,8 @@ class DropZoneItem extends React.Component {
   };
 
   render() {
-    const { canDrop, isOver, connectDropTarget } = this.props;
+
+    const { greedy, isOverCurrent, canDrop, isOver, connectDropTarget } = this.props;
     const isActive = canDrop && isOver;
     const procedureIsNotEmpty = this.props.procedure.length;
 
