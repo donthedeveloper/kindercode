@@ -27,6 +27,7 @@ const ADD_COMMAND = 'ADD_COMMAND';
 
 const INSERT_INTO_PROCEDURE = 'INSERT_INTO_PROCEDURE';
 const INSERT_INTO_PARENT_PROCEDURE = 'INSERT_INTO_PARENT_PROCEDURE';
+const RESET_PROCEDURE = 'RESET_PROCEDURE';
 
 // action creaters
 export const addCommand = (text, commandType) => ({
@@ -47,6 +48,10 @@ export const insertIntoParentProcedure = (parentId, commandId, index) => ({
   commandId,
   index
 });
+
+export const resetProcedure = () => {
+  return {type: RESET_PROCEDURE}
+}
 
 // reducer
 export default (state=initialState, action) => {
@@ -74,6 +79,9 @@ export default (state=initialState, action) => {
       newState.procedure = newState.procedure.map((currentNode) => {
         return traverse(currentNode, action.parentId, newNode);
       });
+      break;
+    case RESET_PROCEDURE:
+      newState.procedure = [];
       break;
     default:
       return state;

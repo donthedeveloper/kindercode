@@ -6,6 +6,7 @@ import KonvaCanvas from '../components/KonvaCanvas';
 import {setCurrentTileItem} from '../action-creators/itemCollision';
 import {resetTransition} from '../action-creators/transition';
 import {loadChallenge, updateCurrUserChallenge} from '../action-creators/challenges';
+import {resetProcedure} from '../reducers/commands.jsx';
 
 const mapStateToProps = (state) => {
   return {
@@ -30,6 +31,12 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(updateCurrUserChallenge(user))
       dispatch(resetTransition())
       dispatch(loadChallenge(id + 1))
+    },
+
+    resetProcedureOnState (id) {
+      dispatch(resetProcedure());
+      dispatch(resetTransition())
+      dispatch(loadChallenge(id))
     }
   }
 }
