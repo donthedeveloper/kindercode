@@ -6,8 +6,10 @@ import Star from '../components/Star';
 import Cactus from '../components/Cactus';
 import GridLine from '../components/GridLine';
 import CanvasOutline from './CanvasOutline';
+import RedTile from './RedTile';
 
 class KonvaCanvas extends React.Component {
+
   componentWillUpdate(nextProps) {
     let nextX = nextProps.transition.xCoord,
         nextY = nextProps.transition.yCoord;
@@ -27,7 +29,6 @@ class KonvaCanvas extends React.Component {
       nextProps.setIntersector(collectedBlueStar);
     } else if (this.isCollision(nextProps, 'cactii')) {
       let ouchCactus = this.getCollidedObject(nextProps, 'cactii');
-      //nextProps.setIntersector(ouchCactus);
       setTimeout(() => {this.props.resetCanvas(nextProps.challenges.id)}, 1000)
     } else {
       nextProps.setIntersector();
@@ -50,7 +51,7 @@ class KonvaCanvas extends React.Component {
 
   render() {
     const {xCoord, yCoord, width, height, rotation} = this.props.transition;
-    const {sprite, yellowStars, blueStars, cactii, id, numChallenges} = this.props.challenges;
+    const {sprite, yellowStars, blueStars, cactii, id, numChallenges, redTile} = this.props.challenges;
     const image = new Image();
     image.src = `./img/pig-small.png`;
 
@@ -87,6 +88,9 @@ class KonvaCanvas extends React.Component {
                 <Star key={`${star.type}-${star.id}`} star={star} />
               )
             })}
+
+            {(redTile.draw && !redTile.collected) && <RedTile xGrid={redTile.xgrid} yGrid={redTile.ygrid} />}
+            {(redTile.draw && !redTile.collected) && <Star star={redTile} />}
 
             {blueStars.filter(star => star.collected === false)
               .map(star => {

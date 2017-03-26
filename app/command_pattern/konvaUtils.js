@@ -2,7 +2,7 @@ import Command from './command.js';
 import store from '../store';
 import {moveXLeft, moveXRight, moveYUp, moveYDown, rotateSprite, incrementCollectedStars} from '../action-creators/transition';
 import {setSound} from '../action-creators/audioNotifier';
-import {collect} from '../action-creators/challenges.jsx';
+import {collect, toggleRedTile} from '../action-creators/challenges.jsx';
 import {canvasWidth, canvasHeight, spriteWidth, spriteHeight} from '../constants/constants';
 
 let changeXLeft = () => {
@@ -11,7 +11,8 @@ let changeXLeft = () => {
       combinedX = prevX - difference;
 
   if (combinedX + spriteWidth / 2 <= canvasWidth && combinedX >= 0) {
-    store.dispatch(moveXLeft(combinedX));
+    store.dispatch(toggleRedTile(!store.getState().challenges.redTile.draw));
+    setTimeout(() => {store.dispatch(moveXLeft(combinedX))}, 100);
   }
 }
 
@@ -21,7 +22,8 @@ let changeXRight = () => {
       combinedX = prevX + difference;
 
   if (combinedX + spriteWidth / 2 <= canvasWidth && combinedX >= 0) {
-    store.dispatch(moveXRight(combinedX));
+    store.dispatch(toggleRedTile(!store.getState().challenges.redTile.draw));
+    setTimeout(() => {store.dispatch(moveXRight(combinedX))}, 100);
   }
 }
 
@@ -31,7 +33,8 @@ let changeYUp = () => {
       combinedY = prevY - difference;
 
   if (combinedY + spriteHeight / 2 <= canvasHeight && combinedY >= 0) {
-    store.dispatch(moveYUp(combinedY));
+    store.dispatch(toggleRedTile(!store.getState().challenges.redTile.draw));
+    setTimeout(() => {store.dispatch(moveYUp(combinedY))}, 100);
   }
 }
 
@@ -41,7 +44,8 @@ let changeYDown = () => {
       combinedY = prevY + difference;
 
   if (combinedY + spriteHeight / 2 <= canvasHeight && combinedY >= 0) {
-    store.dispatch(moveYDown(combinedY));
+    store.dispatch(toggleRedTile(!store.getState().challenges.redTile.draw));
+    setTimeout(() => {store.dispatch(moveYDown(combinedY))}, 100);
   }
 }
 

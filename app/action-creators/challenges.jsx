@@ -4,6 +4,7 @@ import {authenticated} from '../reducers/auth.jsx';
 export const SET_CHALLENGE = 'SET_CHALLENGE';
 export const COLLECT_STAR = 'COLLECT_STAR';
 export const NUM_CHALLENGES = 'NUM_CHALLENGES';
+export const TOGGLE_RED_TILE = 'TOGGLE_RED_TILE';
 
 export const collect = (star) => {
   return {
@@ -27,7 +28,8 @@ export const setChallenge = (challenge) => {
     sprite: challenge.sprite,
     yellowStars: challenge.yellow_star,
     blueStars: challenge.blue_star,
-    cactii: challenge.cactus
+    cactii: challenge.cactus,
+    redTile: challenge.redTile,
   }
 }
 
@@ -57,4 +59,11 @@ export const updateCurrUserChallenge = (user) =>
       .then(res => res.data)
       .then(updatedUser => dispatch(authenticated(updatedUser)))
       .catch(err => console.error(err))
+}
+
+export const toggleRedTile = (bool) => {
+  return {
+    type: TOGGLE_RED_TILE,
+    draw: bool,
+  }
 }
