@@ -5,12 +5,13 @@ import KonvaCanvas from '../components/KonvaCanvas';
 
 import {setCurrentTileItem} from '../action-creators/itemCollision';
 import {resetTransition} from '../action-creators/transition';
-import {loadChallenge} from '../action-creators/challenges';
+import {loadChallenge, updateCurrUserChallenge} from '../action-creators/challenges';
 
 const mapStateToProps = (state) => {
   return {
     transition: state.transition,
-    challenges: state.challenges
+    challenges: state.challenges,
+    user: state.auth
   }
 }
 
@@ -23,6 +24,12 @@ const mapDispatchToProps = (dispatch) => {
     resetCanvas (id) {
       dispatch(resetTransition())
       dispatch(loadChallenge(id))
+    },
+
+    updateUserChallenge (id, user) {
+      dispatch(updateCurrUserChallenge(user))
+      dispatch(resetTransition())
+      dispatch(loadChallenge(id + 1))
     }
   }
 }
