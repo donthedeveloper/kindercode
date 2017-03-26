@@ -24,18 +24,18 @@ class Star extends React.Component {
   }
 
   render() {
-    const {xcoord, ycoord} = this.props.star;
+    const {xgrid, ygrid} = this.props.star;
 
     return (
       <Image
-        x = {xcoord * canvasWidth / 16}
-        y = {ycoord * canvasHeight / 16}
+        x = {xgrid * canvasWidth / 8}
+        y = {ygrid * canvasHeight / 8}
         width = {canvasWidth / 10}
         height = {canvasHeight / 10}
         image = {this.state.image}
         offset = {{
-          x: canvasWidth / 20,
-          y: canvasHeight / 20,
+          x: - canvasWidth / 80,
+          y: - canvasHeight / 80,
         }}
 
       />

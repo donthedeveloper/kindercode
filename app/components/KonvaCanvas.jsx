@@ -52,7 +52,7 @@ class KonvaCanvas extends React.Component {
     const {xCoord, yCoord, width, height, rotation} = this.props.transition;
     const {sprite, yellowStars, blueStars, cactii, id} = this.props.challenges;
     const image = new Image();
-    image.src = './img/pig-small.png';
+    image.src = `./img/pig-small.png`;
 
     return (
       <div className="konva-container" id="konva-container">
@@ -75,20 +75,20 @@ class KonvaCanvas extends React.Component {
             {yellowStars.filter(star => star.collected === false)
               .map(star => {
               return (
-                <Star key={[star.xcoord, star.ycoord]} star={star} />
+                <Star key={`${star.type}-${star.id}`} star={star} />
               )
             })}
 
             {blueStars.filter(star => star.collected === false)
               .map(star => {
               return (
-                <Star key={[star.xcoord, star.ycoord]} star={star} />
+                <Star key={`${star.type}-${star.id}`} star={star} />
               )
             })}
 
             {cactii.map(cactus => {
               return (
-                <Cactus key={cactus.id} cactus={cactus} />
+                <Cactus key={`${cactus.type}-${cactus.id}`} cactus={cactus} />
               )
             })}
 
