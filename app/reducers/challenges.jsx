@@ -1,4 +1,4 @@
-import {SET_CHALLENGE, COLLECT_STAR} from '../action-creators/challenges';
+import {SET_CHALLENGE, COLLECT_STAR, NUM_CHALLENGES} from '../action-creators/challenges';
 
 const initialState = {
   id: 0,
@@ -6,7 +6,8 @@ const initialState = {
   sprite: {},
   yellowStars: [],
   blueStars: [],
-  cactii: []
+  cactii: [],
+  numChallenges: 100
 }
 
 let reducer = (state = initialState, action) => {
@@ -35,6 +36,10 @@ let reducer = (state = initialState, action) => {
         }
       });
       newState[starType] = starArray;
+      return newState;
+
+    case NUM_CHALLENGES:
+      newState.numChallenges = action.numChallenges;
       return newState;
 
     default:

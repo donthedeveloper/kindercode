@@ -54,9 +54,9 @@ let reducer = (state = initialState, action) => {
     case RESET_TRANSITION:
       return initialState;
 
-      case INCREMENT_STAR_COUNT:
-        newState.collectedStars += 1;
-        break;
+    case INCREMENT_STAR_COUNT:
+      newState.collectedStars += 1;
+      break;
 
     default:
       return state;
