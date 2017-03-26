@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {loadChallenge} from '../action-creators/challenges.jsx';
 
 const reducer = (state=null, action) => {
   switch(action.type) {
@@ -32,6 +33,8 @@ export const whoami = () =>
       .then(response => {
         const user = response.data
         dispatch(authenticated(user))
+        if (user) dispatch(loadChallenge(user.challenge_id))
+        else dispatch(loadChallenge(1))
       })
       .catch(failed => dispatch(authenticated(null)))
 
