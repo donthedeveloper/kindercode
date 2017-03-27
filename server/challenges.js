@@ -8,3 +8,10 @@ module.exports = require('express').Router()
 		Challenges.findById(req.params.id)
 		.then(challenge => res.json(challenge))
 		.catch(next))
+	.get('/', (req, res, next) => {
+		Challenges.findAll()
+		.then(challenges => {
+			res.json(challenges);
+		})
+		.catch(next)
+	})

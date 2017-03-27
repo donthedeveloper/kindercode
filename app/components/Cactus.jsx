@@ -20,18 +20,18 @@ class Cactus extends React.Component {
   }
 
   render() {
-    const {xcoord, ycoord} = this.props.cactus;
+    const {xgrid, ygrid} = this.props.cactus;
 
     return (
       <Image
-        x = {xcoord * canvasWidth / 16}
-        y = {ycoord * canvasHeight / 16}
+        x = {xgrid * canvasWidth / 8}
+        y = {ygrid * canvasHeight / 8}
         width = {canvasWidth / 7}
         height = {canvasWidth / 7}
         image = {this.state.image}
         offset = {{
-          x: canvasWidth / 14,
-          y: canvasWidth / 14,
+          x: canvasWidth / 50,
+          y: canvasWidth / 50,
         }}
 
       />

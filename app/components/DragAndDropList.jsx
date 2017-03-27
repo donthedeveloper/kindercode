@@ -5,7 +5,6 @@ import ProgramItem from '../components/ProgramItem';
 import DragAndDropList from '../components/DragAndDropList';
 
 const DragAndDrop = (props) => {
-  // console.log('Drag and drop list props:', props);
   return (
     <ul className="drop-zone-list">
       <DropZoneItem
@@ -26,6 +25,7 @@ const DragAndDrop = (props) => {
               childNodes={node.children}
               nodeId={node.id}
               insertIntoParentProcedure={props.insertIntoParentProcedure}
+              commandType={props.commands[node.commandId].commandType}
             >
 
               {!!node.children.length &&

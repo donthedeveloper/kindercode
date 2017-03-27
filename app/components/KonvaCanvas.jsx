@@ -50,9 +50,18 @@ class KonvaCanvas extends React.Component {
 
   render() {
     const {xCoord, yCoord, width, height, rotation} = this.props.transition;
-    const {sprite, yellowStars, blueStars, cactii, id} = this.props.challenges;
+    const {sprite, yellowStars, blueStars, cactii, id, numChallenges} = this.props.challenges;
     const image = new Image();
-    image.src = './img/pig-small.png';
+    image.src = `./img/pig-small.png`;
+
+    const nextChallengeButton = (id, user) => {
+      if (user && user.challenge_id < numChallenges) {
+        this.props.updateUserChallenge(id, user)
+      }
+      else if (!user && id < numChallenges) {
+        this.props.resetCanvas(id + 1)
+      }
+    }
 
     return (
       <div className="konva-container" id="konva-container">
@@ -75,20 +84,20 @@ class KonvaCanvas extends React.Component {
             {yellowStars.filter(star => star.collected === false)
               .map(star => {
               return (
-                <Star key={[star.xcoord, star.ycoord]} star={star} />
+                <Star key={`${star.type}-${star.id}`} star={star} />
               )
             })}
 
             {blueStars.filter(star => star.collected === false)
               .map(star => {
               return (
-                <Star key={[star.xcoord, star.ycoord]} star={star} />
+                <Star key={`${star.type}-${star.id}`} star={star} />
               )
             })}
 
             {cactii.map(cactus => {
               return (
-                <Cactus key={cactus.id} cactus={cactus} />
+                <Cactus key={`${cactus.type}-${cactus.id}`} cactus={cactus} />
               )
             })}
 
@@ -114,7 +123,8 @@ class KonvaCanvas extends React.Component {
         <button id="restart-button" onClick={() => this.props.resetCanvas(id)}>
           <i className="fa fa-refresh" aria-hidden="true"></i>
         </button>
-        {this.props.challenges.totalStars === this.props.transition.collectedStars && <button>Next Challenge</button>}
+        <button onClick={ () => this.props.resetProcedureOnState(id)} id="clear-program-btn">Clear Program</button>
+        {this.props.challenges.totalStars === this.props.transition.collectedStars && <button id="next-challenge-btn" onClick={() => {nextChallengeButton(id, this.props.user)}}>Next Challenge</button>}
       </div>
     )
   }

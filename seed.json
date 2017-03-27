@@ -27,9 +27,7 @@
       "yellow_star": [
         {
         "id": 1,
-        "xcoord": 1,
         "xgrid": 0,
-        "ycoord": 3,
         "ygrid": 1,
         "type": "yellowStars",
         "width": 50,
@@ -38,9 +36,7 @@
         },
         {
           "id": 2,
-          "xcoord": 3,
           "xgrid": 1,
-          "ycoord": 5,
           "ygrid": 2,
           "type": "yellowStars",
           "width": 50,
@@ -49,9 +45,7 @@
         },
         {
           "id": 3,
-          "xcoord": 3,
           "xgrid": 1,
-          "ycoord": 7,
           "ygrid": 3,
           "type": "yellowStars",
           "width": 50,
@@ -60,9 +54,7 @@
         },
         {
           "id": 4,
-          "xcoord": 5,
           "xgrid": 2,
-          "ycoord": 7,
           "ygrid": 3,
           "type": "yellowStars",
           "width": 50,
@@ -72,9 +64,7 @@
       ],
       "blue_star": [{
           "id": 1,
-          "xcoord": 1,
           "xgrid": 0,
-          "ycoord": 5,
           "ygrid": 2,
           "type": "blueStars",
           "width": 50,
@@ -84,20 +74,16 @@
       "cactus": [
         {
         "id": 1,
-        "xcoord": 1,
         "xgrid": 0,
-        "ycoord": 7,
         "ygrid": 3,
         "type": "cactus",
         "width": 50,
         "height": 50
       }],
       "sprite": {
-        "xcoord": 2,
-        "ycoord": 2,
         "type": "sprite",
-        "width": 50,
-        "height": 50
+        "name": "pig",
+        "url": "pig-small.png"
       }
     },
     {
@@ -105,63 +91,71 @@
       "total_stars": 5,
       "yellow_star": [
         {
-        "xcoord": 7,
-        "ycoord": 7,
+        "id": 1,
+        "xgrid": 3,
+        "ygrid": 2,
         "type": "yellowStars",
         "width": 50,
-        "height": 50
+        "height": 50,
+        "collected": false
         },
         {
-          "xcoord": 1,
-          "ycoord": 3,
+          "id": 2,
+          "xgrid": 2,
+          "ygrid": 5,
           "type": "yellowStars",
           "width": 50,
-          "height": 50
+          "height": 50,
+          "collected": false
         },
         {
-          "xcoord": 9,
-          "ycoord": 6,
+          "id": 3,
+          "xgrid": 3,
+          "ygrid": 3,
           "type": "yellowStars",
           "width": 50,
-          "height": 50
+          "height": 50,
+          "collected": false
         },
         {
-          "xcoord": 6,
-          "ycoord": 2,
+          "id": 4,
+          "xgrid": 6,
+          "ygrid": 3,
           "type": "yellowStars",
           "width": 50,
-          "height": 50
+          "height": 50,
+          "collected": false
         }
       ],
-      "blue_star": {
-        "xcoord": 5,
-        "ycoord": 5,
-        "type": "blueStars",
-        "width": 50,
-        "height": 50
-      },
+      "blue_star": [{
+          "id": 1,
+          "xgrid": 5,
+          "ygrid": 5,
+          "type": "blueStars",
+          "width": 50,
+          "height": 50,
+          "collected": false
+      }],
       "cactus": [
         {
-        "xcoord": 3,
-        "ycoord": 5,
+        "id": 1,
+        "xgrid": 2,
+        "ygrid": 3,
         "type": "cactus",
         "width": 50,
         "height": 50
-      },
-      {
-        "xcoord": 5,
-        "ycoord": 7,
+      },{
+        "id": 2,
+        "xgrid": 4,
+        "ygrid": 4,
         "type": "cactus",
         "width": 50,
         "height": 50
-      }
-      ],
+      }],
       "sprite": {
-        "xcoord": 1,
-        "ycoord": 7,
         "type": "sprite",
-        "width": 50,
-        "height": 50
+        "name": "panda",
+        "url": "pig-small.png"
       }
     }
   ]
