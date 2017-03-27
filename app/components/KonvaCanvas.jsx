@@ -71,7 +71,7 @@ class KonvaCanvas extends React.Component {
     const {xCoord, yCoord, width, height, rotation} = this.props.transition;
     const {sprite, yellowStars, blueStars, cactii, id, numChallenges, redTile} = this.props.challenges;
     const image = new Image();
-    image.src = `./img/pig-small.png`;
+    image.src = `/img/${sprite.url}`;
 
     return (
       <div className="konva-container" id="konva-container">

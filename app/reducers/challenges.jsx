@@ -3,7 +3,10 @@ import {SET_CHALLENGE, COLLECT_STAR, NUM_CHALLENGES, TOGGLE_RED_TILE} from '../a
 const initialState = {
   id: 0,
   totalStars: 100,
-  sprite: {},
+  sprite: {
+    name: '',
+    url: ''
+  },
   yellowStars: [],
   blueStars: [],
   cactii: [],
