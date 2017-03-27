@@ -4,8 +4,6 @@ import {canvasHeight, canvasWidth, spriteWidth, spriteHeight} from '../constants
 let initialState = {
   xCoord: canvasWidth / 16,
   yCoord: canvasHeight / 16,
-  prevX: canvasWidth / 16,
-  prevY: canvasWidth / 16,
   xGrid: 0,
   yGrid: 0,
   width: spriteWidth,
