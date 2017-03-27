@@ -192,4 +192,15 @@ button {
 
 #restart-button {
   padding: 10px 15px;
+  margin-right: 10px;
+}
+
+#clear-program-btn {
+  padding: 10px 15px;
+  margin-right: 10px;
+}
+
+#next-challenge-btn {
+  padding: 10px 15px;
+  background-color: darkred;
 }

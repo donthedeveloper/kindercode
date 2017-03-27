@@ -75,7 +75,13 @@ class DragAndDrop extends React.Component {
         </div>
           <div className="drop-zone-container">
             <h3 className='drop-zone-header'>Execute</h3>
-            <DragAndDropList commands={this.props.commands} procedure={this.props.procedure} />
+            <DragAndDropList
+              commands={this.props.commands}
+              procedure={this.props.procedure}
+              parentId={null}
+              insertIntoProcedure={this.props.insertIntoProcedure}
+              insertIntoParentProcedure={this.props.insertIntoParentProcedure}
+            />
           </div>
         </div>
 

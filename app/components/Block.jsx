@@ -20,17 +20,9 @@ const blockSource = {
     const dropResult = monitor.getDropResult();
 
     if (dropResult) {
-      console.log('item:', item);
-      console.log('drop result:', dropResult);
 
       if (dropResult.parentId === null) {
-        // insert at end of parents children
         props.insertIntoProcedure(dropResult.index, item.commandId);
-
-
-      } else {
-        // insert into correct place in children
-        props.insertIntoParentProcedure(dropResult.parentId, item.commandId, dropResult.index);
       }
     }
   }
