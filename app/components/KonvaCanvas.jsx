@@ -130,7 +130,7 @@ class KonvaCanvas extends React.Component {
             />
           </Layer>
         </Stage>
-        <button id="play-button" onClick={() => this.playButton()}>
+        {/*<button id="play-button" onClick={() => this.playButton()}>
           <i className="fa fa-play" aria-hidden="true"></i>
         </button>
         <button id="restart-button" onClick={() => this.props.resetCanvas(id)}>
@@ -138,6 +138,7 @@ class KonvaCanvas extends React.Component {
         </button>
         <button onClick={ () => this.props.resetProcedureOnState(id)} id="clear-program-btn">Clear Program</button>
         {this.props.challenges.totalStars === this.props.transition.collectedStars && <button id="next-challenge-btn" onClick={() => {this.nextChallengeButton(id, this.props.user)}}>Next Challenge</button>}
+        */}
       </div>
     )
   }

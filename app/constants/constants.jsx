@@ -1,5 +1,5 @@
-export const canvasHeight = 800;
-export const canvasWidth = 800;
+export const canvasHeight = 640;
+export const canvasWidth = 740;
 export const spriteWidth = canvasWidth / 8;
 export const spriteHeight = canvasHeight / 8;
 

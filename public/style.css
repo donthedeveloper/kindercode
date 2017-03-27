@@ -3,7 +3,7 @@
 }
 
 body {
-  background-color: #e2e2e2;
+  background-color: #2f5bb7;
      /*font-family: 'Raleway', sans-serif; */
   /*font-family: 'Open Sans', sans-serif; */
   /*   font-family: 'Montserrat', sans-serif; */
@@ -13,15 +13,12 @@ body {
 }
 
 .app-container {
+  /*flex-basis: 100%;*/
+  /*max-height: 1100px;*/
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: flex-start;
-}
-
-.play-container {
-  flex-basis: 100%;
-  display: flex;
 }
 
 
@@ -29,10 +26,14 @@ body {
 /*---------------- START NAVBAR ----------------*/
 .navbar {
   display: flex;
-  flex-basis: 100%;
+  /*flex-basis: 10%;*/
   align-items: center;
-  background-color: #283593;
-  /*height: 20%;*/
+  background-color: #2f5bb7;
+  /*border-top: 1px solid white;
+  border-bottom: 1px solid white;*/
+  /*height: 200px;*/
+  padding: 1rem;
+  justify-content: space-between;
 }
 
 .nav-logo {
@@ -46,8 +47,47 @@ body {
   height: 50px;
   margin-left: 1rem
 }
+
+.logo-container {
+
+}
+
+.login-form {
+  color: #fff;
+}
+
+/*.login-form label {
+  margin-right: 1rem;
+}*/
+
+.login-form input {
+  margin: 0 2rem 0 .5rem;
+  border-radius: 5px;
+  padding: .25rem;
+  border: none;
+}
+
+.login-form button,
+.whoami button {
+  padding: .25rem 1rem;
+  border: 1px solid #fff;
+}
+
+.whoami {
+  color: #fff;
+}
+
+.whoami span {
+  margin-right: 1rem;
+}
+
 /*---------------- END NAVBAR ----------------*/
 
+.play-container {
+  flex-basis: 50%;
+  display: flex;
+  max-height: 650px;
+}
 
 
 /*---------------- START DRAG AND DROP ----------------*/
@@ -55,15 +95,19 @@ body {
   display: flex;
   /*flex-direction: column;*/
   /*flex-basis: 50%;*/
+
+  border-top: 5px solid pink;
 }
 
 .drag-container {
-  /*display: none;*/
+  display: none;
   display: flex;
   flex-basis: 40%;
+  /*max-height: 800px;*/
   /*flex-direction: column;*/
   /*margin: 0;*/
   /*flex-wrap: wrap;*/
+  /*border-radius: 5px;*/
 }
 
 .draggable-items {
@@ -83,8 +127,13 @@ body {
 .action-container {
   display: flex;
   flex-direction: column;
-  flex-basis: 60%;
+  flex-basis: 50%;
+  height: 50%;
   background-color: #feeee7;
+
+  border: 1px solid #feeee7;
+
+  overflow: auto;
 }
 
 .action-header {
@@ -105,8 +154,11 @@ body {
 .programming-container {
   display: flex;
   flex-direction: column;
-  flex-basis: 40%;
+  flex-basis: 50%;
+  height: 50%;
   background-color: #e7f0fe;
+
+  overflow: auto;
 }
 
 .programming-header {
@@ -126,9 +178,15 @@ body {
 
 .drop-zone-container {
   display: flex;
+  position: static;
+  /*display: none;*/
   flex-direction: column;
   flex-basis: 50%;
   background-color: #fff;
+  /*max-height: 800px;*/
+  overflow: auto;
+  /*height: 800px;*/
+  border-top-right-radius: 10px;
 }
 
 .drop-zone-header {
@@ -137,7 +195,7 @@ body {
 }
 
 .drop-zone li {
-  background-color: green;
+  /*background-color: green;*/
   text-align: center;
   width: 80%;
   border-radius: 10px;
@@ -147,15 +205,13 @@ body {
 }
 
 .drop-zone-item {
-  /*display: none; */
   width: 80%;
   border-radius: 10px;
   padding: 1rem;
   margin: 1rem auto;
-  /*background-color: rgba(38, 12, 12, .10);*/
 }
 
-.drop-zone-program {
+.drop-zone-program { /* program item */
   background-color: green;
   text-align: center;
   width: 80%;
@@ -170,24 +226,41 @@ body {
 
 
 button {
-  text-align: right;
+  /*text-align: right;*/
   border: 2px solid #0277bd;
   background: #0277bd;
   padding: 10px 20px;
-  text-decoration: none;
+  /*text-decoration: none;*/
   border-radius: 5px;
   color: white;
-  font-weight: 400;
+  /*font-weight: 400;*/
 }
 
 .konva-container {
-  flex-basis: 60%;
-  /*display: none;*/
+  flex-basis: 50%;
+  background-color: #fff;
+  right: 0;
+  /*left: 0;
+  top: 0;
+  bottom: 0;*/
+  position: absolute;
+  border-top-left-radius: 10px;
+  /*border: 0;*/
 }
+
+/*.konva-container > div:first-child > div:first-child {
+  background-color: red;
+}*/
+
+/*.konvajs-content {
+  margin-right: 0;
+}*/
 
 #play-button {
   padding: 10px 15px;
   margin-right: 10px;
+  /*position: absolute;
+  z-index: 100;*/
 }
 
 #restart-button {
