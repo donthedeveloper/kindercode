@@ -22,7 +22,6 @@ export class FunctionInstance {
     })
     this.executeAsyncActions();
     store.dispatch(currentProgramInstance(this));
-    return this;
   }
 
   executeAsyncActions() {
