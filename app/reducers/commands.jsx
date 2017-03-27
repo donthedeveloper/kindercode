@@ -1,7 +1,11 @@
+import {FunctionInstance} from '../command_pattern/command.js';
+
 const initialState = {
   commands: [],
   procedure: [],
-  procedureIdCount: 0
+  procedureIdCount: 0,
+  isExecuting: false,
+  program: new FunctionInstance()
 }
 
 // utility functions
@@ -24,9 +28,10 @@ const traverse = (currentNode, parentId, newNode) => {
 
 // constants
 const ADD_COMMAND = 'ADD_COMMAND';
-
+const TOGGLE_EXECUTION = 'TOGGLE_EXECUTION';
 const INSERT_INTO_PROCEDURE = 'INSERT_INTO_PROCEDURE';
 const INSERT_INTO_PARENT_PROCEDURE = 'INSERT_INTO_PARENT_PROCEDURE';
+const PROGRAM_INSTANCE = 'PROGRAM_INSTANCE';
 
 // action creaters
 export const addCommand = (text, commandType) => ({
@@ -47,6 +52,20 @@ export const insertIntoParentProcedure = (parentId, commandId, index) => ({
   commandId,
   index
 });
+
+export const toggleExecution = (bool) => {
+  return {
+    type: TOGGLE_EXECUTION,
+    bool
+  }
+}
+
+export const currentProgramInstance = (program) => {
+  return {
+    type: PROGRAM_INSTANCE,
+    program
+  }
+}
 
 // reducer
 export default (state=initialState, action) => {
@@ -74,6 +93,12 @@ export default (state=initialState, action) => {
       newState.procedure = newState.procedure.map((currentNode) => {
         return traverse(currentNode, action.parentId, newNode);
       });
+      break;
+    case TOGGLE_EXECUTION:
+      newState.isExecuting = action.bool;
+      break;
+    case PROGRAM_INSTANCE:
+      newState.program = action.program;
       break;
     default:
       return state;

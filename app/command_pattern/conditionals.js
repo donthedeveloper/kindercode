@@ -1,5 +1,4 @@
 import Command from './command.js';
-import {functionVariables} from './cmdVariables.js';
 import store from '../store.jsx';
 
 export class If extends Command {

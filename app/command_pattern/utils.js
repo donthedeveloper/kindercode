@@ -1,5 +1,4 @@
 import Command from './command.js';
-import {functionVariables} from './cmdVariables.js';
 
 export function operator (left, right, type) {
   if (type === '>') {
@@ -21,7 +20,6 @@ export class Assignment extends Command {
   }
 
   executeCommand() {
-    functionVariables[this.left] = this.right;
   }
 }
 
@@ -33,6 +31,5 @@ export class Add extends Command {
   }
 
   executeCommand() {
-    functionVariables[this.left] += this.right;
   }
 }

@@ -32,6 +32,10 @@ class KonvaCanvas extends React.Component {
     } else {
       nextProps.setIntersector();
     }
+
+    const isExecuting = nextProps.commands.isExecuting;
+    const program = nextProps.commands.program;
+    if (!isExecuting) program.clearTimeouts();
   }
 
   isCollision(nextProps, item) {
@@ -48,20 +52,25 @@ class KonvaCanvas extends React.Component {
     })[0]
   }
 
-  render() {
-    const {xCoord, yCoord, width, height, rotation} = this.props.transition;
-    const {sprite, yellowStars, blueStars, cactii, id, numChallenges} = this.props.challenges;
-    const image = new Image();
-    image.src = `./img/pig-small.png`;
+  playButton() {
+    this.props.startExecution();
+    mapStateToCmdObj().executeFunction();
+  }
 
-    const nextChallengeButton = (id, user) => {
-      if (user && user.challenge_id < numChallenges) {
+  nextChallengeButton(id, user) {
+      if (user && user.challenge_id < this.props.challenges.numChallenges) {
         this.props.updateUserChallenge(id, user)
       }
-      else if (!user && id < numChallenges) {
+      else if (!user && id < this.props.challenges.numChallenges) {
         this.props.resetCanvas(id + 1)
       }
     }
+
+  render() {
+    const {xCoord, yCoord, width, height, rotation} = this.props.transition;
+    const {sprite, yellowStars, blueStars, cactii, id} = this.props.challenges;
+    const image = new Image();
+    image.src = `./img/pig-small.png`;
 
     return (
       <div className="konva-container" id="konva-container">
@@ -117,13 +126,13 @@ class KonvaCanvas extends React.Component {
             />
           </Layer>
         </Stage>
-        <button id="play-button" onClick={() => mapStateToCmdObj().executeFunction()}>
+        <button id="play-button" onClick={() => this.playButton()}>
           <i className="fa fa-play" aria-hidden="true"></i>
         </button>
         <button id="restart-button" onClick={() => this.props.resetCanvas(id)}>
           <i className="fa fa-refresh" aria-hidden="true"></i>
         </button>
-        {this.props.challenges.totalStars === this.props.transition.collectedStars && <button id="next-challenge-btn" onClick={() => {nextChallengeButton(id, this.props.user)}}>Next Challenge</button>}
+        {this.props.challenges.totalStars === this.props.transition.collectedStars && <button id="next-challenge-btn" onClick={() => {this.nextChallengeButton(id, this.props.user)}}>Next Challenge</button>}
       </div>
     )
   }

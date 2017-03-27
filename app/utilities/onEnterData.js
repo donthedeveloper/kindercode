@@ -9,6 +9,6 @@ export default {
     { text: 'Collect Red Tile Star', commandType: 'action' },
     { text: 'If On Red Tile', commandType: 'programming' },
     { text: 'If Not On Red Tile', commandType: 'programming' },
-    { text: 'Loop', commandType: 'programming' }
+    { text: 'Repeat 3X', commandType: 'programming' }
   ]
 }
