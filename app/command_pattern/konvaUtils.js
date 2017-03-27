@@ -58,11 +58,11 @@ let queueSound = (name) => {
 const collectStar = () => {
   let collectedStars = store.getState().transition.collectedStars;
   let intersection = store.getState().itemCollision.item;
-  if (intersection.type === 'yellowStars') {
+  if (intersection.type === 'yellowStars' && intersection.collected === false) {
     store.dispatch(collect(intersection));
     store.dispatch(incrementCollectedStars());
   }
-  else if (intersection.type === 'blueStars' && collectedStars >= 3) {
+  else if (intersection.type === 'blueStars' && collectedStars >= 3 && intersection.collected === false) {
     store.dispatch(collect(intersection));
     store.dispatch(incrementCollectedStars());
   }
