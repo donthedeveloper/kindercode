@@ -54,9 +54,7 @@ class DropItem extends React.Component {
 
     return connectDropTarget(
       <li className="drop-zone-program" style={styles}>
-        text: {this.props.text} <br />
-        nodeId: {this.props.nodeId} <br />
-        parentId: {this.props.parentId}
+        {this.props.text}
         {/*this.props.childNodes.length > 0 && this.props.children*/}
         {this.props.childNodes.length ? this.props.children: null}
         {/*
