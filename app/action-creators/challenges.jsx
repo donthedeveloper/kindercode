@@ -5,11 +5,19 @@ export const SET_CHALLENGE = 'SET_CHALLENGE';
 export const COLLECT_STAR = 'COLLECT_STAR';
 export const NUM_CHALLENGES = 'NUM_CHALLENGES';
 export const TOGGLE_RED_TILE = 'TOGGLE_RED_TILE';
+export const COLLECT_RED_TILE_STAR = 'COLLECT_RED_TILE_STAR';
 
 export const collect = (star) => {
   return {
     type: COLLECT_STAR,
     star
+  }
+}
+
+export const collectRedTile = (redTile) => {
+  return {
+    type: COLLECT_RED_TILE_STAR,
+    redTile
   }
 }
 

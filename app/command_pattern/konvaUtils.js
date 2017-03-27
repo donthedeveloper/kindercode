@@ -1,9 +1,16 @@
 import Command from './command.js';
 import store from '../store';
-import {moveXLeft, moveXRight, moveYUp, moveYDown, rotateSprite, incrementCollectedStars} from '../action-creators/transition';
+import {moveXLeft, moveXRight, moveYUp, moveYDown, rotateSprite, incrementCollectedStars, resetTransition} from '../action-creators/transition';
 import {setSound} from '../action-creators/audioNotifier';
-import {collect, toggleRedTile} from '../action-creators/challenges.jsx';
+import {collect, toggleRedTile, collectRedTile, loadChallenge} from '../action-creators/challenges.jsx';
 import {canvasWidth, canvasHeight, spriteWidth, spriteHeight} from '../constants/constants';
+import {toggleExecution} from '../reducers/commands.jsx';
+
+const trueFalseGenerator = () => {
+  const randomNum = Math.floor(Math.random() * 2);
+  if (randomNum === 1) return true;
+  else return false;
+}
 
 let changeXLeft = () => {
   let prevX = store.getState().transition.xCoord,
@@ -11,7 +18,7 @@ let changeXLeft = () => {
       combinedX = prevX - difference;
 
   if (combinedX + spriteWidth / 2 <= canvasWidth && combinedX >= 0) {
-    store.dispatch(toggleRedTile(!store.getState().challenges.redTile.draw));
+    store.dispatch(toggleRedTile(trueFalseGenerator()));
     setTimeout(() => {store.dispatch(moveXLeft(combinedX))}, 100);
   }
 }
@@ -22,7 +29,7 @@ let changeXRight = () => {
       combinedX = prevX + difference;
 
   if (combinedX + spriteWidth / 2 <= canvasWidth && combinedX >= 0) {
-    store.dispatch(toggleRedTile(!store.getState().challenges.redTile.draw));
+    store.dispatch(toggleRedTile(trueFalseGenerator()));
     setTimeout(() => {store.dispatch(moveXRight(combinedX))}, 100);
   }
 }
@@ -33,7 +40,7 @@ let changeYUp = () => {
       combinedY = prevY - difference;
 
   if (combinedY + spriteHeight / 2 <= canvasHeight && combinedY >= 0) {
-    store.dispatch(toggleRedTile(!store.getState().challenges.redTile.draw));
+    store.dispatch(toggleRedTile(trueFalseGenerator()));
     setTimeout(() => {store.dispatch(moveYUp(combinedY))}, 100);
   }
 }
@@ -44,7 +51,7 @@ let changeYDown = () => {
       combinedY = prevY + difference;
 
   if (combinedY + spriteHeight / 2 <= canvasHeight && combinedY >= 0) {
-    store.dispatch(toggleRedTile(!store.getState().challenges.redTile.draw));
+    store.dispatch(toggleRedTile(trueFalseGenerator()));
     setTimeout(() => {store.dispatch(moveYDown(combinedY))}, 100);
   }
 }
@@ -62,18 +69,37 @@ let queueSound = (name) => {
 const collectStar = () => {
   let collectedStars = store.getState().transition.collectedStars;
   let intersection = store.getState().itemCollision.item;
-  if (intersection.type === 'yellowStars' && intersection.collected === false) {
+  let redTile = store.getState().challenges.redTile;
+  if (intersection.type === 'yellowStars' && !intersection.collected) {
     store.dispatch(collect(intersection));
     store.dispatch(incrementCollectedStars());
+    if (redTile.xgrid === intersection.xgrid && redTile.ygrid === intersection.ygrid) {
+      store.dispatch(toggleRedTile(false));
+      store.dispatch(collectRedTile(redTile));
+    }
   }
-  else if (intersection.type === 'blueStars' && collectedStars >= 3 && intersection.collected === false) {
+  else if (intersection.type === 'blueStars' && collectedStars >= 3 && !intersection.collected) {
     store.dispatch(collect(intersection));
     store.dispatch(incrementCollectedStars());
   }
 }
 
 const collectRedTileStar = () => {
-
+  let intersection = store.getState().itemCollision.item;
+  let redTile = store.getState().challenges.redTile;
+  if (redTile.xgrid !== intersection.xgrid || redTile.ygrid !== intersection.ygrid) {
+      store.dispatch(toggleExecution(false))
+      store.dispatch(resetTransition())
+      store.dispatch(loadChallenge(store.getState().challenges.id))
+    }
+  if (intersection.type === 'yellowStars' && !intersection.collected && redTile.draw && !redTile.collected) {
+    if (redTile.xgrid === intersection.xgrid && redTile.ygrid === intersection.ygrid) {
+      store.dispatch(collect(intersection));
+      store.dispatch(incrementCollectedStars());
+      store.dispatch(toggleRedTile(false));
+      store.dispatch(collectRedTile(redTile));
+    }
+  }
 }
 
 export class MoveXLeft extends Command {

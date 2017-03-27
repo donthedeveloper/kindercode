@@ -1,4 +1,4 @@
-import {SET_CHALLENGE, COLLECT_STAR, NUM_CHALLENGES, TOGGLE_RED_TILE} from '../action-creators/challenges';
+import {SET_CHALLENGE, COLLECT_STAR, NUM_CHALLENGES, TOGGLE_RED_TILE, COLLECT_RED_TILE_STAR} from '../action-creators/challenges';
 
 const initialState = {
   id: 0,
@@ -11,7 +11,8 @@ const initialState = {
   redTile: {
     xgrid: 0,
     ygrid: 0,
-    draw: false
+    draw: false,
+    collected: false
   }
 }
 
@@ -50,6 +51,13 @@ let reducer = (state = initialState, action) => {
 
     case NUM_CHALLENGES:
       newState.numChallenges = action.numChallenges;
+      return newState;
+
+    case COLLECT_RED_TILE_STAR:
+      let collectedRedTile = Object.assign({}, action.redTile);
+      collectedRedTile.collected = true;
+      collectedRedTile.draw = false;
+      newState.redTile = collectedRedTile;
       return newState;
 
     default:
