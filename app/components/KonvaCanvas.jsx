@@ -53,11 +53,6 @@ class KonvaCanvas extends React.Component {
     })[0]
   }
 
-  render() {
-    const {xCoord, yCoord, width, height, rotation} = this.props.transition;
-    const {sprite, yellowStars, blueStars, cactii, id, numChallenges, redTile} = this.props.challenges;
-    const image = new Image();
-    image.src = `./img/pig-small.png`;
   playButton() {
     this.props.startExecution();
     mapStateToCmdObj().executeFunction();
@@ -74,7 +69,7 @@ class KonvaCanvas extends React.Component {
 
   render() {
     const {xCoord, yCoord, width, height, rotation} = this.props.transition;
-    const {sprite, yellowStars, blueStars, cactii, id} = this.props.challenges;
+    const {sprite, yellowStars, blueStars, cactii, id, numChallenges, redTile} = this.props.challenges;
     const image = new Image();
     image.src = `./img/pig-small.png`;
 

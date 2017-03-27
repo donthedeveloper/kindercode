@@ -39,7 +39,7 @@ const mapDispatchToProps = (dispatch) => {
     startExecution() {
       dispatch(toggleExecution(true))
     },
- 
+
     stopExecution() {
       dispatch(toggleExecution(false))
     },
