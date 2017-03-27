@@ -28,9 +28,10 @@ export class IfNot extends Command {
 }
 
 const redTileCheck = () => {
-    const redTile = [store.getState().transition.redTile.xGrid, store.getState().redTile.yGrid];
-    const spriteCoord = [store.getState().transition.xGrid, store.getState().transition.yGrid]
-    if (redTile[0] === spriteCoord[0] && redTile[1] === spriteCoord[1]) return true;
+    const redTile = [store.getState().challenges.redTile.xgrid, store.getState().challenges.redTile.ygrid],
+          spriteCoord = [store.getState().transition.xGrid, store.getState().transition.yGrid],
+          redTileOn = store.getState().challenges.redTile.draw;
+    if (redTile[0] === spriteCoord[0] && redTile[1] === spriteCoord[1] && redTileOn) return true;
     else return false;
 }
 

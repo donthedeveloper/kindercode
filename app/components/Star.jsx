@@ -15,8 +15,10 @@ class Star extends React.Component {
     const image = new window.Image();
     if (this.props.star.type === 'yellowStars') {
       image.src = './img/yellow-star.png';
-    } else {
+    } else if (this.props.star.type === 'blueStars'){
       image.src = './img/blue-star.png';
+    } else {
+      image.src = './img/red-star.png';
     }
     image.onload = () => {
       this.setState({image: image});

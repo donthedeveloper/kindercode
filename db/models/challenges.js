@@ -5,6 +5,7 @@ const Challenges = db.define('challenges', {
    total_stars: Sequelize.INTEGER,
    yellow_star: Sequelize.JSON,
    blue_star: Sequelize.JSON,
+   redTile: Sequelize.JSON,
    cactus: Sequelize.JSON,
    sprite: Sequelize.JSON
  });
