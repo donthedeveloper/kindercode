@@ -26,7 +26,6 @@ class KonvaCanvas extends React.Component {
 
     const rect = this.refs.rect;
 
-    console.log('next xCoord, next yCoord', nextProps.transition.xCoord, nextProps.transition.yCoord)
     if (this.props.transition.xCoord != nextProps.transition.xCoord || this.props.transition.yCoord != nextProps.transition.yCoord) {
         rect.to({
                 x: nextX,
