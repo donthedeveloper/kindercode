@@ -45,6 +45,7 @@ const mapDispatchToProps = (dispatch) => {
     },
 
     resetProcedureOnState (id) {
+      dispatch(toggleExecution(false))
       dispatch(resetProcedure())
       dispatch(resetTransition())
       dispatch(loadChallenge(id))
