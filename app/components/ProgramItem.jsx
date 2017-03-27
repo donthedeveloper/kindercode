@@ -7,11 +7,19 @@ import { DropTarget } from 'react-dnd';
 import itemTypes from '../utilities/itemTypes.jsx';
 
 const blockTarget = {
-  drop(props) {
+  drop(props, monitor) {
+    // console.log(props);
+    const hasDroppedOnChild = monitor.didDrop();
+    const item = monitor.getItem();
+
+    if (!hasDroppedOnChild && !props.greedy) {
+      props.insertIntoParentProcedure(props.nodeId, item.commandId, props.index);
+    }
+
     return {
       name: 'DropZoneItem',
       index: props.index,
-      parentId: props.parentId
+      parentId: props.nodeId
     };
   },
 };
@@ -21,12 +29,12 @@ function collect(connect, monitor) {
     connectDropTarget: connect.dropTarget(),
     isOver: monitor.isOver(),
     canDrop: monitor.canDrop(),
+    isOverCurrent: monitor.isOver({ shallow: true })
   };
 }
 
 class DropItem extends React.Component {
   render() {
-    console.log('drop item props:', this.props.commandType);
     const { greedy, isOverCurrent, canDrop, isOver, connectDropTarget } = this.props;
     const isActive = canDrop && isOver;
 
@@ -41,8 +49,6 @@ class DropItem extends React.Component {
     } else if (this.props.commandType === 'programming') {
       styles.backgroundColor = '#4286f4';
     }
-
-    // console.log('props.childNodes:', this.props.childNodes);
 
     return connectDropTarget(
       <li className="drop-zone-program" style={styles}>
