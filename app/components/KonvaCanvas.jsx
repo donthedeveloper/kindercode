@@ -10,16 +10,30 @@ import RedTile from './RedTile';
 
 class KonvaCanvas extends React.Component {
 
-  componentWillUpdate(nextProps) {
+  componentDidMount() {
+    const rect = this.refs.rect;
+
+    rect.to({
+      x: this.props.transition.xCoord,
+      y: this.props.transition.yCoord,
+      duration: 0
+    });
+  }
+
+  componentWillReceiveProps(nextProps) {
     let nextX = nextProps.transition.xCoord,
         nextY = nextProps.transition.yCoord;
 
     const rect = this.refs.rect;
-    rect.to({
-            x: nextX,
-            y: nextY,
-            duration: 0.75
-        });
+
+    console.log('next xCoord, next yCoord', nextProps.transition.xCoord, nextProps.transition.yCoord)
+    if (this.props.transition.xCoord != nextProps.transition.xCoord || this.props.transition.yCoord != nextProps.transition.yCoord) {
+        rect.to({
+                x: nextX,
+                y: nextY,
+                duration: 0.75
+            });
+    }
 
     if (this.isCollision(nextProps, 'yellowStars')) {
       let collectedYellowStar = this.getCollidedObject(nextProps, 'yellowStars');
@@ -116,8 +130,6 @@ class KonvaCanvas extends React.Component {
 
             <Rect
               ref="rect"
-              x={xCoord}
-              y={yCoord}
               fillPatternImage={image}
               fillPatternRepeat={'no-repeat'}
               width={width}

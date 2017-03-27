@@ -22,7 +22,6 @@
   "challenges":
   [
     {
-      "level": 1,
       "total_stars": 5,
       "yellow_star": [
         {
@@ -93,7 +92,6 @@
       }
     },
     {
-      "level": 2,
       "total_stars": 5,
       "yellow_star": [
         {

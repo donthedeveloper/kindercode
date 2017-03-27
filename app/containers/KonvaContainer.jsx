@@ -26,7 +26,7 @@ const mapDispatchToProps = (dispatch) => {
     resetCanvas (id) {
       dispatch(toggleExecution(false))
       dispatch(resetTransition())
-      dispatch(loadChallenge(id))
+      setTimeout(() => dispatch(loadChallenge(id)), 3000)
     },
 
     updateUserChallenge (id, user) {
@@ -45,9 +45,9 @@ const mapDispatchToProps = (dispatch) => {
     },
 
     resetProcedureOnState (id) {
-      dispatch(resetProcedure());
+      dispatch(resetProcedure())
       dispatch(resetTransition())
-      dispatch(loadChallenge(id))
+      setTimeout(() => {dispatch(loadChallenge(id))}, 5000)
     }
   }
 }
