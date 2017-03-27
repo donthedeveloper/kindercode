@@ -8,6 +8,8 @@ const initialState = {
   program: new FunctionInstance()
 }
 
+
+
 // utility functions
 class Node {
   constructor(id, commandId, children=[]) {
@@ -17,14 +19,27 @@ class Node {
   }
 }
 
-const traverse = (currentNode, parentId, newNode) => {
-  if (parentId === currentNode.id) {
-    const duplicateCurrentNode = Object.assign({}, currentNode);
-    duplicateCurrentNode.children = [...duplicateCurrentNode.children, newNode];
-    return duplicateCurrentNode;
+function traverseThrough(currentNode, parentId, newNode, index) {
+  if (Array.isArray(currentNode)) {
+    // console.log('it is an array!');
+    return currentNode.map((node) => {
+      // console.log('we made it into map');
+      return traverseThrough(node, parentId, newNode, index);
+    });
+  } else if (typeof currentNode === 'object') {
+    if (currentNode.id === parentId) {
+      const duplicateCurrentNode = Object.assign({}, currentNode);
+      duplicateCurrentNode.children = [...duplicateCurrentNode.children];
+      duplicateCurrentNode.children.splice(index, 0, newNode);
+      return duplicateCurrentNode;
+    } else if (currentNode.children.length) {
+      currentNode.children = traverseThrough(currentNode.children, parentId, newNode, index);
+    }
+    return currentNode;
   }
-  return currentNode;
-};
+}
+
+
 
 // constants
 const ADD_COMMAND = 'ADD_COMMAND';
@@ -32,6 +47,7 @@ const TOGGLE_EXECUTION = 'TOGGLE_EXECUTION';
 const INSERT_INTO_PROCEDURE = 'INSERT_INTO_PROCEDURE';
 const INSERT_INTO_PARENT_PROCEDURE = 'INSERT_INTO_PARENT_PROCEDURE';
 const PROGRAM_INSTANCE = 'PROGRAM_INSTANCE';
+const RESET_PROCEDURE = 'RESET_PROCEDURE';
 
 // action creaters
 export const addCommand = (text, commandType) => ({
@@ -53,6 +69,7 @@ export const insertIntoParentProcedure = (parentId, commandId, index) => ({
   index
 });
 
+
 export const toggleExecution = (bool) => {
   return {
     type: TOGGLE_EXECUTION,
@@ -66,6 +83,10 @@ export const currentProgramInstance = (program) => {
     program
   }
 }
+    
+export const resetProcedure = () => {
+  return {type: RESET_PROCEDURE}
+}
 
 // reducer
 export default (state=initialState, action) => {
@@ -74,7 +95,6 @@ export default (state=initialState, action) => {
 
   switch (action.type) {
     case ADD_COMMAND:
-      console.log(action);
       const command = {};
       // this id builder is faulty for when commands are deleted, but useful for testing front-end
       command.id = newState.commands.length;
@@ -88,11 +108,12 @@ export default (state=initialState, action) => {
       newState.procedure.splice(action.index, 0, newNode);
       break;
     case INSERT_INTO_PARENT_PROCEDURE:
-    // console.log('index:', action.index);
       newState.procedureIdCount++;
-      newState.procedure = newState.procedure.map((currentNode) => {
-        return traverse(currentNode, action.parentId, newNode);
-      });
+      const currentNode = newState.procedure;
+      newState.procedure = traverseThrough(currentNode, action.parentId, newNode, action.index);
+      break;
+    case RESET_PROCEDURE:
+      newState.procedure = [];
       break;
     case TOGGLE_EXECUTION:
       newState.isExecuting = action.bool;
