@@ -1,4 +1,5 @@
-import {functionVariables} from './cmdVariables.js';
+import store from '../store.jsx';
+import {currentProgramInstance} from '../reducers/commands.jsx';
 
 export class FunctionInstance {
   constructor(){
@@ -20,21 +21,28 @@ export class FunctionInstance {
       element.executeCommand();
     })
     this.executeAsyncActions();
+    store.dispatch(currentProgramInstance(this));
   }
 
   executeAsyncActions() {
     let time = 500;
-    this.asyncActions.forEach( (action) => {
-      setTimeout(function () {
+
+    for (var i = 0; i < this.asyncActions.length; i++){
+      let action = this.asyncActions[i];
+      let timeout = setTimeout(function () {
         action();
       }, time)
+      this[`setCommand${i}`] = timeout;
       time += 1000;
-    })
+    }
   }
 
-  clearVariables(){
-    return this.variables;
+  clearTimeouts(){
+    for (var i = 0; i < this.asyncActions.length; i++){
+      clearTimeout(this[`setCommand${i}`]);
+    }
   }
+
 }
 
 class Command {

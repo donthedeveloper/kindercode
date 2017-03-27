@@ -1,7 +1,11 @@
+import {FunctionInstance} from '../command_pattern/command.js';
+
 const initialState = {
   commands: [],
   procedure: [],
-  procedureIdCount: 0
+  procedureIdCount: 0,
+  isExecuting: false,
+  program: new FunctionInstance()
 }
 
 
@@ -39,9 +43,10 @@ function traverseThrough(currentNode, parentId, newNode, index) {
 
 // constants
 const ADD_COMMAND = 'ADD_COMMAND';
-
+const TOGGLE_EXECUTION = 'TOGGLE_EXECUTION';
 const INSERT_INTO_PROCEDURE = 'INSERT_INTO_PROCEDURE';
 const INSERT_INTO_PARENT_PROCEDURE = 'INSERT_INTO_PARENT_PROCEDURE';
+const PROGRAM_INSTANCE = 'PROGRAM_INSTANCE';
 const RESET_PROCEDURE = 'RESET_PROCEDURE';
 
 // action creaters
@@ -64,6 +69,21 @@ export const insertIntoParentProcedure = (parentId, commandId, index) => ({
   index
 });
 
+
+export const toggleExecution = (bool) => {
+  return {
+    type: TOGGLE_EXECUTION,
+    bool
+  }
+}
+
+export const currentProgramInstance = (program) => {
+  return {
+    type: PROGRAM_INSTANCE,
+    program
+  }
+}
+    
 export const resetProcedure = () => {
   return {type: RESET_PROCEDURE}
 }
@@ -94,6 +114,12 @@ export default (state=initialState, action) => {
       break;
     case RESET_PROCEDURE:
       newState.procedure = [];
+      break;
+    case TOGGLE_EXECUTION:
+      newState.isExecuting = action.bool;
+      break;
+    case PROGRAM_INSTANCE:
+      newState.program = action.program;
       break;
     default:
       return state;
