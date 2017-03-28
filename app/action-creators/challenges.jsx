@@ -8,9 +8,10 @@ export const TOGGLE_RED_TILE = 'TOGGLE_RED_TILE';
 export const COLLECT_RED_TILE_STAR = 'COLLECT_RED_TILE_STAR';
 export const INSTRUCTION_TEXT = 'INSTRUCTION_TEXT';
 
-export const toggleInstructions = () => {
+export const toggleInstructions = (bool) => {
   return {
-    type: INSTRUCTION_TEXT
+    type: INSTRUCTION_TEXT,
+    bool
   }
 }
 
