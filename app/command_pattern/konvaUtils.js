@@ -70,7 +70,7 @@ const collectStar = () => {
   let collectedStars = store.getState().transition.collectedStars;
   let intersection = store.getState().itemCollision.item;
   let redTile = store.getState().challenges.redTile;
-  if (intersection.type === 'yellowStars' && !intersection.collected) {
+  if (intersection.type === 'yellowStars' && !intersection.collected && !redTile.draw && !redTile.collected) {
     queueSound('collect');
     store.dispatch(collect(intersection));
     store.dispatch(incrementCollectedStars());
