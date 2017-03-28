@@ -62,17 +62,6 @@
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
 /******/
-/******/ 	// webpack-livereload-plugin
-/******/ 	(function() {
-/******/ 	  if (typeof window === "undefined") { return };
-/******/ 	  var id = "webpack-livereload-plugin-script";
-/******/ 	  if (document.getElementById(id)) { return; }
-/******/ 	  var el = document.createElement("script");
-/******/ 	  el.id = id;
-/******/ 	  el.async = true;
-/******/ 	  el.src = "http://localhost:35729/livereload.js";
-/******/ 	  document.getElementsByTagName("head")[0].appendChild(el);
-/******/ 	}());
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = 267);
 /******/ })
@@ -3134,8 +3123,8 @@ module.exports = reactProdInvariant;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var canvasHeight = exports.canvasHeight = 800;
-var canvasWidth = exports.canvasWidth = 800;
+var canvasHeight = exports.canvasHeight = 625;
+var canvasWidth = exports.canvasWidth = 625;
 var spriteWidth = exports.spriteWidth = canvasWidth / 8;
 var spriteHeight = exports.spriteHeight = canvasHeight / 8;
 
@@ -22433,9 +22422,9 @@ var If = exports.If = function (_Command) {
   _createClass(If, [{
     key: 'executeCommand',
     value: function executeCommand() {
-      if (this.condition.executeCommand()) {
-        this.executeCallbacks();
-      }
+      // if (this.condition.executeCommand()) {
+      this.executeCallbacks();
+      // }
     }
   }]);
 
@@ -22457,9 +22446,9 @@ var IfNot = exports.IfNot = function (_Command2) {
   _createClass(IfNot, [{
     key: 'executeCommand',
     value: function executeCommand() {
-      if (this.condition.executeCommand() === false) {
-        this.executeCallbacks();
-      }
+      // if (this.condition.executeCommand() === false) {
+      this.executeCallbacks();
+      // }
     }
   }]);
 
@@ -22474,7 +22463,8 @@ var redTileCheck = function redTileCheck() {
 };
 
 var Condition = exports.Condition = function () {
-  function Condition(condition) {
+  function Condition() {
+    var condition = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'redTile';
     var left = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
     var right = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
     var comparison = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
@@ -22490,7 +22480,7 @@ var Condition = exports.Condition = function () {
   _createClass(Condition, [{
     key: 'executeCommand',
     value: function executeCommand() {
-      if (this.condition === 'redTile') return redTileCheck();
+      if (this.condition === 'redTile') return true; //redTileCheck()
     }
   }]);
 
@@ -22626,14 +22616,14 @@ var collectStar = function collectStar() {
 var collectRedTileStar = function collectRedTileStar() {
   var intersection = _store2.default.getState().itemCollision.item;
   var redTile = _store2.default.getState().challenges.redTile;
-  if (redTile.xgrid !== intersection.xgrid || redTile.ygrid !== intersection.ygrid || !redTile.draw) {
-    _store2.default.dispatch((0, _commands.toggleExecution)(false));
-    _store2.default.dispatch((0, _transition.resetTransition)());
-    _store2.default.dispatch((0, _challenges.loadChallenge)(_store2.default.getState().challenges.id));
-  }
+  // if (redTile.xgrid !== intersection.xgrid || redTile.ygrid !== intersection.ygrid || !redTile.draw) {
+  //     store.dispatch(toggleExecution(false))
+  //     store.dispatch(resetTransition())
+  //     store.dispatch(loadChallenge(store.getState().challenges.id))
+  //   }
   if (intersection.type === 'yellowStars' && !intersection.collected && redTile.draw && !redTile.collected) {
     if (redTile.xgrid === intersection.xgrid && redTile.ygrid === intersection.ygrid) {
-      // queueSound('collect');
+      queueSound('collect');
       _store2.default.dispatch((0, _challenges.collect)(intersection));
       _store2.default.dispatch((0, _transition.incrementCollectedStars)());
       _store2.default.dispatch((0, _challenges.toggleRedTile)(false));
@@ -22775,8 +22765,6 @@ var CollectStar = exports.CollectStar = function (_Command7) {
   _createClass(CollectStar, [{
     key: 'executeCommand',
     value: function executeCommand() {
-      // const collectSound = queueSound.bind(this, 'collect');
-      // this.program.addAsync(collectSound);
       this.program.addAsync(collectStar);
     }
   }]);
@@ -23403,7 +23391,7 @@ var KonvaCanvas = function (_React$Component) {
           { onClick: function onClick() {
               return _this3.props.resetProcedureOnState(id);
             }, id: 'clear-program-btn' },
-          'Clear Program'
+          'Erase'
         ),
         this.props.challenges.totalStars === this.props.transition.collectedStars && _react2.default.createElement(
           'button',
@@ -23446,27 +23434,27 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Login = exports.Login = function Login(_ref) {
   var login = _ref.login;
   return _react2.default.createElement(
-    "form",
-    { onSubmit: function onSubmit(evt) {
+    'form',
+    { className: 'login-form', onSubmit: function onSubmit(evt) {
         evt.preventDefault();
         login(evt.target.username.value, evt.target.password.value);
       } },
     _react2.default.createElement(
-      "label",
+      'label',
       null,
-      "Email"
+      'Email:'
     ),
-    _react2.default.createElement("input", { name: "username" }),
+    _react2.default.createElement('input', { name: 'username' }),
     _react2.default.createElement(
-      "label",
+      'label',
       null,
-      "Password"
+      'Password:'
     ),
-    _react2.default.createElement("input", { name: "password", type: "password" }),
+    _react2.default.createElement('input', { name: 'password', type: 'password' }),
     _react2.default.createElement(
-      "button",
-      { type: "submit", value: "Login" },
-      "Login"
+      'button',
+      { type: 'submit', value: 'Login' },
+      'Login'
     )
   );
 };
@@ -23508,8 +23496,12 @@ var Navbar = function Navbar(_ref) {
   return _react2.default.createElement(
     'nav',
     { className: 'navbar' },
-    _react2.default.createElement('img', { className: 'nav-logo', id: 'logo', src: '/img/logo.png' }),
-    _react2.default.createElement('img', { className: 'nav-name', src: '/img/kinderCode.png' }),
+    _react2.default.createElement(
+      'div',
+      { className: 'logo-container' },
+      _react2.default.createElement('img', { className: 'nav-logo', id: 'logo', src: '/img/logo.png' }),
+      _react2.default.createElement('img', { className: 'nav-name', src: '/img/kinderCode.png' })
+    ),
     user ? _react2.default.createElement(_WhoAmI2.default, null) : _react2.default.createElement(_Login2.default, null)
   );
 };
@@ -23671,7 +23663,9 @@ var WhoAmI = exports.WhoAmI = function WhoAmI(_ref) {
     _react2.default.createElement(
       "span",
       { className: "whoami-user-name" },
-      user && user.name
+      "Hey ",
+      user && user.name,
+      ", we kept your progress for you. Here's challenge 2!"
     ),
     _react2.default.createElement(
       "button",
