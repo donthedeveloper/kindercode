@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
 
 export const WhoAmI = ({ user, logout }) => (
   <div className="whoami">
-    <span className="whoami-user-name">{user && user.name}</span>
+    <span className="whoami-user-name">Hey {user && user.name}, we kept your progress for you. Here's challenge 2!</span>
     <button className="logout" onClick={logout}>Logout</button>
   </div>
 )

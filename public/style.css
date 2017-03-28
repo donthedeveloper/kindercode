@@ -3,12 +3,7 @@
 }
 
 body {
-  background-color: #e2e2e2;
-     /*font-family: 'Raleway', sans-serif; */
-  /*font-family: 'Open Sans', sans-serif; */
-  /*   font-family: 'Montserrat', sans-serif; */
-  /*   font-family: 'Merriweather', serif; */
-  /*   font-family: 'Droid Sans', sans-serif; */
+  background-color: #2f5bb7;
   font-family: 'ABeeZee', sans-serif;
 }
 
@@ -19,20 +14,15 @@ body {
   justify-content: flex-start;
 }
 
-.play-container {
-  flex-basis: 100%;
-  display: flex;
-}
-
 
 
 /*---------------- START NAVBAR ----------------*/
 .navbar {
   display: flex;
-  flex-basis: 100%;
   align-items: center;
-  background-color: #283593;
-  /*height: 20%;*/
+  background-color: #2f5bb7;
+  padding: 1rem;
+  justify-content: space-between;
 }
 
 .nav-logo {
@@ -46,24 +36,55 @@ body {
   height: 50px;
   margin-left: 1rem
 }
+
+/*.logo-container {
+
+}*/
+
+.login-form {
+  color: #fff;
+}
+
+.login-form input {
+  margin: 0 2rem 0 .5rem;
+  border-radius: 5px;
+  padding: .5rem;
+  border: none;
+}
+
+.login-form button,
+.whoami button {
+  padding: .5rem 1rem;
+  border: 1px solid #fff;
+  background-color: #f47a42;
+}
+
+.whoami {
+  color: #fff;
+}
+
+.whoami span {
+  margin-right: 1rem;
+}
+
 /*---------------- END NAVBAR ----------------*/
 
+.play-container {
+  flex-basis: 50%;
+  display: flex;
+  max-height: 625px;
+}
 
 
 /*---------------- START DRAG AND DROP ----------------*/
-.drag-container-wrapper {
-  display: flex;
-  /*flex-direction: column;*/
-  /*flex-basis: 50%;*/
-}
+/*.drag-container-wrapper {
+
+}*/
 
 .drag-container {
-  /*display: none;*/
   display: flex;
   flex-basis: 40%;
-  /*flex-direction: column;*/
-  /*margin: 0;*/
-  /*flex-wrap: wrap;*/
+  margin-left: 45px;
 }
 
 .draggable-items {
@@ -83,8 +104,12 @@ body {
 .action-container {
   display: flex;
   flex-direction: column;
-  flex-basis: 60%;
+  flex-basis: 50%;
+  height: 50%;
   background-color: #feeee7;
+  border: 1px solid #feeee7;
+  overflow: auto;
+  border-top-left-radius: 10px;
 }
 
 .action-header {
@@ -105,8 +130,12 @@ body {
 .programming-container {
   display: flex;
   flex-direction: column;
-  flex-basis: 40%;
+  flex-basis: 50%;
+  height: 50%;
   background-color: #e7f0fe;
+
+  overflow: auto;
+  border-bottom-left-radius: 10px;
 }
 
 .programming-header {
@@ -126,9 +155,13 @@ body {
 
 .drop-zone-container {
   display: flex;
+  position: static;
   flex-direction: column;
   flex-basis: 50%;
   background-color: #fff;
+  overflow: auto;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .drop-zone-header {
@@ -137,7 +170,6 @@ body {
 }
 
 .drop-zone li {
-  background-color: green;
   text-align: center;
   width: 80%;
   border-radius: 10px;
@@ -147,15 +179,13 @@ body {
 }
 
 .drop-zone-item {
-  /*display: none; */
   width: 80%;
   border-radius: 10px;
   padding: 1rem;
   margin: 1rem auto;
-  /*background-color: rgba(38, 12, 12, .10);*/
 }
 
-.drop-zone-program {
+.drop-zone-program { /* program item */
   background-color: green;
   text-align: center;
   width: 80%;
@@ -170,34 +200,47 @@ body {
 
 
 button {
-  text-align: right;
-  border: 2px solid #0277bd;
+  /*border: 2px solid #0277bd;*/
   background: #0277bd;
   padding: 10px 20px;
-  text-decoration: none;
   border-radius: 5px;
   color: white;
-  font-weight: 400;
+  border: none;
 }
 
 .konva-container {
-  flex-basis: 60%;
-  /*display: none;*/
+  flex-basis: 50%;
+  background-color: #fff;
+  position: absolute;
+  right: 45px;
+  border-radius: 10px;
+}
+
+.konva-container button {
+  position: absolute;
+  /*top: 15px;*/
+  bottom: 15px;
+  /*background-color: #f47a42;*/
 }
 
 #play-button {
   padding: 10px 15px;
   margin-right: 10px;
+  right: 160px;
+  background-color: #f47a42;
+  /*border: 2px solid #f47a42;*/
 }
 
 #restart-button {
   padding: 10px 15px;
   margin-right: 10px;
+  right: 100px;
 }
 
 #clear-program-btn {
   padding: 10px 15px;
   margin-right: 10px;
+  right: 15px;
 }
 
 #next-challenge-btn {
