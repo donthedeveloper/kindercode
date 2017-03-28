@@ -23347,7 +23347,6 @@ var KonvaCanvas = function (_React$Component) {
           _react2.default.createElement(
             _reactKonva.Layer,
             { ref: 'konvaCanvas', id: 'konvaCanvas' },
-            _react2.default.createElement(_CanvasOutline2.default, null),
             _constants.VERTICALGRID.map(function (points) {
               return _react2.default.createElement(_GridLine2.default, { key: points, points: points });
             }),

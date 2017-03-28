@@ -91,7 +91,6 @@ class KonvaCanvas extends React.Component {
       <div className="konva-container" id="konva-container">
         <Stage width={canvasWidth} height={canvasHeight}>
           <Layer ref="konvaCanvas" id="konvaCanvas">
-            <CanvasOutline />
 
             {VERTICALGRID.map(points => {
               return (
