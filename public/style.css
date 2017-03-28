@@ -4,17 +4,10 @@
 
 body {
   background-color: #2f5bb7;
-     /*font-family: 'Raleway', sans-serif; */
-  /*font-family: 'Open Sans', sans-serif; */
-  /*   font-family: 'Montserrat', sans-serif; */
-  /*   font-family: 'Merriweather', serif; */
-  /*   font-family: 'Droid Sans', sans-serif; */
   font-family: 'ABeeZee', sans-serif;
 }
 
 .app-container {
-  /*flex-basis: 100%;*/
-  /*max-height: 1100px;*/
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -26,12 +19,8 @@ body {
 /*---------------- START NAVBAR ----------------*/
 .navbar {
   display: flex;
-  /*flex-basis: 10%;*/
   align-items: center;
   background-color: #2f5bb7;
-  /*border-top: 1px solid white;
-  border-bottom: 1px solid white;*/
-  /*height: 200px;*/
   padding: 1rem;
   justify-content: space-between;
 }
@@ -48,17 +37,13 @@ body {
   margin-left: 1rem
 }
 
-.logo-container {
+/*.logo-container {
 
-}
+}*/
 
 .login-form {
   color: #fff;
 }
-
-/*.login-form label {
-  margin-right: 1rem;
-}*/
 
 .login-form input {
   margin: 0 2rem 0 .5rem;
@@ -86,28 +71,19 @@ body {
 .play-container {
   flex-basis: 50%;
   display: flex;
-  max-height: 650px;
+  max-height: 625px;
 }
 
 
 /*---------------- START DRAG AND DROP ----------------*/
-.drag-container-wrapper {
-  display: flex;
-  /*flex-direction: column;*/
-  /*flex-basis: 50%;*/
+/*.drag-container-wrapper {
 
-  border-top: 5px solid pink;
-}
+}*/
 
 .drag-container {
-  display: none;
   display: flex;
   flex-basis: 40%;
-  /*max-height: 800px;*/
-  /*flex-direction: column;*/
-  /*margin: 0;*/
-  /*flex-wrap: wrap;*/
-  /*border-radius: 5px;*/
+  margin-left: 45px;
 }
 
 .draggable-items {
@@ -130,10 +106,9 @@ body {
   flex-basis: 50%;
   height: 50%;
   background-color: #feeee7;
-
   border: 1px solid #feeee7;
-
   overflow: auto;
+  border-top-left-radius: 10px;
 }
 
 .action-header {
@@ -159,6 +134,7 @@ body {
   background-color: #e7f0fe;
 
   overflow: auto;
+  border-bottom-left-radius: 10px;
 }
 
 .programming-header {
@@ -179,14 +155,12 @@ body {
 .drop-zone-container {
   display: flex;
   position: static;
-  /*display: none;*/
   flex-direction: column;
   flex-basis: 50%;
   background-color: #fff;
-  /*max-height: 800px;*/
   overflow: auto;
-  /*height: 800px;*/
   border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .drop-zone-header {
@@ -195,7 +169,6 @@ body {
 }
 
 .drop-zone li {
-  /*background-color: green;*/
   text-align: center;
   width: 80%;
   border-radius: 10px;
@@ -226,51 +199,43 @@ body {
 
 
 button {
-  /*text-align: right;*/
   border: 2px solid #0277bd;
   background: #0277bd;
   padding: 10px 20px;
-  /*text-decoration: none;*/
   border-radius: 5px;
   color: white;
-  /*font-weight: 400;*/
 }
 
 .konva-container {
   flex-basis: 50%;
   background-color: #fff;
-  right: 0;
-  /*left: 0;
-  top: 0;
-  bottom: 0;*/
   position: absolute;
-  border-top-left-radius: 10px;
-  /*border: 0;*/
+  right: 45px;
+  border-radius: 10px;
 }
 
-/*.konva-container > div:first-child > div:first-child {
-  background-color: red;
-}*/
-
-/*.konvajs-content {
-  margin-right: 0;
-}*/
+.konva-container button {
+  position: absolute;
+  /*top: 15px;*/
+  bottom: 15px;
+}
 
 #play-button {
   padding: 10px 15px;
   margin-right: 10px;
-  /*position: absolute;
-  z-index: 100;*/
+  right: 160px;
 }
 
 #restart-button {
   padding: 10px 15px;
   margin-right: 10px;
+  right: 100px;
 }
 
 #clear-program-btn {
   padding: 10px 15px;
   margin-right: 10px;
+  right: 15px;
 }
 
 #next-challenge-btn {
