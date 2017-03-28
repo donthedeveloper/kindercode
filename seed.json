@@ -5,18 +5,18 @@
       "name": "Jennybenny",
       "email": "jenny@iamakid.com",
       "password": "1234",
-      "challenge_id": 1
+      "challenge_id": 2
     },{
       "name": "LilTimmy",
       "email": "timmy@iamakid.com",
       "password": "1234",
       "current_program": [{"id":0,"commandId":0,"subProcedure":[]}],
-      "challenge_id": 2
+      "challenge_id": 4
     }, {
       "name": "Speckles",
       "email": "speckles@iamakid.com",
       "password": "1234",
-      "challenge_id": 1
+      "challenge_id": 3
     }
   ],
   "challenges":
@@ -73,8 +73,8 @@
       "redTile" : {
         "xgrid": 1,
         "ygrid": 3,
-        "draw": true,
-        "collected": false
+        "draw": false,
+        "collected": true
       },
       "cactus": [
         {
@@ -89,6 +89,75 @@
         "type": "sprite",
         "name": "pig",
         "url": "pig-small.png"
+      }
+    },{
+      "total_stars": 5,
+      "yellow_star": [
+        {
+        "id": 1,
+        "xgrid": 0,
+        "ygrid": 1,
+        "type": "yellowStars",
+        "width": 50,
+        "height": 50,
+        "collected": false
+        },
+        {
+          "id": 2,
+          "xgrid": 0,
+          "ygrid": 4,
+          "type": "yellowStars",
+          "width": 50,
+          "height": 50,
+          "collected": false
+        },
+        {
+          "id": 3,
+          "xgrid": 1,
+          "ygrid": 4,
+          "type": "yellowStars",
+          "width": 50,
+          "height": 50,
+          "collected": false
+        },
+        {
+          "id": 4,
+          "xgrid": 3,
+          "ygrid": 4,
+          "type": "yellowStars",
+          "width": 50,
+          "height": 50,
+          "collected": false
+        }
+      ],
+      "blue_star": [{
+          "id": 1,
+          "xgrid": 3,
+          "ygrid": 7,
+          "type": "blueStars",
+          "width": 50,
+          "height": 50,
+          "collected": false
+      }],
+      "redTile" : {
+        "xgrid": 1,
+        "ygrid": 4,
+        "draw": true,
+        "collected": false
+      },
+      "cactus": [
+        {
+        "id": 1,
+        "xgrid": 0,
+        "ygrid": 3,
+        "type": "cactus",
+        "width": 50,
+        "height": 50
+      }],
+      "sprite": {
+        "type": "sprite",
+        "name": "panda",
+        "url": "panda-small.png"
       }
     },
     {
@@ -158,6 +227,89 @@
         "id": 2,
         "xgrid": 4,
         "ygrid": 4,
+        "type": "cactus",
+        "width": 50,
+        "height": 50
+      }],
+      "sprite": {
+        "type": "sprite",
+        "name": "pig",
+        "url": "pig-small.png"
+      }
+    },{
+      "total_stars": 5,
+      "yellow_star": [
+        {
+        "id": 1,
+        "xgrid": 0,
+        "ygrid": 4,
+        "type": "yellowStars",
+        "width": 50,
+        "height": 50,
+        "collected": false
+        },
+        {
+          "id": 2,
+          "xgrid": 2,
+          "ygrid": 2,
+          "type": "yellowStars",
+          "width": 50,
+          "height": 50,
+          "collected": false
+        },
+        {
+          "id": 3,
+          "xgrid": 3,
+          "ygrid": 3,
+          "type": "yellowStars",
+          "width": 50,
+          "height": 50,
+          "collected": false
+        },
+        {
+          "id": 4,
+          "xgrid": 7,
+          "ygrid": 5,
+          "type": "yellowStars",
+          "width": 50,
+          "height": 50,
+          "collected": false
+        }
+      ],
+      "blue_star": [{
+          "id": 1,
+          "xgrid": 4,
+          "ygrid": 2,
+          "type": "blueStars",
+          "width": 50,
+          "height": 50,
+          "collected": false
+      }],
+      "redTile" : {
+        "xgrid": 3,
+        "ygrid": 3,
+        "draw": true,
+        "collected": false
+      },
+      "cactus": [
+        {
+        "id": 1,
+        "xgrid": 2,
+        "ygrid": 1,
+        "type": "cactus",
+        "width": 50,
+        "height": 50
+      },{
+        "id": 2,
+        "xgrid": 3,
+        "ygrid": 2,
+        "type": "cactus",
+        "width": 50,
+        "height": 50
+      },{
+        "id": 3,
+        "xgrid": 6,
+        "ygrid": 5,
         "type": "cactus",
         "width": 50,
         "height": 50
