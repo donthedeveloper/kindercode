@@ -96,7 +96,7 @@ const collectRedTileStar = () => {
     }
   if (intersection.type === 'yellowStars' && !intersection.collected && redTile.draw && !redTile.collected) {
     if (redTile.xgrid === intersection.xgrid && redTile.ygrid === intersection.ygrid) {
-      // queueSound('collect');
+      queueSound('collect');
       store.dispatch(collect(intersection));
       store.dispatch(incrementCollectedStars());
       store.dispatch(toggleRedTile(false));
@@ -174,8 +174,6 @@ export class CollectStar extends Command {
   }
 
   executeCommand(){
-    // const collectSound = queueSound.bind(this, 'collect');
-    // this.program.addAsync(collectSound);
     this.program.addAsync(collectStar);
   }
 }
