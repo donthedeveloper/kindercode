@@ -8,9 +8,9 @@ export class If extends Command {
   }
 
   executeCommand() {
-    if (this.condition.executeCommand()) {
+    // if (this.condition.executeCommand()) {
       this.executeCallbacks()
-    }
+    // }
   }
 }
 
@@ -21,9 +21,9 @@ export class IfNot extends Command {
   }
 
   executeCommand() {
-    if (this.condition.executeCommand() === false) {
+    // if (this.condition.executeCommand() === false) {
       this.executeCallbacks()
-    }
+    // }
   }
 }
 
@@ -36,7 +36,7 @@ const redTileCheck = () => {
 }
 
 export class Condition {
-  constructor(condition, left = null, right = null, comparison = null) {
+  constructor(condition = 'redTile', left = null, right = null, comparison = null) {
     this.left = left
     this.right = right
     this.comparison = comparison
@@ -44,6 +44,6 @@ export class Condition {
   }
 
   executeCommand() {
-    if (this.condition === 'redTile') return redTileCheck();
+    if (this.condition === 'redTile') return true; //redTileCheck()
   }
 }

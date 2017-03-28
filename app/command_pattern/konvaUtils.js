@@ -87,11 +87,11 @@ const collectStar = () => {
 const collectRedTileStar = () => {
   let intersection = store.getState().itemCollision.item;
   let redTile = store.getState().challenges.redTile;
-  if (redTile.xgrid !== intersection.xgrid || redTile.ygrid !== intersection.ygrid || !redTile.draw) {
-      store.dispatch(toggleExecution(false))
-      store.dispatch(resetTransition())
-      store.dispatch(loadChallenge(store.getState().challenges.id))
-    }
+  // if (redTile.xgrid !== intersection.xgrid || redTile.ygrid !== intersection.ygrid || !redTile.draw) {
+  //     store.dispatch(toggleExecution(false))
+  //     store.dispatch(resetTransition())
+  //     store.dispatch(loadChallenge(store.getState().challenges.id))
+  //   }
   if (intersection.type === 'yellowStars' && !intersection.collected && redTile.draw && !redTile.collected) {
     if (redTile.xgrid === intersection.xgrid && redTile.ygrid === intersection.ygrid) {
       store.dispatch(collect(intersection));
