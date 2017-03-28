@@ -23373,12 +23373,16 @@ var KonvaCanvas = function (_React$Component) {
               ref: 'rect',
               fillPatternImage: image,
               fillPatternRepeat: 'no-repeat',
+              fillPatternScale: {
+                x: 0.25,
+                y: 0.25
+              },
               width: width,
               height: height,
               rotation: rotation,
               offset: {
-                x: _constants.spriteWidth / 2,
-                y: _constants.spriteHeight / 2
+                x: _constants.spriteWidth / 2.15,
+                y: _constants.spriteHeight / 2.15
               }
             })
           )

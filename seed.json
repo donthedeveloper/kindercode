@@ -88,7 +88,7 @@
       "sprite": {
         "type": "sprite",
         "name": "pig",
-        "url": "pig-small.png"
+        "url": "pig.png"
       }
     },{
       "total_stars": 5,
@@ -157,7 +157,7 @@
       "sprite": {
         "type": "sprite",
         "name": "panda",
-        "url": "panda-small.png"
+        "url": "panda.png"
       }
     },
     {
@@ -234,7 +234,7 @@
       "sprite": {
         "type": "sprite",
         "name": "snake",
-        "url": "snake-small.png"
+        "url": "snake.png"
       }
     },{
       "total_stars": 5,
@@ -317,7 +317,7 @@
       "sprite": {
         "type": "sprite",
         "name": "parrot",
-        "url": "parrot-small.png"
+        "url": "parrot.png"
       }
     }
   ]

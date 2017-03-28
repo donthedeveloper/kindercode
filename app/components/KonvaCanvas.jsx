@@ -132,12 +132,16 @@ class KonvaCanvas extends React.Component {
               ref="rect"
               fillPatternImage={image}
               fillPatternRepeat={'no-repeat'}
+              fillPatternScale= {{
+                x: 0.25,
+                y: 0.25
+              }}
               width={width}
               height={height}
               rotation = {rotation}
               offset = {{
-                x: spriteWidth / 2,
-                y: spriteHeight / 2,
+                x: spriteWidth / 2.15,
+                y: spriteHeight / 2.15
               }}
             />
           </Layer>
