@@ -16,7 +16,8 @@ const initialState = {
     ygrid: 0,
     draw: false,
     collected: false
-  }
+  },
+  renderText: false
 }
 
 let reducer = (state = initialState, action) => {

@@ -6,6 +6,13 @@ export const COLLECT_STAR = 'COLLECT_STAR';
 export const NUM_CHALLENGES = 'NUM_CHALLENGES';
 export const TOGGLE_RED_TILE = 'TOGGLE_RED_TILE';
 export const COLLECT_RED_TILE_STAR = 'COLLECT_RED_TILE_STAR';
+export const INSTRUCTION_TEXT = 'INSTRUCTION_TEXT';
+
+export const toggleInstructions = () => {
+  return {
+    type: INSTRUCTION_TEXT
+  }
+}
 
 export const collect = (star) => {
   return {
