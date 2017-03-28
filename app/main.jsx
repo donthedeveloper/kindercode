@@ -22,10 +22,11 @@ import onEnterData from './utilities/onEnterData';
 
 // actions
 import { addCommand } from './reducers/commands';
-import {loadChallenge, setTotalChallengeNum} from './action-creators/challenges'
+import {loadChallenge, setTotalChallengeNum, toggleInstructions} from './action-creators/challenges'
 
 const onAppContainerEnter = () => {
   store.dispatch(loadChallenge(1))
+  store.dispatch(toggleInstructions(true))
   store.dispatch(setTotalChallengeNum())
   onEnterData.commands.forEach((command) => {
     store.dispatch(addCommand(command.text, command.commandType));

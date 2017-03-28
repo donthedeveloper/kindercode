@@ -142,6 +142,7 @@ class KonvaCanvas extends React.Component {
             />
           </Layer>
         </Stage>
+        <p>Challenge {id}</p>
         <button id="play-button" onClick={() => this.playButton()}>
           <i className="fa fa-play" aria-hidden="true"></i>
         </button>
