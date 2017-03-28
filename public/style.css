@@ -81,6 +81,15 @@ body {
 
 }*/
 
+.loop-input {
+  display: inline-block;
+  text-align: center;
+  width: 25px;
+  margin: 0 10px;
+  border-radius: 5px;
+  border: none;
+}
+
 .drag-container {
   display: flex;
   flex-basis: 40%;

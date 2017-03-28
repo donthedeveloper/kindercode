@@ -12,10 +12,11 @@ const initialState = {
 
 // utility functions
 class Node {
-  constructor(id, commandId, children=[]) {
+  constructor(id, commandId, children=[], input) {
     this.id = id;
     this.commandId = commandId;
     this.children = children;
+    this.input = input;
   }
 }
 
@@ -56,17 +57,19 @@ export const addCommand = (text, commandType) => ({
   commandType
 });
 
-export const insertIntoProcedure = (index, commandId) => ({
+export const insertIntoProcedure = (index, commandId, input) => ({
   type: INSERT_INTO_PROCEDURE,
   index,
-  commandId
+  commandId,
+  input
 });
 
-export const insertIntoParentProcedure = (parentId, commandId, index) => ({
+export const insertIntoParentProcedure = (parentId, commandId, index, input) => ({
   type: INSERT_INTO_PARENT_PROCEDURE,
   parentId,
   commandId,
-  index
+  index,
+  input
 });
 
 
@@ -83,7 +86,7 @@ export const currentProgramInstance = (program) => {
     program
   }
 }
-    
+
 export const resetProcedure = () => {
   return {type: RESET_PROCEDURE}
 }
@@ -91,12 +94,12 @@ export const resetProcedure = () => {
 // reducer
 export default (state=initialState, action) => {
   const newState = Object.assign({}, state);
-  const newNode = new Node(newState.procedureIdCount, action.commandId, []);
+  const newNode = new Node(newState.procedureIdCount, action.commandId, [], action.input);
+  console.log('input:', action.input);
 
   switch (action.type) {
     case ADD_COMMAND:
       const command = {};
-      // this id builder is faulty for when commands are deleted, but useful for testing front-end
       command.id = newState.commands.length;
       command.text = action.text;
       command.commandType = action.commandType;
