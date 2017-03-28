@@ -22,4 +22,3 @@ let mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, null)(Notifier)
-
