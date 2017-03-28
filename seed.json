@@ -233,8 +233,8 @@
       }],
       "sprite": {
         "type": "sprite",
-        "name": "pig",
-        "url": "pig-small.png"
+        "name": "snake",
+        "url": "snake-small.png"
       }
     },{
       "total_stars": 5,
@@ -316,8 +316,8 @@
       }],
       "sprite": {
         "type": "sprite",
-        "name": "panda",
-        "url": "panda-small.png"
+        "name": "parrot",
+        "url": "parrot-small.png"
       }
     }
   ]

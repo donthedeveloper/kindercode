@@ -1,10 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-
-function playSound (url) {
-  const audio = new Audio(url)
-  audio.play()
-}
+import playSound from '../utilities/playSound';
 
 class Notifier extends React.Component {
 
@@ -26,4 +22,3 @@ let mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, null)(Notifier)
-
