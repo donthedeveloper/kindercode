@@ -2,6 +2,7 @@ import React from 'react';
 import {Layer, Rect, Stage} from 'react-konva';
 import {canvasWidth, canvasHeight, spriteWidth, spriteHeight, VERTICALGRID, HORIZONTALGRID} from '../constants/constants';
 import {mapStateToCmdObj} from '../command_pattern/mapStateToCmdObj.js';
+import {setSound} from '../action-creators/audioNotifier';
 import Star from '../components/Star';
 import Cactus from '../components/Cactus';
 import GridLine from '../components/GridLine';

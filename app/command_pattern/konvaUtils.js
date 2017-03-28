@@ -71,6 +71,7 @@ const collectStar = () => {
   let intersection = store.getState().itemCollision.item;
   let redTile = store.getState().challenges.redTile;
   if (intersection.type === 'yellowStars' && !intersection.collected) {
+    queueSound('collect');
     store.dispatch(collect(intersection));
     store.dispatch(incrementCollectedStars());
     if (redTile.xgrid === intersection.xgrid && redTile.ygrid === intersection.ygrid) {
@@ -79,6 +80,7 @@ const collectStar = () => {
     }
   }
   else if (intersection.type === 'blueStars' && collectedStars >= 3 && !intersection.collected) {
+    queueSound('collect');
     store.dispatch(collect(intersection));
     store.dispatch(incrementCollectedStars());
   }
@@ -94,6 +96,7 @@ const collectRedTileStar = () => {
     }
   if (intersection.type === 'yellowStars' && !intersection.collected && redTile.draw && !redTile.collected) {
     if (redTile.xgrid === intersection.xgrid && redTile.ygrid === intersection.ygrid) {
+      // queueSound('collect');
       store.dispatch(collect(intersection));
       store.dispatch(incrementCollectedStars());
       store.dispatch(toggleRedTile(false));
@@ -171,6 +174,8 @@ export class CollectStar extends Command {
   }
 
   executeCommand(){
+    // const collectSound = queueSound.bind(this, 'collect');
+    // this.program.addAsync(collectSound);
     this.program.addAsync(collectStar);
   }
 }
