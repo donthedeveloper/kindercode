@@ -93,7 +93,6 @@ export const resetProcedure = () => {
 export default (state=initialState, action) => {
   const newState = Object.assign({}, state);
   const newNode = new Node(newState.procedureIdCount, action.commandId, [], action.input);
-  console.log('input:', action.input);
 
   switch (action.type) {
     case ADD_COMMAND:
