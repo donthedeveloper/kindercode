@@ -21,7 +21,7 @@ body {
   display: flex;
   align-items: center;
   background-color: #2f5bb7;
-  padding: 1rem;
+  padding: 1.1rem 3rem 1.1rem 2rem;
   justify-content: space-between;
 }
 
@@ -72,7 +72,7 @@ body {
 .play-container {
   flex-basis: 50%;
   display: flex;
-  max-height: 625px;
+  max-height: 610px;
 }
 
 
@@ -83,7 +83,7 @@ body {
 
 .drag-container {
   display: flex;
-  flex-basis: 40%;
+  flex-basis: 42%;
   margin-left: 45px;
 }
 
@@ -107,7 +107,7 @@ body {
   flex-basis: 50%;
   height: 50%;
   background-color: #feeee7;
-  border: 1px solid #feeee7;
+  border: 1px solid #ffc4aa;
   overflow: auto;
   border-top-left-radius: 10px;
 }
@@ -115,6 +115,7 @@ body {
 .action-header {
   text-align: center;
   font-weight: 700;
+  margin-bottom: .5rem;
 }
 
 .action-list li {
@@ -133,6 +134,7 @@ body {
   flex-basis: 50%;
   height: 50%;
   background-color: #e7f0fe;
+  border: 1px solid #a8caff;
 
   overflow: auto;
   border-bottom-left-radius: 10px;
@@ -141,6 +143,7 @@ body {
 .programming-header {
   text-align: center;
   font-weight: 700;
+  margin-bottom: .5rem;
 }
 
 .programming-list li {
@@ -167,6 +170,7 @@ body {
 .drop-zone-header {
   text-align: center;
   background-color: #fff;
+  margin-bottom: .5rem;
 }
 
 .drop-zone li {
@@ -216,19 +220,41 @@ button {
   border-radius: 10px;
 }
 
-.konva-container button {
+.konva-container button,
+#challenge-text {
   position: absolute;
-  /*top: 15px;*/
-  bottom: 15px;
-  /*background-color: #f47a42;*/
+  bottom: 19px;
+}
+
+.konva-container button {
+  background-color: rgba(2,119,189, .5);
+  cursor: pointer;
+}
+.konva-container button:hover {
+  background-color: rgba(2,119,189, 1);
+}
+
+#challenge-text {
+  left: 20px;
+  bottom: 25px;
+  margin: 0;
+  font-size: 20px;
+  color: rgba(0, 0, 0, .5);
+  /*border: 1px dotted #000;*/
+  /*padding: .75rem 1.5rem;*/
+  /*background-color: rgba(255, 255, 255, .75);*/
+  border-radius: 10px;
 }
 
 #play-button {
   padding: 10px 15px;
   margin-right: 10px;
   right: 160px;
-  background-color: #f47a42;
-  /*border: 2px solid #f47a42;*/
+  background-color: rgba(244,122,66, .5);
+}
+#play-button:hover {
+  cursor: pointer;
+  background-color: rgba(244,122,66, 1);
 }
 
 #restart-button {
@@ -245,5 +271,48 @@ button {
 
 #next-challenge-btn {
   padding: 10px 15px;
-  background-color: darkred;
+  left: 20px;
+  background-color: rgba(244,122,66, 1);
+}
+
+.instruction-text {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  border-radius: 10px;
+  width: 65%;
+  height: 540px; /* change this */
+  text-align: center;
+  padding: 2rem;
+  margin: auto;
+  border: 1px solid #000;
+  box-shadow: 0 0 0 2038px rgba(0,0,0,.5);
+}
+
+.instruction-text h2 {
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+
+.instruction-text > div {
+  margin: 0 auto 2.25rem;
+  text-align: left;
+}
+
+.instruction-text p {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.instruction-text img {
+  float: left;
+  height: 35px;
+  margin-right: 15px;
+}
+
+.instruction-text button {
+  margin: 0 auto;
 }

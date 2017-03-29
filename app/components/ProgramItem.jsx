@@ -46,8 +46,10 @@ class DropItem extends React.Component {
       styles.backgroundColor = '#a6fcaa';
     } else if (this.props.commandType === 'action') {
       styles.backgroundColor = '#f47a42';
+      styles.border = '1px solid #fff';
     } else if (this.props.commandType === 'programming') {
       styles.backgroundColor = '#4286f4';
+      styles.border = '1px solid #fff';
     }
 
     return connectDropTarget(

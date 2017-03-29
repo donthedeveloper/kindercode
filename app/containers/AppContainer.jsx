@@ -24,6 +24,7 @@ const AppComponent = ({renderInstructions, turnOffInstructions, spriteURL}) => {
         <KonvaContainer />
         { renderInstructions &&
           <div className='instruction-text'>
+            <h2>Welcome to KinderCode!</h2>
             <div id='spriteInstructions'>
               <img src={sprite}/>
               <p>The goal is to collect all 5 stars on the grid. Move your sprite across the canvas with the action and programming blocks. Make sure to nest move actions in loops whenever you can. </p>
@@ -38,11 +39,11 @@ const AppComponent = ({renderInstructions, turnOffInstructions, spriteURL}) => {
             </div>
             <div id='redStarInstructions'>
               <img src={redStar}/>
-              <p>On every challenge, there will be one star that randomly switches between red and yellow. Use the IF and If Not code blocks with the collect star and collect red stile star code blocks when you get there!</p>
+              <p>On every challenge, there will be one star that randomly switches between red and yellow. Use the If and If Not code blocks with the Collect Star and Collect Red Tile Star code blocks when you get there!</p>
             </div>
             <div id='cactusInstructions'>
               <img src={cactus}/>
-              <p>Avoid the cactii at all costs! Running into one will reset the grid to its position at beginning of the challenge.</p>
+              <p>Avoid the cactii at all costs! Running into one will reset the grid to its position at the beginning of the challenge.</p>
             </div>
             <button onClick={() => turnOffInstructions()} >
               Let's play!

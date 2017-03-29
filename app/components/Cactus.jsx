@@ -10,7 +10,7 @@ class Cactus extends React.Component {
       image: '',
     }
   }
-
+  
   componentDidMount() {
     const image = new window.Image();
     image.src = './img/cactus.png';
