@@ -22718,15 +22718,28 @@ var collectStar = function collectStar() {
   var collectedStars = _store2.default.getState().transition.collectedStars;
   var intersection = _store2.default.getState().itemCollision.item;
   var redTile = _store2.default.getState().challenges.redTile;
-  if (intersection.type === 'yellowStars' && !intersection.collected && !redTile.draw && !redTile.collected) {
-    queueSound('collect');
-    _store2.default.dispatch((0, _challenges.collect)(intersection));
-    _store2.default.dispatch((0, _transition.incrementCollectedStars)());
+
+  if (!intersection.collected) {
     if (redTile.xgrid === intersection.xgrid && redTile.ygrid === intersection.ygrid) {
-      _store2.default.dispatch((0, _challenges.toggleRedTile)(false));
-      _store2.default.dispatch((0, _challenges.collectRedTile)(redTile));
+      if (!redTile.draw) {
+        queueSound('collect');
+        _store2.default.dispatch((0, _challenges.collect)(intersection));
+        _store2.default.dispatch((0, _transition.incrementCollectedStars)());
+        _store2.default.dispatch((0, _challenges.toggleRedTile)(false));
+        _store2.default.dispatch((0, _challenges.collectRedTile)(redTile));
+      }
+    } else if (intersection.type === 'yellowStars') {
+      queueSound('collect');
+      _store2.default.dispatch((0, _challenges.collect)(intersection));
+      _store2.default.dispatch((0, _transition.incrementCollectedStars)());
+    } else if (intersection.type === 'blueStars' && collectedStars > 2 && !intersection.collected) {
+      queueSound('collect');
+      _store2.default.dispatch((0, _challenges.collect)(intersection));
+      _store2.default.dispatch((0, _transition.incrementCollectedStars)());
     }
-  } else if (intersection.type === 'blueStars' && collectedStars >= 3 && !intersection.collected) {
+  }
+
+  if (intersection.type === 'yellowStars' && !intersection.collected && redTile.collected) {
     queueSound('collect');
     _store2.default.dispatch((0, _challenges.collect)(intersection));
     _store2.default.dispatch((0, _transition.incrementCollectedStars)());
@@ -22736,11 +22749,7 @@ var collectStar = function collectStar() {
 var collectRedTileStar = function collectRedTileStar() {
   var intersection = _store2.default.getState().itemCollision.item;
   var redTile = _store2.default.getState().challenges.redTile;
-  // if (redTile.xgrid !== intersection.xgrid || redTile.ygrid !== intersection.ygrid || !redTile.draw) {
-  //     store.dispatch(toggleExecution(false))
-  //     store.dispatch(resetTransition())
-  //     store.dispatch(loadChallenge(store.getState().challenges.id))
-  //   }
+
   if (intersection.type === 'yellowStars' && !intersection.collected && redTile.draw && !redTile.collected) {
     if (redTile.xgrid === intersection.xgrid && redTile.ygrid === intersection.ygrid) {
       queueSound('collect');
