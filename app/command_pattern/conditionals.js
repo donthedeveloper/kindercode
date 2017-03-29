@@ -8,9 +8,10 @@ export class If extends Command {
   }
 
   executeCommand() {
-    // if (this.condition.executeCommand()) {
+    this.condition.program = this.program;
+    if (this.condition.executeCommand()) {
       this.executeCallbacks()
-    // }
+    }
   }
 }
 
@@ -21,17 +22,17 @@ export class IfNot extends Command {
   }
 
   executeCommand() {
-    // if (this.condition.executeCommand() === false) {
+    this.condition.program = this.program;
+    if (this.condition.executeCommand()) {
       this.executeCallbacks()
-    // }
+    }
   }
 }
 
-const redTileCheck = () => {
+const redTileCheck = (programRef) => {
     const redTile = [store.getState().challenges.redTile.xgrid, store.getState().challenges.redTile.ygrid],
-          spriteCoord = [store.getState().transition.xGrid, store.getState().transition.yGrid],
-          redTileOn = store.getState().challenges.redTile.draw;
-    if (redTile[0] === spriteCoord[0] && redTile[1] === spriteCoord[1] && redTileOn) return true;
+          spriteCoord = [programRef.spriteX, programRef.spriteY]
+    if (redTile[0] === spriteCoord[0] && redTile[1] === spriteCoord[1]) return true;
     else return false;
 }
 
@@ -44,6 +45,6 @@ export class Condition {
   }
 
   executeCommand() {
-    if (this.condition === 'redTile') return true; //redTileCheck()
+    if (this.condition === 'redTile') return redTileCheck(this.program)
   }
 }

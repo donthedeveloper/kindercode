@@ -5,6 +5,8 @@ export class FunctionInstance {
   constructor(){
     this.list = [];
     this.asyncActions = [];
+    this.spriteX = 0;
+    this.spriteY = 0;
   }
 
   addAsync(asyncFunc){
