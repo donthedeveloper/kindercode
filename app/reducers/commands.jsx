@@ -22,9 +22,7 @@ class Node {
 
 function traverseThrough(currentNode, parentId, newNode, index) {
   if (Array.isArray(currentNode)) {
-    // console.log('it is an array!');
     return currentNode.map((node) => {
-      // console.log('we made it into map');
       return traverseThrough(node, parentId, newNode, index);
     });
   } else if (typeof currentNode === 'object') {
