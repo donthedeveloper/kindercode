@@ -39,7 +39,7 @@ const AppComponent = ({renderInstructions, turnOffInstructions, spriteURL}) => {
             </div>
             <div id='redStarInstructions'>
               <img src={redStar}/>
-              <p>On every challenge, there will be one star that randomly switches between red and yellow. Use the If and If Not code blocks with the collect star and collect red tile star code blocks when you get there!</p>
+              <p>On every challenge, there will be one star that randomly switches between red and yellow. Use the If and If Not code blocks with the Collect Star and Collect Red Tile Star code blocks when you get there!</p>
             </div>
             <div id='cactusInstructions'>
               <img src={cactus}/>
