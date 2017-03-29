@@ -100,12 +100,12 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    insertIntoProcedure: (index, commandId) => {
-      dispatch( insertIntoProcedure(index, commandId) );
+    insertIntoProcedure: (index, commandId, input) => {
+      dispatch( insertIntoProcedure(index, commandId, input) );
     },
-    insertIntoParentProcedure: (parentId, commandId, index) => {
+    insertIntoParentProcedure: (parentId, commandId, index, input) => {
       // console.log('recent parent id:', parentId);
-      dispatch( insertIntoParentProcedure(parentId, commandId, index) );
+      dispatch( insertIntoParentProcedure(parentId, commandId, index, input) );
     }
   }
 };

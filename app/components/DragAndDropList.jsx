@@ -26,6 +26,7 @@ const DragAndDrop = (props) => {
               nodeId={node.id}
               insertIntoParentProcedure={props.insertIntoParentProcedure}
               commandType={props.commands[node.commandId].commandType}
+              input={node.input}
             >
 
               {!!node.children.length &&

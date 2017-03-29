@@ -8,12 +8,11 @@ import itemTypes from '../utilities/itemTypes.jsx';
 
 const blockTarget = {
   drop(props, monitor) {
-    // console.log(props);
     const hasDroppedOnChild = monitor.didDrop();
     const item = monitor.getItem();
 
     if (!hasDroppedOnChild && !props.greedy) {
-      props.insertIntoParentProcedure(props.nodeId, item.commandId, props.index);
+      props.insertIntoParentProcedure(props.nodeId, item.commandId, props.index, item.input);
     }
 
     return {
@@ -55,6 +54,11 @@ class DropItem extends React.Component {
     return connectDropTarget(
       <li className="drop-zone-program" style={styles}>
         {this.props.text}
+        {this.props.input !== null &&
+          <span>
+            {' ' + this.props.input + ' times'}
+          </span>
+        }
         {/*this.props.childNodes.length > 0 && this.props.children*/}
         {this.props.childNodes.length ? this.props.children: null}
         {/*

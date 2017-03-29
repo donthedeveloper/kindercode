@@ -13,10 +13,9 @@ const blockTarget = {
 
     if (!hasDroppedOnChild && !props.greedy) {
       if (props.parentId !== null) {
-        props.insertIntoParentProcedure(props.parentId, item.commandId, props.index);
+        props.insertIntoParentProcedure(props.parentId, item.commandId, props.index, item.input);
       }
     }
-    // console.log('item:', item);
 
     return {
       name: 'DropZoneItem',
@@ -54,7 +53,6 @@ class DropZoneItem extends React.Component {
     const procedureIsNotEmpty = this.props.procedure.length;
 
     const styles = {
-      // display: 'none',
       backgroundColor: 'rgba(38, 12, 12, .10)'
     };
 
