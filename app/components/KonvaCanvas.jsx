@@ -132,8 +132,8 @@ class KonvaCanvas extends React.Component {
               fillPatternImage={image}
               fillPatternRepeat={'no-repeat'}
               fillPatternScale= {{
-                x: 0.25,
-                y: 0.25
+                x: 0.23,
+                y: 0.23
               }}
               width={width}
               height={height}
