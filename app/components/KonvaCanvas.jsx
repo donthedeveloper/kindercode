@@ -73,6 +73,7 @@ class KonvaCanvas extends React.Component {
   }
 
   nextChallengeButton(id, user) {
+    this.props.procedureReset()
       if (user && user.challenge_id < this.props.challenges.numChallenges) {
         this.props.updateUserChallenge(id, user)
       }

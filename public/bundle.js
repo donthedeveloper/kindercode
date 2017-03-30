@@ -23454,6 +23454,7 @@ var KonvaCanvas = function (_React$Component) {
   }, {
     key: 'nextChallengeButton',
     value: function nextChallengeButton(id, user) {
+      this.props.procedureReset();
       if (user && user.challenge_id < this.props.challenges.numChallenges) {
         this.props.updateUserChallenge(id, user);
       } else if (!user && id < this.props.challenges.numChallenges) {
@@ -24088,6 +24089,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
       dispatch((0, _challenges.updateCurrUserChallenge)(user));
       dispatch((0, _transition.resetTransition)());
       dispatch((0, _challenges.loadChallenge)(id + 1));
+    },
+    procedureReset: function procedureReset() {
+      dispatch((0, _commands.resetProcedure)());
     },
     startExecution: function startExecution() {
       dispatch((0, _commands.toggleExecution)(true));
