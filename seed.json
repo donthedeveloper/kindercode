@@ -22,6 +22,43 @@
   "challenges":
   [
     {
+      "total_stars": 1,
+      "yellow_star": [
+        {
+          "id": 1,
+          "xgrid": 1,
+          "ygrid": 0,
+          "type": "yellowStars",
+          "width": 50,
+          "height": 50,
+          "collected": false
+        }
+      ],
+      "blue_star": [
+        {
+          "collected": true
+        }
+      ],
+      "redTile" : {
+        "draw": false,
+        "collected": true
+      },
+      "cactus": [
+        {
+        "id": 1,
+        "xgrid": 2,
+        "ygrid": 0,
+        "type": "cactus",
+        "width": 50,
+        "height": 50
+      }],
+      "sprite": {
+        "type": "sprite",
+        "name": "pig",
+        "url": "pig.png"
+      }
+    },
+    {
       "total_stars": 5,
       "yellow_star": [
         {
