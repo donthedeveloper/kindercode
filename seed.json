@@ -57,6 +57,66 @@
         "name": "pig",
         "url": "pig.png"
       }
+    },{
+      "total_stars": 4,
+      "yellow_star": [
+        {
+        "id": 1,
+        "xgrid": 1,
+        "ygrid": 0,
+        "type": "yellowStars",
+        "width": 50,
+        "height": 50,
+        "collected": false
+        },
+        {
+          "id": 2,
+          "xgrid": 1,
+          "ygrid": 1,
+          "type": "yellowStars",
+          "width": 50,
+          "height": 50,
+          "collected": false
+        },
+        {
+          "id": 3,
+          "xgrid": 2,
+          "ygrid": 1,
+          "type": "yellowStars",
+          "width": 50,
+          "height": 50,
+          "collected": false
+        },
+        {
+          "id": 4,
+          "xgrid": 2,
+          "ygrid": 2,
+          "type": "yellowStars",
+          "width": 50,
+          "height": 50,
+          "collected": false
+        }
+      ],
+      "blue_star": [{
+          "collected": true
+      }],
+      "redTile" : {
+        "collected": true
+      },
+      "cactus": [
+        {
+        "id": 1,
+        "xgrid": 3,
+        "ygrid": 2,
+        "type": "cactus",
+        "width": 50,
+        "height": 50
+      }],
+      "sprite": {
+        "type": "sprite",
+        "name": "snake",
+        "url": "snake.png"
+      }
     },
     {
       "total_stars": 5,
