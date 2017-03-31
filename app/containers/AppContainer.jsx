@@ -43,7 +43,7 @@ const AppComponent = ({renderInstructions, turnOffInstructions, spriteURL}) => {
             </div>
             <div id='cactusInstructions'>
               <img src={cactus}/>
-              <p>Avoid the cactii at all costs! Running into one will reset the grid to its position at the beginning of the challenge.</p>
+              <p>Avoid the cacti at all costs! Running into one will reset the grid to its position at the beginning of the challenge.</p>
             </div>
             <button onClick={() => turnOffInstructions()} >
               Let's play!
